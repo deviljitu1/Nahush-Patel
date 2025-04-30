@@ -942,6 +942,110 @@
       transform: translateY(-10px);
       box-shadow: 0 6px 10px rgba(255, 255, 255, 0.2), 0 6px 10px rgba(0, 0, 0, 0.5); /* Enhance shadow on hover */
     }
+    @media (max-width: 360px) {
+      body {
+        font-size: 14px; /* Adjust base font size for smaller screens */
+      }
+
+      nav.navbar {
+        padding: 0.5em 1em; /* Reduce padding for the navbar */
+      }
+
+      .hero h1 {
+        font-size: 1.8em; /* Reduce font size for the main heading */
+      }
+
+      .hero h2 {
+        font-size: 1.2em; /* Reduce font size for the subheading */
+      }
+
+      .glow-btn {
+        font-size: 0.8em; /* Adjust button font size */
+        padding: 0.5em 1em; /* Adjust button padding */
+      }
+
+      .social-icons .icon {
+        font-size: 1.2em; /* Reduce icon size */
+      }
+
+      .about-container {
+        padding: 1em 5%; /* Reduce padding for the about section */
+      }
+
+      .about-img {
+        width: 150px; /* Reduce image size */
+      }
+
+      .about-text h2 {
+        font-size: 1.5rem; /* Adjust heading size */
+      }
+
+      .about-text p {
+        font-size: 0.9rem; /* Adjust paragraph size */
+        line-height: 1.5; /* Adjust line height */
+      }
+
+      .skills-container h2,
+      .portfolio-container h2,
+      .contact-container h2 {
+        font-size: 1.5rem; /* Adjust section heading size */
+      }
+
+      .skills-container .skill-card img {
+        width: 30px; /* Reduce skill icon size */
+        height: 30px;
+      }
+
+      .skills-container .skill-card span {
+        font-size: 0.9rem; /* Adjust skill text size */
+      }
+
+      .portfolio-card img {
+        height: 120px; /* Reduce portfolio image height */
+      }
+
+      .portfolio-card-content h3 {
+        font-size: 1rem; /* Adjust project title size */
+      }
+
+      .portfolio-card-content p {
+        font-size: 0.8rem; /* Adjust project description size */
+      }
+
+      .contact-form input,
+      .contact-form textarea,
+      .contact-btn {
+        font-size: 0.9rem; /* Adjust form input and button font size */
+        padding: 0.6em; /* Adjust padding */
+      }
+
+      .footer-container {
+        font-size: 0.8rem; /* Adjust footer font size */
+      }
+
+      .contact-card {
+        margin: 0 auto; /* Center the form box horizontally */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center content inside the form box */
+        justify-content: center; /* Center content vertically */
+        padding: 1.5em; /* Adjust padding for better spacing */
+        width: 90%; /* Adjust width to fit smaller screens */
+      }
+
+      .contact-grid {
+        display: flex; /* Use flexbox for centering */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        height: 100%; /* Ensure it takes full height of the section */
+      }
+
+      .contact-card {
+        margin: 0; /* Remove any extra margin */
+        width: 90%; /* Adjust width to fit smaller screens */
+        max-width: 320px; /* Limit maximum width */
+      }
+    }
   </style>
 </head>
 <body>
