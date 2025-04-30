@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Details</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #0d0d0d;
+      color: #fff;
+    }
+
+    .project-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2em;
+      text-align: center;
+    }
+
+    .project-title {
+      font-size: 2.5rem;
+      background: linear-gradient(90deg, #f72585, #7209b7, #3a0ca3, #4361ee, #4cc9f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1em;
+    }
+
+    .project-image {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 10px;
+      margin-bottom: 1.5em;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-description {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 1.5em;
+    }
+
+    .project-tech {
+      margin-bottom: 1.5em;
+    }
+
+    .project-tech span {
+      display: inline-block;
+      background: #1a1a1a;
+      padding: 0.5em 1em;
+      margin: 0.3em;
+      border-radius: 5px;
+      font-size: 0.9rem;
+    }
+
+    .project-links a {
+      display: inline-block;
+      padding: 0.8em 1.5em;
+      background: linear-gradient(90deg, #f72585, #7209b7, #3a0ca3, #4361ee, #4cc9f0);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .project-links a:hover {
+      background: #4cc9f0;
+    }
+
+    .whatsapp-chat {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      color: #fff;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      z-index: 1000;
+    }
+
+    .whatsapp-chat:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .whatsapp-chat i {
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="project-container">
+    <h1 class="project-title">Project 3</h1>
+    <img src="project3-image.jpg" alt="Project 1" class="project-image">
+    <p class="project-description">
+      This is a detailed description of Project 3. It explains the purpose, features, and functionality of the project.
+    </p>
+    <div class="project-tech">
+      <span>HTML</span>
+      <span>CSS</span>
+      <span>JavaScript</span>
+      <span>React</span>
+    </div>
+    <div class="project-links">
+      <a href="https://github.com/your-repo-link" target="_blank">
+        <i class="fab fa-github"></i> View on GitHub
+      </a>
+    </div>
+  </div>
+  <div class="whatsapp-chat" onclick="openWhatsApp()">
+    <i class="fab fa-whatsapp"></i>
+  </div>
+  <script>
+    function openWhatsApp() {
+      window.open('https://wa.me/7875783498', '_blank'); // Replace '1234567890' with your WhatsApp number
+    }
+  </script>
+</body>
+</html>
