@@ -28,21 +28,21 @@ jobs:
           echo "Selected trend: ${{ steps.get-trends.outputs.TREND }}"
           
       - name: Generate Post
-  run: |
-    echo "Creating _posts directory..."
-    mkdir -p _posts
-    ls -la  # Debug: Show directory structure
-    
-    DATE=$(date +'%Y-%m-%d')
-    TREND="${{ steps.get-trends.outputs.TREND }}"
-    FILENAME="_posts/$DATE-$(echo "$TREND" | tr ' ' '-' | tr -cd '[:alnum:]-').md"
-    
-    echo "---" > "$FILENAME"
-    echo "layout: post" >> "$FILENAME"
-    echo "title: \"$TREND\"" >> "$FILENAME"
-    echo "date: $DATE" >> "$FILENAME"
-    echo "---" >> "$FILENAME"
-    echo "Test content" >> "$FILENAME"
-    
-    echo "✅ Generated: $FILENAME"
-    ls -la _posts/  # Debug: Show created file
+        run: |  # <-- This line was misaligned (needs 2 more spaces)
+          echo "Creating _posts directory..."
+          mkdir -p _posts
+          ls -la  # Debug: Show directory structure
+          
+          DATE=$(date +'%Y-%m-%d')
+          TREND="${{ steps.get-trends.outputs.TREND }}"
+          FILENAME="_posts/$DATE-$(echo "$TREND" | tr ' ' '-' | tr -cd '[:alnum:]-').md"
+          
+          echo "---" > "$FILENAME"
+          echo "layout: post" >> "$FILENAME"
+          echo "title: \"$TREND\"" >> "$FILENAME"
+          echo "date: $DATE" >> "$FILENAME"
+          echo "---" >> "$FILENAME"
+          echo "Test content" >> "$FILENAME"
+          
+          echo "✅ Generated: $FILENAME"
+          ls -la _posts/  # Debug: Show created file
