@@ -1,53 +1,22 @@
-name: Auto Tech Blog
+name: Auto Tech Blog (Debug)
 on:
-  schedule:
-    - cron: '0 18 * * 3' # Every Wednesday at 6PM UTC
-  workflow_dispatch:
-
-env:  # <-- MOVE THIS OUTSIDE THE 'on' SECTION
-  HF_TOKEN: ${{ secrets.HF_TOKEN }}
-
+  workflow_dispatch:  # Disable schedule temporarily
 jobs:
-  generate:
+  debug:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      - name: Install dependencies
+      
+      - name: Show directory structure
         run: |
-          python -m pip install --upgrade pip
-          pip install requests feedparser beautifulsoup4
-
-      - name: Get Tech Trends
-        id: get-trends
-        run: |
-          cd scripts/
-          echo "TREND=$(python trends.py | grep -E '^[0-9]+\.' | head -1 | sed 's/^[0-9]\+\. //')" >> $GITHUB_OUTPUT
-          echo "Selected trend: ${{ steps.get-trends.outputs.TREND }}"
-
-      - name: Generate Post
-        run: |
-          mkdir -p _posts
-          DATE=$(date +'%Y-%m-%d')
-          TREND="${{ steps.get-trends.outputs.TREND }}"
-          FILENAME="_posts/$DATE-$(echo "$TREND" | tr ' ' '-' | tr -cd '[:alnum:]-').md"
+          echo "=== Repository Contents ==="
+          ls -R
+          echo "=== Scripts Folder ==="
+          ls -l scripts/
           
-          echo "---" > "$FILENAME"
-          echo "layout: post" >> "$FILENAME"
-          echo "title: \"$TREND\"" >> "$FILENAME"
-          echo "date: $DATE" >> "$FILENAME"
-          echo "---" >> "$FILENAME"
-          python scripts/writer.py "$TREND" >> "$FILENAME"
-          
-          echo "✅ Generated: $FILENAME"
-          echo "POST_PATH=$FILENAME" >> $GITHUB_ENV
-
-      - name: Verify Output
+      - name: Test Python installation
         run: |
-          echo "Generated post at: ${{ env.POST_PATH }}"
-          head -n 10 "${{ env.POST_PATH }}"
+          echo "Python version:"
+          python --version
+          echo "Pip list:"
+          pip list
