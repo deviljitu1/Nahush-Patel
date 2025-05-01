@@ -1,22 +1,44 @@
-name: Auto Tech Blog (Debug)
+name: Auto Tech Blog
 on:
-  workflow_dispatch:  # Disable schedule temporarily
+  schedule:
+    - cron: '0 18 * * 3' # Every Wednesday at 6PM UTC
+  workflow_dispatch:
+
 jobs:
-  debug:
+  generate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       
-      - name: Show directory structure
-        run: |
-          echo "=== Repository Contents ==="
-          ls -R
-          echo "=== Scripts Folder ==="
-          ls -l scripts/
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
           
-      - name: Test Python installation
+      - name: Install dependencies
         run: |
-          echo "Python version:"
-          python --version
-          echo "Pip list:"
-          pip list
+          python -m pip install --upgrade pip
+          pip install requests feedparser beautifulsoup4
+          
+      - name: Get Tech Trends
+        id: get-trends
+        run: |
+          cd scripts/
+          echo "TREND=$(python trends.py | grep -E '^[0-9]+\.' | head -1 | sed 's/^[0-9]\+\. //')" >> $GITHUB_OUTPUT
+          echo "Selected trend: ${{ steps.get-trends.outputs.TREND }}"
+          
+      - name: Generate Post
+        run: |
+          mkdir -p _posts
+          DATE=$(date +'%Y-%m-%d')
+          TREND="${{ steps.get-trends.outputs.TREND }}"
+          FILENAME="_posts/$DATE-$(echo "$TREND" | tr ' ' '-' | tr -cd '[:alnum:]-').md"
+          
+          echo "---" > "$FILENAME"
+          echo "layout: post" >> "$FILENAME"
+          echo "title: \"$TREND\"" >> "$FILENAME"
+          echo "date: $DATE" >> "$FILENAME"
+          echo "---" >> "$FILENAME"
+          python scripts/writer.py "$TREND" >> "$FILENAME"
+          
+          echo "✅ Generated: $FILENAME"
