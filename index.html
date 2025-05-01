@@ -1156,9 +1156,9 @@
     <div class="contact-grid">
       <div class="contact-card">
         <form class="contact-form" id="contactForm">
-          <input type="text" placeholder="Your Name" required />
-          <input type="email" placeholder="Your Email" required />
-          <textarea placeholder="Your Message" required></textarea>
+          <input type="text" id="name" placeholder="Your Name" required />
+          <input type="email" id="email" placeholder="Your Email" required />
+          <textarea id="message" placeholder="Your Message" required></textarea>
           <button type="submit" class="contact-btn">Send</button>
         </form>
         <div id="thankYouMessage" class="thank-you-message" style="display: none;">
@@ -1240,6 +1240,32 @@
             link.classList.add('active');
           }
         }
+      });
+    });
+    // Initialize EmailJS (replace 'YOUR_TEMPLATE_ID' and 'YOUR_PUBLIC_KEY' with your EmailJS credentials)
+    emailjs.init('YOUR_PUBLIC_KEY');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault(); // Prevent form submission
+
+      // Collect form data
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      // Send email using EmailJS
+      emailjs.send('service_npwwilk', 'YOUR_TEMPLATE_ID', { // Updated Service ID
+        from_name: name,
+        from_email: email,
+        message: message,
+      }).then(() => {
+        // Show thank you message and hide the form
+        contactForm.style.display = 'none';
+        thankYouMessage.style.display = 'block';
+        thankYouMessage.classList.add('fade-in');
+      }).catch((error) => {
+        console.error('EmailJS Error:', error);
+        alert('Failed to send the message. Please try again later.');
       });
     });
   </script>
