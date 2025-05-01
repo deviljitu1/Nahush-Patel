@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Post - Nahush Patel</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --gradient: linear-gradient(90deg, #f72585, #7209b7, #3a0ca3, #4361ee, #4cc9f0);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+      transition: background-color 0.5s, color 0.5s;
+    }
+
+    body.light {
+      background-color: #fff;
+      color: #000;
+    }
+
+    nav.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em 2em;
+      background: inherit;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1), 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5em;
+      list-style: none;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: inherit;
+      font-size: 1.1rem;
+      position: relative;
+    }
+
+    .nav-links li a:hover::after,
+    .nav-links li a.active::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 2px;
+      background: var(--gradient);
+    }
+
+    .toggle-switch {
+      width: 40px;
+      height: 20px;
+      border-radius: 999px;
+      background: #ccc;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .toggle-switch .circle {
+      width: 16px;
+      height: 16px;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      transition: left 0.3s;
+    }
+
+    body.light .toggle-switch {
+      background: #444;
+    }
+
+    body.light .toggle-switch .circle {
+      left: 22px;
+      background: #000;
+    }
+
+    .content-container {
+      max-width: 800px;
+      margin: 2em auto;
+      padding: 1em;
+      background: #1a1a1a;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .content-container h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1em;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .content-container p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5em;
+    }
+
+    .suggested-blogs {
+      max-width: 800px;
+      margin: 2em auto;
+      padding: 1em;
+      background: #1a1a1a;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .suggested-blogs h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1em;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .suggested-blogs .blog-card {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      margin-bottom: 1em;
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 1em;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .suggested-blogs .blog-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .suggested-blogs .blog-card-content {
+      flex: 1;
+    }
+
+    .suggested-blogs .blog-card-content h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5em;
+    }
+
+    .suggested-blogs .blog-card-content a {
+      text-decoration: none;
+      color: var(--gradient);
+    }
+
+    .footer-container {
+      text-align: center;
+      padding: 1.5em 0;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .footer-container .name-gradient {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Nahush</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+    </ul>
+    <div id="toggleMode" style="cursor: pointer;">
+      <img src="img/moon-icon.png" id="darkIcon" alt="Dark Mode" style="width: 20px; height: 20px;">
+      <img src="img/sun-icon.png" id="lightIcon" alt="Light Mode" style="width: 20px; height: 20px; display: none;">
+    </div>
+  </nav>
+
+  <div class="content-container" id="blogContent">
+    <!-- Content will be dynamically populated here -->
+  </div>
+
+  <div class="suggested-blogs" id="suggestedBlogs">
+    <h2>Suggested Blogs</h2>
+    <!-- Suggested blogs will be dynamically populated here -->
+  </div>
+
+  <section id="footer" class="footer-container">
+    <p>&copy; 2025 <span class="name-gradient"><a href="#hero">Nahush Patel</a></span>. All rights reserved.</p>
+  </section>
+
+  <script>
+    // Dynamic blog content
+    const blogData = {
+      title: "Blog Post 1",
+      image: "blog-img/blog1-image.jpg", // Updated to blog-img directory
+      content: `
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at erat euismod, facilisis ligula nec, tincidunt nunc. Sed ac ligula a enim facilisis bibendum.</p>
+        <p>Aliquam erat volutpat. Nulla facilisi. Integer nec eros nec nulla tincidunt tincidunt. Suspendisse potenti. Donec vel libero at lectus rutrum vestibulum vitae ut turpis.</p>
+        <p>Curabitur sit amet justo nec sapien vehicula tincidunt. Fusce id magna nec justo tincidunt tincidunt. Integer nec eros nec nulla tincidunt tincidunt.</p>
+      `
+    };
+
+    const suggestedBlogs = [
+      {
+        title: "Blog Post 2",
+        image: "blog-img/blog2-thumbnail.jpg", // Updated to blog-img directory
+        link: "blog-list/blog2.html" // Updated to blog-list directory
+      },
+      {
+        title: "Blog Post 3",
+        image: "blog-img/blog3-thumbnail.jpg", // Updated to blog-img directory
+        link: "blog-list/blog3.html" // Updated to blog-list directory
+      },
+      {
+        title: "Blog Post 4",
+        image: "blog-img/blog4-thumbnail.jpg", // Updated to blog-img directory
+        link: "blog-list/blog4.html" // Updated to blog-list directory
+      }
+    ];
+
+    // Populate the blog content dynamically
+    const blogContent = document.getElementById('blogContent');
+    blogContent.innerHTML = `
+      <h1>${blogData.title}</h1>
+      <img src="${blogData.image}" alt="${blogData.title}" style="width: 100%; border-radius: 10px; margin-bottom: 1.5em;">
+      ${blogData.content}
+    `;
+
+    // Populate suggested blogs dynamically
+    const suggestedBlogsContainer = document.getElementById('suggestedBlogs');
+    suggestedBlogs.forEach(blog => {
+      const blogCard = document.createElement('div');
+      blogCard.classList.add('blog-card');
+      blogCard.innerHTML = `
+        <img src="${blog.image}" alt="${blog.title}">
+        <div class="blog-card-content">
+          <h3>${blog.title}</h3>
+          <a href="${blog.link}">Read More</a>
+        </div>
+      `;
+      suggestedBlogsContainer.appendChild(blogCard);
+    });
+
+    // Dark mode toggle (same as index.html)
+    const toggleMode = document.getElementById('toggleMode');
+    const body = document.body;
+    const darkIcon = document.getElementById('darkIcon');
+    const lightIcon = document.getElementById('lightIcon');
+
+    toggleMode.addEventListener('click', () => {
+      body.classList.toggle('light');
+      darkIcon.style.display = body.classList.contains('light') ? 'none' : 'inline';
+      lightIcon.style.display = body.classList.contains('light') ? 'inline' : 'none';
+    });
+  </script>
+</body>
+</html>
