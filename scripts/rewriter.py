@@ -1,0 +1,1 @@
+print("Rewriter ready!")
