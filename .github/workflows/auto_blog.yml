@@ -1,0 +1,15 @@
+name: Auto Tech Blog
+on:
+  schedule:
+    - cron: '0 18 * * 3' # Every Wednesday at 6PM UTC
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Test successful" > test.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          name: test-file
+          path: test.txt
