@@ -4,12 +4,17 @@ on:
     - cron: '0 18 * * 3' # Every Wednesday at 6PM UTC
   workflow_dispatch:
 jobs:
-  test:
+  generate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: echo "Test successful" > test.txt
-      - uses: actions/upload-artifact@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          name: test-file
-          path: test.txt
+          python-version: '3.10'
+      - name: Test scripts
+        run: |
+          python scripts/trends.py
+          python scripts/writer.py
+          python scripts/rewriter.py
+          python scripts/seo.py
