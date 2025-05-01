@@ -4,6 +4,9 @@ on:
     - cron: '0 18 * * 3' # Every Wednesday at 6PM UTC
   workflow_dispatch:
 
+env:
+  HF_TOKEN: ${{ secrets.HF_TOKEN }}
+
 jobs:
   generate:
     runs-on: ubuntu-latest
@@ -28,11 +31,8 @@ jobs:
           echo "Selected trend: ${{ steps.get-trends.outputs.TREND }}"
           
       - name: Generate Post
-        run: |  # <-- This line was misaligned (needs 2 more spaces)
-          echo "Creating _posts directory..."
+        run: |
           mkdir -p _posts
-          ls -la  # Debug: Show directory structure
-          
           DATE=$(date +'%Y-%m-%d')
           TREND="${{ steps.get-trends.outputs.TREND }}"
           FILENAME="_posts/$DATE-$(echo "$TREND" | tr ' ' '-' | tr -cd '[:alnum:]-').md"
@@ -42,7 +42,14 @@ jobs:
           echo "title: \"$TREND\"" >> "$FILENAME"
           echo "date: $DATE" >> "$FILENAME"
           echo "---" >> "$FILENAME"
-          echo "Test content" >> "$FILENAME"
           
-          echo "✅ Generated: $FILENAME"
-          ls -la _posts/  # Debug: Show created file
+          python scripts/writer.py "$TREND" >> "$FILENAME"
+          echo "✅ Generated AI post: $FILENAME"
+          echo "POST_PATH=$FILENAME" >> $GITHUB_ENV
+
+      - name: Verify Output
+        run: |
+          echo "=== Generated Post Location ==="
+          echo "${{ env.POST_PATH }}"
+          echo "=== First 10 Lines ==="
+          head -n 10 "${{ env.POST_PATH }}"
