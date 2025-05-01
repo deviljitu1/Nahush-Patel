@@ -1210,18 +1210,37 @@
       thankYouMessage.style.display = 'block'; // Show thank you message
       thankYouMessage.classList.add('fade-in'); // Add animation class
     });
-
+    // active navigation link
     const navLinksItemsA = document.querySelectorAll('.nav-links li a');
 
     navLinksItemsA.forEach(link => {
       link.addEventListener('click', () => {
         // Remove 'active' class from all links
-        navLinks.forEach(nav => nav.classList.remove('active'));
+        navLinksItemsA.forEach(nav => nav.classList.remove('active'));
         // Add 'active' class to the clicked link
         link.classList.add('active');
       });
     });
 
+    // Automatically set the active link based on the current section
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section');
+      const scrollPosition = window.scrollY + 100; // Offset for better accuracy
+
+      sections.forEach(section => {
+        const id = section.getAttribute('id');
+        const offsetTop = section.offsetTop;
+        const offsetHeight = section.offsetHeight;
+
+        const link = document.querySelector(`.nav-links li a[href="#${id}"]`);
+        if (link) {
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            navLinksItemsA.forEach(nav => nav.classList.remove('active'));
+            link.classList.add('active');
+          }
+        }
+      });
+    });
   </script>
   <script src="main.js"></script>
 </body>
