@@ -3,6 +3,10 @@ on:
   schedule:
     - cron: '0 18 * * 3' # Every Wednesday at 6PM UTC
   workflow_dispatch:
+
+env:  # <-- MOVE THIS OUTSIDE THE 'on' SECTION
+  HF_TOKEN: ${{ secrets.HF_TOKEN }}
+
 jobs:
   generate:
     runs-on: ubuntu-latest
