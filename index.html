@@ -7,6 +7,9 @@
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <link rel="icon" href="img/dark-image.png" type="image/png" sizes="16x16">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <meta name="description" content="Portfolio of Nahush Patel, a web developer showcasing skills, projects, and contact information.">
+  <meta name="keywords" content="Nahush Patel, Web Developer, Portfolio, Projects, Contact">
+  <meta name="author" content="Nahush Patel">
   <style>
     :root {
       --gradient: linear-gradient(90deg, #f72585, #7209b7, #3a0ca3, #4361ee, #4cc9f0);
@@ -1048,6 +1051,159 @@
         max-width: 320px; /* Limit maximum width */
       }
     }
+    @media (max-width: 360px) {
+      body {
+        font-size: 18px; /* Slightly smaller base font size */
+      }
+
+      nav.navbar {
+        padding: 0.5em 1em; /* Reduce padding for the navbar */
+      }
+
+      .hero h1 {
+        font-size: 1.8em; /* Reduce font size for the main heading */
+      }
+
+      .hero h2 {
+        font-size: 1em; /* Reduce font size for the subheading */
+      }
+
+      .glow-btn {
+        font-size: 0.8em; /* Adjust button font size */
+        padding: 0.5em 1em; /* Adjust button padding */
+      }
+
+      .social-icons .icon {
+        font-size: 1.2em; /* Reduce icon size */
+      }
+
+      .about-container {
+        padding: 1em 5%; /* Reduce padding for the about section */
+      }
+
+      .about-img {
+        width: 120px; /* Reduce image size */
+      }
+
+      .about-text h2 {
+        font-size: 1.4rem; /* Adjust heading size */
+      }
+
+      .about-text p {
+        font-size: 0.85rem; /* Adjust paragraph size */
+        line-height: 1.4; /* Adjust line height */
+      }
+
+      .skills-container h2,
+      .portfolio-container h2,
+      .contact-container h2 {
+        font-size: 1.4rem; /* Adjust section heading size */
+      }
+
+      .skills-container .skill-card img {
+        width: 25px; /* Reduce skill icon size */
+        height: 25px;
+      }
+
+      .skills-container .skill-card span {
+        font-size: 0.8rem; /* Adjust skill text size */
+      }
+
+      .portfolio-card img {
+        height: 100px; /* Reduce portfolio image height */
+      }
+
+      .portfolio-card-content h3 {
+        font-size: 0.9rem; /* Adjust project title size */
+      }
+
+      .portfolio-card-content p {
+        font-size: 0.75rem; /* Adjust project description size */
+      }
+
+      .contact-form input,
+      .contact-form textarea,
+      .contact-btn {
+        font-size: 0.8rem; /* Adjust form input and button font size */
+        padding: 0.5em; /* Adjust padding */
+      }
+
+      .footer-container {
+        font-size: 0.7rem; /* Adjust footer font size */
+      }
+
+      .contact-card {
+        margin: 0 auto; /* Center the form box horizontally */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center content inside the form box */
+        justify-content: center; /* Center content vertically */
+        padding: 1em; /* Adjust padding for better spacing */
+        width: 95%; /* Adjust width to fit smaller screens */
+      }
+    }
+
+    @media (max-width: 375px) {
+      .hero h1 {
+        font-size: 2em; /* Slightly larger heading */
+      }
+
+      .hero h2 {
+        font-size: 1.1em; /* Slightly larger subheading */
+      }
+
+      .about-img {
+        width: 140px; /* Slightly larger image */
+      }
+
+      .about-text h2 {
+        font-size: 1.6rem; /* Slightly larger heading */
+      }
+
+      .about-text p {
+        font-size: 0.9rem; /* Slightly larger paragraph */
+      }
+
+      .skills-container .skill-card img {
+        width: 30px; /* Slightly larger skill icon */
+        height: 30px;
+      }
+
+      .portfolio-card img {
+        height: 120px; /* Slightly larger portfolio image */
+      }
+    }
+
+    @media (max-width: 414px) {
+      .hero h1 {
+        font-size: 2.2em; /* Larger heading for wider screens */
+      }
+
+      .hero h2 {
+        font-size: 1.2em; /* Larger subheading */
+      }
+
+      .about-img {
+        width: 160px; /* Larger image */
+      }
+
+      .about-text h2 {
+        font-size: 1.8rem; /* Larger heading */
+      }
+
+      .about-text p {
+        font-size: 1rem; /* Larger paragraph */
+      }
+
+      .skills-container .skill-card img {
+        width: 35px; /* Larger skill icon */
+        height: 35px;
+      }
+
+      .portfolio-card img {
+        height: 150px; /* Larger portfolio image */
+      }
+    }
   </style>
 </head>
 <body>
@@ -1075,16 +1231,16 @@
   <section id="home" class="hero">
     <div class="left-content">
       <div class="social-icons">
-        <a href="#" class="icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="#" class="icon" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="icon" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="icon" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="icon" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="icon" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
       </div>
       <h1>Hi, I'm <br><span class="name-gradient">Nahush Patel</span></h1>
       <h2><span class="typing">Web Developer</span></h2>
-      <button class="glow-btn">Download CV</button>
+      <button class="glow-btn" aria-label="Download CV">Download CV</button>
     </div>
     <div class="right-content">
-      <img id="profileImg" src="img/dark-image.png" alt="Nahush Patel" />
+      <img id="profileImg" src="img/dark-image.png" alt="Nahush Patel's Profile Picture" />
     </div>
   </section>
   
@@ -1236,19 +1392,18 @@
 
         const link = document.querySelector(`.nav-links li a[href="#${id}"]`);
         if (link) {
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            navLinksItemsA.forEach(nav => nav.classList.remove('active'));
-            link.classList.add('active');
-          }
+          link.classList.toggle('active', scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight);
         }
       });
     });
     // Initialize EmailJS with your Public Key
-emailjs.init('Y5Zzx5gdrO2rOGSkv');  // Make sure this is the PUBLIC key
+try {
+  emailjs.init('Y5Zzx5gdrO2rOGSkv');  // Make sure this is the PUBLIC key
+} catch (error) {
+  console.error('EmailJS Initialization Error:', error);
+}
 
 // Select the form and thank-you message by ID
-const contactForm = document.getElementById('contactForm');
-const thankYouMessage = document.getElementById('thankYouMessage');
 
 contactForm.addEventListener('submit', (e) => {
   e.preventDefault(); // Prevent form refresh
