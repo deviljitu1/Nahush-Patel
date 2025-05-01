@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nahush - Web Developer</title>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <link rel="icon" href="img/dark-image.png" type="image/png" sizes="16x16">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <style>
@@ -1242,32 +1243,42 @@
         }
       });
     });
-    // Initialize EmailJS (replace 'template_e62g2gf' and 'Y5Zzx5gdrO2rOGSkv' with your EmailJS credentials)
-    emailjs.init('Y5Zzx5gdrO2rOGSkv');
+    // Initialize EmailJS with your Public Key
+emailjs.init('Y5Zzx5gdrO2rOGSkv');  // Make sure this is the PUBLIC key
 
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault(); // Prevent form submission
+// Select the form and thank-you message by ID
+const contactForm = document.getElementById('contactForm');
+const thankYouMessage = document.getElementById('thankYouMessage');
 
-      // Collect form data
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault(); // Prevent form refresh
 
-      // Send email using EmailJS
-      emailjs.send('service_npwwilk', 'template_e62g2gf', { // Updated Service ID
-        from_name: name,
-        from_email: email,
-        message: message,
-      }).then(() => {
-        // Show thank you message and hide the form
-        contactForm.style.display = 'none';
-        thankYouMessage.style.display = 'block';
-        thankYouMessage.classList.add('fade-in');
-      }).catch((error) => {
-        console.error('EmailJS Error:', error);
-        alert('Failed to send the message. Please try again later.');
-      });
-    });
+  // Collect form data
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  // Validate basic fields
+  if (!name || !email || !message) {
+    alert('Please fill in all fields.');
+    return;
+  }
+
+  // Send email using EmailJS
+  emailjs.send('service_npwwilk', 'template_e62g2gf', {
+    from_name: name,
+    from_email: email,
+    message: message,
+  }).then(() => {
+    // Show thank you message and hide the form
+    contactForm.style.display = 'none';
+    thankYouMessage.style.display = 'block';
+    thankYouMessage.classList.add('fade-in');
+  }).catch((error) => {
+    console.error('EmailJS Error:', error);
+    alert('Failed to send the message. Please try again later.');
+  });
+});
   </script>
   <script src="main.js"></script>
 </body>
