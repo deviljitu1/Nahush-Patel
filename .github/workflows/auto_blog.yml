@@ -28,17 +28,21 @@ jobs:
           echo "Selected trend: ${{ steps.get-trends.outputs.TREND }}"
           
       - name: Generate Post
-        run: |
-          mkdir -p _posts
-          DATE=$(date +'%Y-%m-%d')
-          TREND="${{ steps.get-trends.outputs.TREND }}"
-          FILENAME="_posts/$DATE-$(echo "$TREND" | tr ' ' '-' | tr -cd '[:alnum:]-').md"
-          
-          echo "---" > "$FILENAME"
-          echo "layout: post" >> "$FILENAME"
-          echo "title: \"$TREND\"" >> "$FILENAME"
-          echo "date: $DATE" >> "$FILENAME"
-          echo "---" >> "$FILENAME"
-          python scripts/writer.py "$TREND" >> "$FILENAME"
-          
-          echo "✅ Generated: $FILENAME"
+  run: |
+    echo "Creating _posts directory..."
+    mkdir -p _posts
+    ls -la  # Debug: Show directory structure
+    
+    DATE=$(date +'%Y-%m-%d')
+    TREND="${{ steps.get-trends.outputs.TREND }}"
+    FILENAME="_posts/$DATE-$(echo "$TREND" | tr ' ' '-' | tr -cd '[:alnum:]-').md"
+    
+    echo "---" > "$FILENAME"
+    echo "layout: post" >> "$FILENAME"
+    echo "title: \"$TREND\"" >> "$FILENAME"
+    echo "date: $DATE" >> "$FILENAME"
+    echo "---" >> "$FILENAME"
+    echo "Test content" >> "$FILENAME"
+    
+    echo "✅ Generated: $FILENAME"
+    ls -la _posts/  # Debug: Show created file
