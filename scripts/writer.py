@@ -1,0 +1,1 @@
+print("Content generator ready!")
