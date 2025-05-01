@@ -1,6 +1,8 @@
 name: Auto Tech Blog
 on:
-  workflow_dispatch:  # Remove schedule until basic tests pass
+  schedule:
+    - cron: '0 18 * * 3' # Every Wednesday at 6PM UTC
+  workflow_dispatch:
 jobs:
   generate:
     runs-on: ubuntu-latest
@@ -10,22 +12,38 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: '3.10'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install requests feedparser beautifulsoup4
 
-      - name: Debug - List files
-        run: |
-          ls -R scripts/  # Verify files exist
-          cat scripts/trends.py  # Display file content
-
-      - name: Test scripts
+      - name: Get Tech Trends
+        id: get-trends
         run: |
           cd scripts/
-          python trends.py || echo "Trends failed"
-          python writer.py || echo "Writer failed"
-          python rewriter.py || echo "Rewriter failed"
-          python seo.py || echo "SEO failed"
+          echo "TREND=$(python trends.py | grep -E '^[0-9]+\.' | head -1 | sed 's/^[0-9]\+\. //')" >> $GITHUB_OUTPUT
+          echo "Selected trend: ${{ steps.get-trends.outputs.TREND }}"
+
+      - name: Generate Post
+        run: |
+          mkdir -p _posts
+          DATE=$(date +'%Y-%m-%d')
+          TREND="${{ steps.get-trends.outputs.TREND }}"
+          FILENAME="_posts/$DATE-$(echo "$TREND" | tr ' ' '-' | tr -cd '[:alnum:]-').md"
+          
+          echo "---" > "$FILENAME"
+          echo "layout: post" >> "$FILENAME"
+          echo "title: \"$TREND\"" >> "$FILENAME"
+          echo "date: $DATE" >> "$FILENAME"
+          echo "---" >> "$FILENAME"
+          python scripts/writer.py "$TREND" >> "$FILENAME"
+          
+          echo "✅ Generated: $FILENAME"
+          echo "POST_PATH=$FILENAME" >> $GITHUB_ENV
+
+      - name: Verify Output
+        run: |
+          echo "Generated post at: ${{ env.POST_PATH }}"
+          head -n 10 "${{ env.POST_PATH }}"
