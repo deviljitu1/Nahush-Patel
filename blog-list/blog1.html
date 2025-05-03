@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog Post - Nahush Patel</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <meta name="description" content="Discover insights on Blog Post 1 by Nahush Patel. Learn about web development, design, and best practices in this detailed blog post.">
   <style>
     :root {
       --gradient: linear-gradient(90deg, #f72585, #7209b7, #3a0ca3, #4361ee, #4cc9f0);
@@ -96,14 +97,15 @@
     .content-container {
       max-width: 800px;
       margin: 2em auto;
-      padding: 1em;
+      padding: 1.5em; /* Increased padding for better spacing */
       background: #1a1a1a;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      color: rgba(255, 255, 255, 0.9); /* Slightly reduced brightness for readability */
     }
 
     .content-container h1 {
-      font-size: 2.5rem;
+      font-size: 2.2rem; /* Slightly smaller font size */
       margin-bottom: 1em;
       background: var(--gradient);
       -webkit-background-clip: text;
@@ -111,9 +113,43 @@
     }
 
     .content-container p {
-      font-size: 1.1rem;
-      line-height: 1.8;
+      font-size: 1rem; /* Reduced font size for better readability */
+      line-height: 1.7; /* Adjusted line height */
+      margin-bottom: 1.2em;
+      color: rgba(255, 255, 255, 0.85); /* Softer text color */
+    }
+
+    .content-container img {
+      width: 100%;
+      height: auto; /* Maintain aspect ratio */
+      max-height: 400px; /* Limit image height */
+      border-radius: 10px;
       margin-bottom: 1.5em;
+      object-fit: cover; /* Ensure the image fits nicely */
+    }
+
+    .content-container p.truncated {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* Show only 3 lines */
+      -webkit-box-orient: vertical;
+    }
+
+    .read-more-btn {
+      display: inline-block;
+      margin-top: 1em;
+      padding: 0.5em 1em;
+      background: var(--gradient);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .read-more-btn:hover {
+      opacity: 0.9;
     }
 
     .suggested-blogs {
@@ -142,6 +178,20 @@
       border-radius: 10px;
       padding: 1em;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0; /* Initially hidden */
+      transform: translateY(20px); /* Start slightly below */
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .suggested-blogs .blog-card.visible {
+      opacity: 1; /* Fully visible */
+      transform: translateY(0); /* Move to original position */
+    }
+
+    .suggested-blogs .blog-card:hover {
+      transform: translateY(-10px); /* Lift the card slightly */
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Add a stronger shadow */
     }
 
     .suggested-blogs .blog-card img {
@@ -178,23 +228,53 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
+    body.light .content-container {
+      background: #f9f9f9; /* Light gray background for contrast */
+      color: #000; /* Black text for readability */
+    }
+
+    body.light .suggested-blogs {
+      background: #f9f9f9; /* Light gray background for contrast */
+      color: #000; /* Black text for readability */
+    }
+
+    body.light .footer-container {
+      background: #f9f9f9; /* Light gray background for contrast */
+      color: #000; /* Black text for readability */
+    }
+
+    body.light .suggested-blogs .blog-card {
+      background: #f0f0f0; /* Light gray background for contrast */
+      color: #000; /* Black text for readability */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Softer shadow for light mode */
+    }
+
+    body.light .suggested-blogs .blog-card a {
+      color: #007BFF; /* Blue color for links in light mode */
+    }
   </style>
 </head>
 <body>
   <nav class="navbar">
     <div class="logo">Nahush</div>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
+      <li><a href="../index.html">Home</a></li>
       <li><a href="blog.html" class="active">Blog</a></li>
     </ul>
     <div id="toggleMode" style="cursor: pointer;">
-      <img src="img/moon-icon.png" id="darkIcon" alt="Dark Mode" style="width: 20px; height: 20px;">
-      <img src="img/sun-icon.png" id="lightIcon" alt="Light Mode" style="width: 20px; height: 20px; display: none;">
+      <img src="../img/moon-icon.png" id="darkIcon" alt="Dark Mode" style="width: 20px; height: 20px;">
+      <img src="../img/sun-icon.png" id="lightIcon" alt="Light Mode" style="width: 20px; height: 20px; display: none;">
     </div>
   </nav>
 
   <div class="content-container" id="blogContent">
-    <!-- Content will be dynamically populated here -->
+    <h1>Blog Post 1: Web Development Insights</h1>
+    <img src="blog-img/blog1-image.png" alt="Web Development Insights" style="width: 100%; border-radius: 10px; margin-bottom: 1.5em;">
+    <p>Welcome to Blog Post 1 by Nahush Patel, where we delve into the world of web development. In this post, we explore essential tips and techniques for creating responsive, user-friendly websites.</p>
+    <p>Web development is a dynamic field that requires continuous learning. From mastering HTML, CSS, and JavaScript to understanding frameworks like React and Angular, staying updated is crucial for success.</p>
+    <p>Additionally, we discuss the importance of SEO (Search Engine Optimization) in driving traffic to your website. Implementing SEO-friendly practices, such as optimizing meta tags and using relevant keywords, can significantly improve your site's visibility.</p>
+    <p>Stay tuned for more insights and practical advice on web development in our upcoming blog posts.</p>
   </div>
 
   <div class="suggested-blogs" id="suggestedBlogs">
@@ -209,32 +289,80 @@
   <script>
     // Dynamic blog content
     const blogData = {
-      title: "Blog Post 1",
-      image: "blog-img/blog1-image.jpg", // Updated to blog-img directory
-      content: `
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at erat euismod, facilisis ligula nec, tincidunt nunc. Sed ac ligula a enim facilisis bibendum.</p>
-        <p>Aliquam erat volutpat. Nulla facilisi. Integer nec eros nec nulla tincidunt tincidunt. Suspendisse potenti. Donec vel libero at lectus rutrum vestibulum vitae ut turpis.</p>
-        <p>Curabitur sit amet justo nec sapien vehicula tincidunt. Fusce id magna nec justo tincidunt tincidunt. Integer nec eros nec nulla tincidunt tincidunt.</p>
-      `
-    };
+  title: "Web Development Insights",
+  image: "../blog-img/blog1-image.png",
+  content: `
+    <p>Welcome to Blog Post 1 by Nahush Patel, where we delve into the world of web development. In this post, we explore essential tips and techniques for creating responsive, user-friendly websites.</p>
+
+    <h3>Understanding the Core: HTML, CSS, and JavaScript</h3>
+    <p>Every web developer begins with the building blocks: HTML for structure, CSS for design, and JavaScript for interactivity. Mastering these is essential before moving on to more advanced tools and frameworks.</p>
+
+    <h3>Frameworks and Libraries: Choosing the Right Tools</h3>
+    <p>Once you're confident with the basics, it’s time to explore frameworks like React, Vue, or Angular. React, in particular, is popular for building modern single-page applications due to its component-based structure and active community support.</p>
+
+    <h3>Responsive Design Matters</h3>
+    <p>With a growing number of users accessing websites via mobile devices, responsiveness is no longer optional. Tools like Flexbox and CSS Grid, along with media queries, help in crafting layouts that adapt seamlessly across screen sizes.</p>
+
+    <h3>Accessibility and User Experience (UX)</h3>
+    <p>Web development isn't just about aesthetics; it's about accessibility and usability too. Ensure your website is navigable by screen readers, uses semantic HTML, and follows ARIA guidelines to accommodate all users.</p>
+
+    <h3>SEO: Get Discovered</h3>
+    <p>Implementing SEO-friendly practices is vital for visibility. Use appropriate heading structures (H1–H6), write meaningful meta tags, include alt text for images, and optimize your site's load speed. Search engines love clean, fast, and relevant websites.</p>
+
+    <h3>Performance Optimization</h3>
+    <p>Modern users expect speed. Compress images, minify CSS/JavaScript, and leverage browser caching to reduce page load times. Tools like Lighthouse and PageSpeed Insights help you measure and improve your website's performance.</p>
+
+    <h3>Version Control with Git</h3>
+    <p>Whether you're working solo or in a team, Git is indispensable. It helps manage code changes, collaborate efficiently, and track project history. Platforms like GitHub and GitLab also aid in deployment and continuous integration.</p>
+
+    <h3>Keep Learning and Building</h3>
+    <p>Web development is always evolving. Follow tech blogs, experiment with new tools, contribute to open source, and build side projects. The best way to improve is through consistent practice and staying curious.</p>
+
+    <p>Thanks for reading! Stay tuned for more insights, tutorials, and real-world stories in upcoming posts that will help you become a better developer.</p>
+  `
+};
+
 
     const suggestedBlogs = [
       {
         title: "Blog Post 2",
-        image: "blog-img/blog2-thumbnail.jpg", // Updated to blog-img directory
-        link: "blog-list/blog2.html" // Updated to blog-list directory
+        image: "../blog-img/blog2-thumbnail.jpg",
+        link: "../blog-list/blog2.html", // Corrected link to match the directory structure
+        description: "Learn about advanced CSS techniques for modern web design."
       },
       {
         title: "Blog Post 3",
-        image: "blog-img/blog3-thumbnail.jpg", // Updated to blog-img directory
-        link: "blog-list/blog3.html" // Updated to blog-list directory
+        image: "../blog-img/blog3-thumbnail.jpg",
+        link: "../blog-list/blog3.html",
+        description: "Explore JavaScript frameworks and their use cases."
       },
       {
         title: "Blog Post 4",
-        image: "blog-img/blog4-thumbnail.jpg", // Updated to blog-img directory
-        link: "blog-list/blog4.html" // Updated to blog-list directory
+        image: "../blog-img/blog4-thumbnail.jpg",
+        link: "../blog-list/blog4.html",
+        description: "Understand the basics of SEO for better website visibility."
       }
     ];
+
+    // Function to handle "Continue Reading" functionality
+    const handleReadMore = () => {
+      const paragraphs = document.querySelectorAll('.content-container p');
+      const readMoreBtn = document.getElementById('readMoreBtn');
+
+      if (readMoreBtn.dataset.expanded === "false") {
+        paragraphs.forEach((p, index) => {
+          if (index >= 4) p.style.display = "block"; // Show remaining paragraphs
+        });
+        readMoreBtn.textContent = "Show Less";
+        readMoreBtn.dataset.expanded = "true";
+      } else {
+        paragraphs.forEach((p, index) => {
+          if (index >= 4) p.style.display = "none"; // Hide remaining paragraphs
+        });
+        readMoreBtn.textContent = "Continue Reading";
+        readMoreBtn.dataset.expanded = "false";
+      }
+    };
 
     // Populate the blog content dynamically
     const blogContent = document.getElementById('blogContent');
@@ -243,6 +371,21 @@
       <img src="${blogData.image}" alt="${blogData.title}" style="width: 100%; border-radius: 10px; margin-bottom: 1.5em;">
       ${blogData.content}
     `;
+
+    // Add "Continue Reading" button dynamically
+    const readMoreBtn = document.createElement('button');
+    readMoreBtn.id = 'readMoreBtn';
+    readMoreBtn.className = 'read-more-btn';
+    readMoreBtn.textContent = "Continue Reading";
+    readMoreBtn.dataset.expanded = "false";
+    readMoreBtn.addEventListener('click', handleReadMore);
+    blogContent.appendChild(readMoreBtn);
+
+    // Ensure only the first 4 paragraphs are visible initially
+    const paragraphs = document.querySelectorAll('.content-container p');
+    paragraphs.forEach((p, index) => {
+      if (index >= 4) p.style.display = "none"; // Hide paragraphs beyond the first 4
+    });
 
     // Populate suggested blogs dynamically
     const suggestedBlogsContainer = document.getElementById('suggestedBlogs');
@@ -253,6 +396,7 @@
         <img src="${blog.image}" alt="${blog.title}">
         <div class="blog-card-content">
           <h3>${blog.title}</h3>
+          <p>${blog.description}</p>
           <a href="${blog.link}">Read More</a>
         </div>
       `;
@@ -270,6 +414,23 @@
       darkIcon.style.display = body.classList.contains('light') ? 'none' : 'inline';
       lightIcon.style.display = body.classList.contains('light') ? 'inline' : 'none';
     });
+
+    // Function to handle scroll animation
+    const handleScrollAnimation = () => {
+      const blogCards = document.querySelectorAll('.suggested-blogs .blog-card');
+      blogCards.forEach((card) => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 50) {
+          card.classList.add('visible'); // Add the 'visible' class when in view
+        }
+      });
+    };
+
+    // Attach scroll event listener
+    window.addEventListener('scroll', handleScrollAnimation);
+
+    // Trigger animation on page load
+    document.addEventListener('DOMContentLoaded', handleScrollAnimation);
   </script>
 </body>
 </html>

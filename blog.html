@@ -1163,6 +1163,7 @@
       font-size: 1rem;
       color: #ccc;
       margin-bottom: 1em;
+      margin: 0.5em 0;
     }
 
     .blog-btn {
@@ -1227,7 +1228,7 @@
     <div class="blog-grid" id="blogGrid">
       <!-- Static blog cards -->
       <div class="blog-card">
-        <img src="blog-img/blog1-thumbnail.jpg" alt="Blog 1">
+        <img src="blog-img/blog1-thumbnail.png" alt="Blog 1">
         <div class="blog-card-content">
           <h3>Blog Post 1</h3>
           <p>A brief description of Blog Post 1 goes here.</p>
@@ -1285,25 +1286,28 @@
     const blogGrid = document.getElementById('blogGrid');
     const viewMoreBtn = document.getElementById('viewMoreBtn');
 
-    // Array of additional blogs to load dynamically
+    // Updated array of additional blogs to include the date
     const additionalBlogs = [
       {
         img: 'blog-img/blog4-thumbnail.jpg',
         title: 'Blog Post 4',
         description: 'A brief description of Blog Post 4 goes here.',
-        link: 'blog-list/blog4.html'
+        link: 'blog-list/blog4.html',
+        date: 'April 25, 2025'
       },
       {
         img: 'blog-img/blog5-thumbnail.jpg',
         title: 'Blog Post 5',
         description: 'A brief description of Blog Post 5 goes here.',
-        link: 'blog-list/blog5.html'
+        link: 'blog-list/blog5.html',
+        date: 'April 20, 2025'
       },
       {
         img: 'blog-img/blog6-thumbnail.jpg',
         title: 'Blog Post 6',
         description: 'A brief description of Blog Post 6 goes here.',
-        link: 'blog-list/blog6.html'
+        link: 'blog-list/blog6.html',
+        date: 'April 15, 2025'
       },
       {
         img: 'blog-img/blog7-thumbnail.jpg',
@@ -1351,6 +1355,7 @@
           <div class="blog-card-content">
             <h3>${blog.title}</h3>
             <p>${blog.description}</p>
+            <p><strong>Posted on:</strong> ${blog.date}</p>
             <a href="${blog.link}" class="blog-btn">Read More</a>
           </div>
         `;
