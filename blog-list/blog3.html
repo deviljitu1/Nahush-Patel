@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Post - Nahush Patel</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <meta name="description" content="Discover insights on Blog Post 1 by Nahush Patel. Learn about web development, design, and best practices in this detailed blog post.">
+  <style>
+    :root {
+      --gradient: linear-gradient(90deg, #f72585, #7209b7, #3a0ca3, #4361ee, #4cc9f0);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+      transition: background-color 0.5s, color 0.5s;
+    }
+
+    body.light {
+      background-color: #fff;
+      color: #000;
+    }
+
+    nav.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em 2em;
+      background: inherit;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1), 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5em;
+      list-style: none;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: inherit;
+      font-size: 1.1rem;
+      position: relative;
+    }
+
+    .nav-links li a:hover::after,
+    .nav-links li a.active::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 2px;
+      background: var(--gradient);
+    }
+
+    .toggle-switch {
+      width: 40px;
+      height: 20px;
+      border-radius: 999px;
+      background: #ccc;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .toggle-switch .circle {
+      width: 16px;
+      height: 16px;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      transition: left 0.3s;
+    }
+
+    body.light .toggle-switch {
+      background: #444;
+    }
+
+    body.light .toggle-switch .circle {
+      left: 22px;
+      background: #000;
+    }
+
+    .content-container {
+      max-width: 800px;
+      margin: 2em auto;
+      padding: 1.5em; /* Increased padding for better spacing */
+      background: #1a1a1a;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      color: rgba(255, 255, 255, 0.9); /* Slightly reduced brightness for readability */
+    }
+
+    .content-container h1 {
+      font-size: 2.2rem; /* Slightly smaller font size */
+      margin-bottom: 1em;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .content-container p {
+      font-size: 1rem; /* Reduced font size for better readability */
+      line-height: 1.7; /* Adjusted line height */
+      margin-bottom: 1.2em;
+      color: rgba(255, 255, 255, 0.85); /* Softer text color */
+    }
+
+    .content-container img {
+      width: 100%;
+      height: auto; /* Maintain aspect ratio */
+      max-height: 400px; /* Limit image height */
+      border-radius: 10px;
+      margin-bottom: 1.5em;
+      object-fit: cover; /* Ensure the image fits nicely */
+    }
+
+    .content-container p.truncated {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* Show only 3 lines */
+      -webkit-box-orient: vertical;
+    }
+
+    .read-more-btn {
+      display: inline-block;
+      margin-top: 1em;
+      padding: 0.5em 1em;
+      background: var(--gradient);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .read-more-btn:hover {
+      opacity: 0.9;
+    }
+
+    .suggested-blogs {
+      max-width: 800px;
+      margin: 2em auto;
+      padding: 1em;
+      background: #1a1a1a;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .suggested-blogs h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1em;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .suggested-blogs .blog-card {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      margin-bottom: 1em;
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 1em;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0; /* Initially hidden */
+      transform: translateY(20px); /* Start slightly below */
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .suggested-blogs .blog-card.visible {
+      opacity: 1; /* Fully visible */
+      transform: translateY(0); /* Move to original position */
+    }
+
+    .suggested-blogs .blog-card:hover {
+      transform: translateY(-10px); /* Lift the card slightly */
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Add a stronger shadow */
+    }
+
+    .suggested-blogs .blog-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .suggested-blogs .blog-card-content {
+      flex: 1;
+    }
+
+    .suggested-blogs .blog-card-content h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5em;
+    }
+
+    .suggested-blogs .blog-card-content a {
+      text-decoration: none;
+      color: var(--gradient);
+    }
+
+    .footer-container {
+      text-align: center;
+      padding: 1.5em 0;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .footer-container .name-gradient {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    body.light .content-container {
+      background: #f9f9f9; /* Light gray background for contrast */
+      color: #000; /* Black text for readability */
+    }
+
+    body.light .suggested-blogs {
+      background: #f9f9f9; /* Light gray background for contrast */
+      color: #000; /* Black text for readability */
+    }
+
+    body.light .footer-container {
+      background: #f9f9f9; /* Light gray background for contrast */
+      color: #000; /* Black text for readability */
+    }
+
+    body.light .suggested-blogs .blog-card {
+      background: #f0f0f0; /* Light gray background for contrast */
+      color: #000; /* Black text for readability */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Softer shadow for light mode */
+    }
+
+    body.light .suggested-blogs .blog-card a {
+      color: #007BFF; /* Blue color for links in light mode */
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Nahush</div>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+    </ul>
+    <div id="toggleMode" style="cursor: pointer;">
+      <img src="../img/moon-icon.png" id="darkIcon" alt="Dark Mode" style="width: 20px; height: 20px;">
+      <img src="../img/sun-icon.png" id="lightIcon" alt="Light Mode" style="width: 20px; height: 20px; display: none;">
+    </div>
+  </nav>
+
+  <div class="content-container" id="blogContent">
+    <h1>Blog Post 1: Web Development Insights</h1>
+    <img src="blog-img/blog1-image.png" alt="Web Development Insights" style="width: 100%; border-radius: 10px; margin-bottom: 1.5em;">
+    <p>Welcome to Blog Post 1 by Nahush Patel, where we delve into the world of web development. In this post, we explore essential tips and techniques for creating responsive, user-friendly websites.</p>
+    <p>Web development is a dynamic field that requires continuous learning. From mastering HTML, CSS, and JavaScript to understanding frameworks like React and Angular, staying updated is crucial for success.</p>
+    <p>Additionally, we discuss the importance of SEO (Search Engine Optimization) in driving traffic to your website. Implementing SEO-friendly practices, such as optimizing meta tags and using relevant keywords, can significantly improve your site's visibility.</p>
+    <p>Stay tuned for more insights and practical advice on web development in our upcoming blog posts.</p>
+  </div>
+
+  <div class="suggested-blogs" id="suggestedBlogs">
+    <h2>Suggested Blogs</h2>
+    <!-- Suggested blogs will be dynamically populated here -->
+  </div>
+
+  <section id="footer" class="footer-container">
+    <p>&copy; 2025 <span class="name-gradient"><a href="#hero">Nahush Patel</a></span>. All rights reserved.</p>
+  </section>
+
+  <script>
+    // Dynamic blog content
+    const blogData = {
+  title: "AI Detector: Essential Tools for Identifying Synthetic Content Accurately",
+  image: "../blog-img/blog1-image.png",
+  content: `
+    
+<p>People are using AI in many ways, from writing articles to creating images. But how can you tell if something was made by a human or an AI? <strong>An AI detector is a tool designed to spot content generated by artificial intelligence.</strong></p>
+<p>These tools analyze patterns and specific clues that might not be obvious to most readers. They help organizations, teachers, and even companies check if a piece of work is original or created by software.</p>
+<p>As AI continues to grow, knowing how AI detectors work and their strengths is becoming more important. This article will explain what AI detectors do and why they matter today.</p>
+<h3>Key Takeaways</h3>
+<ul>
+<li>AI detectors can identify content created by artificial intelligence.</li>
+<li>They use unique features to spot AI-generated work.</li>
+<li>Picking the right tool depends on the user’s needs and situation.</li>
+</ul>
+
+<h2>Understanding AI Detectors</h2>
+<p>AI detectors are tools designed to identify whether text or content was created by artificial intelligence. They analyze patterns, language style, and data features to make their determinations. Understanding how these tools work and their development helps clarify their abilities and limits.</p>
+<h3>What Is an AI Detector</h3>
+<p>An AI detector is software that checks if writing was generated by a machine model like GPT or an AI system. It compares the text with known patterns typical of AI writing. The goal is to spot clues AI leaves that humans usually do not.</p>
+<p>These detectors are used in schools, media, and businesses to find AI-written work. Their accuracy varies, but many help flag content for review. They focus on language style, word choice, and sentence flow.</p>
+<h3>How AI Detectors Work</h3>
+<p>AI detectors use algorithms that analyze the input text. They look for common AI traits, such as repeated phrases, unnatural sentence structure, or unusual word frequency. Some use machine learning models trained on large samples of both human and AI writing.</p>
+<p>Key steps include:</p>
+<ul>
+<li>Breaking text into smaller pieces</li>
+<li>Measuring linguistic patterns</li>
+<li>Checking for inconsistencies in tone or style</li>
+</ul>
+<p>Output often includes a score or percentage indicating how likely the text is AI-generated.</p>
+<h3>History of AI Detection Technology</h3>
+<p>AI detection began as AI writing tools improved and became more common. Early detectors were simple, using keyword spotting or basic grammar checks.</p>
+<p>Over time, detection grew more complex. New methods use machine learning and statistical models. These rely on recognizing subtle language differences between human and AI writing.</p>
+<p>In recent years, detectors have adapted to newer AI models, improving accuracy. They now handle longer texts and various languages but still face challenges with highly advanced AI.</p>
+
+<h2>Types of AI Detectors</h2>
+<p>AI detectors are designed to identify different kinds of artificial intelligence outputs. Each type focuses on specific media formats like text, images, or audio and video. The methods and technologies vary based on what they need to analyze.</p>
+<h3>Text-Based AI Detectors</h3>
+<p>Text-based AI detectors analyze writing to find signs it was created by AI. They look at patterns such as word choice, sentence structure, and repetition. These tools often use machine learning models trained on both human and AI-generated texts.</p>
+<p>Many detectors check for unnatural phrasing or unusual word frequency. They can spot content from popular AI writing models by comparing style and complexity. Some tools give a percentage score indicating how likely the text is AI-generated.</p>
+<p>These detectors are used in schools, journalism, and publishing to ensure content originality. However, they can struggle with short or simple text and sometimes mistake human writing for AI.</p>
+<h3>Image AI Detectors</h3>
+<p>Image AI detectors identify whether a picture was made or altered by AI software. They analyze pixels, noise patterns, and other visual clues that AI might leave behind. Some tools focus on detecting deepfakes, which are altered images or faces.</p>
+<p>These detectors use things like texture inconsistencies or unnatural shadows to spot edits. They also compare the image to large databases of known AI-made pictures. Some detectors work in real-time, helping social media platforms flag suspicious images.</p>
+<p>Image AI detection is key to fighting misinformation and fake news. However, as AI image generation improves, detection becomes more challenging.</p>
+<h3>Audio and Video AI Detectors</h3>
+<p>Audio and video AI detectors find synthetic or manipulated media. They check for odd audio patterns, pitch shifts, or mismatched lip movements in videos. These tools analyze sound waves, speech rhythms, and face movements to detect AI generation.</p>
+<p>For videos, detectors may track blinking rates or unnatural facial expressions. For audio, they analyze tone, pauses, and background noise inconsistencies. AI tools create realistic audio and video, so detection requires advanced techniques.</p>
+<p>These detectors help verify interviews, podcasts, and videos to prevent fraud and misinformation. Accuracy varies, and new AI models keep pushing the limits of detection.</p>
+
+<h2>Key Features of AI Detector Tools</h2>
+<p>AI detector tools vary in how well they identify AI-generated content, how easy they are to use, how quickly they work, and how well they fit into other systems. Each of these points helps users decide which tool meets their needs.</p>
+<h3>Accuracy and Reliability</h3>
+<p>Accuracy is the most important feature of an AI detector. A reliable tool can correctly determine if content was created by AI or a human. It uses complex algorithms to analyze text patterns, word choice, and structure.</p>
+<p>Some tools offer a percentage score showing the chance that text is AI-generated. Higher accuracy reduces false positives, where human writing is mistakenly marked as AI.</p>
+<p>Regular updates are necessary because AI writing tools improve constantly. An effective AI detector must adapt to new writing styles and methods.</p>
+<h3>User Interface and Experience</h3>
+<p>A simple and clear user interface makes AI detectors easier for people to use. Important features include intuitive navigation, clear instructions, and a clean layout.</p>
+<p>Users benefit from tools that provide quick feedback, such as highlighted sections in the text or easy-to-read results. Visual aids like charts or color codes help users understand detection results faster.</p>
+<p>Some tools offer customization options, allowing users to adjust sensitivity or focus on specific text types. Accessibility on multiple devices also adds convenience.</p>
+<h3>Detection Speed</h3>
+<p>Speed matters when checking large amounts of text or working under time pressure. Fast AI detectors can scan documents and show results in seconds or minutes.</p>
+<p>Slow tools might delay workflows, especially in workplaces or schools where many checks are needed. Good speed does not mean sacrificing accuracy; the best tools balance both.</p>
+<p>Batch processing is a useful feature that lets users check many texts at once. This saves time and effort during detection.</p>
+<h3>Integration Capabilities</h3>
+<p>Integration with other software increases the usefulness of AI detectors. For example, plugins for word processors or learning management systems allow smooth workflows.</p>
+<p>APIs enable developers to add detection features to custom applications. This is important for businesses or schools with specific needs.</p>
+<p>Cross-platform support ensures the tool works on different operating systems and devices. Flexible integration reduces manual steps and improves efficiency.</p>
+
+<h2>Applications of AI Detectors</h2>
+<p>AI detectors help identify whether text is generated by AI or written by humans. They are used across different fields to maintain authenticity, prevent fraud, and support quality control. These tools are especially important for checking originality and reliability in various professional settings.</p>
+<h3>Education and Academia</h3>
+<p>In education, AI detectors help teachers check if students submit original work. Many students use AI to write essays or answer questions, which can lead to plagiarism. Using detectors allows educators to find AI-generated content quickly. This helps keep academic standards high.</p>
+<p>Universities also use these tools during admissions to verify personal statements. Detecting AI use ensures applications are genuine. Professors rely on these tools to maintain fairness in grading. Some schools have integrated AI detectors into their learning platforms for real-time checks.</p>
+<h3>Publishing and Journalism</h3>
+<p>Publishers use AI detectors to verify the authenticity of articles. Journalists may mix AI-generated drafts with human edits. Detectors help separate automated content from original reporting. This safeguards journalistic integrity and avoids misinformation.</p>
+<p>Newsrooms apply these tools to check sources and ensure accurate reporting. They reduce risks of publishing fabricated or machine-generated news. Media companies use AI detectors to maintain audience trust by confirming content is truly human-created.</p>
+<h3>Business and Content Marketing</h3>
+<p>Businesses use AI detectors to verify the originality of marketing materials. Content marketers create blogs, social media posts, and ads that need to be authentic and engaging. AI detection helps avoid overreliance on AI-generated content, which can seem repetitive or generic.</p>
+<p>Many companies test their content for AI use to protect brand reputation. It also ensures compliance with advertising standards. Detecting AI-generated content allows marketers to deliver messages that feel personal and credible to customers.</p>
+
+<h2>Ethical and Legal Considerations</h2>
+<p>AI detectors raise important questions about user data, ownership rights, and following laws. These issues affect how the tools are built, used, and governed.</p>
+<h3>Privacy Concerns</h3>
+<p>AI detectors often process large amounts of text, which may include personal or sensitive information. Protecting this data is critical to prevent misuse or unauthorized access. Developers must ensure that data collection follows strict privacy standards, such as anonymizing texts or obtaining user consent.</p>
+<p>Users should be aware of what data is stored and how it is used. Transparency about data handling builds trust and helps meet legal requirements. Failure to protect privacy can lead to data breaches and loss of user confidence.</p>
+<h3>Intellectual Property Implications</h3>
+<p>AI detectors analyze written content that belongs to someone else. This raises questions about who owns the output or if the input content is used without permission. The line between fair use and copyright infringement can be unclear in this context.</p>
+<p>Creators may worry that their original work is examined or stored without approval. Developers must respect copyright laws and avoid unauthorized copying. Clear terms of use can help define rights for both users and AI service providers.</p>
+<h3>Regulatory Compliance</h3>
+<p>AI detector tools must comply with laws that govern digital content, privacy, and AI technology. Rules vary by country, making it important for providers to stay updated. Noncompliance can result in fines or legal action.</p>
+<p>Regulations like the GDPR in Europe or the CCPA in California set specific guidelines on data protection. AI detectors need policies that address data handling, user rights, and accountability. Regular audits and updates help maintain legal compliance.</p>
+
+<h2>Common Challenges With AI Detection</h2>
+<p>AI detection tools often face technical and ethical issues that affect their accuracy and fairness. These challenges can cause errors, struggle to keep up with new AI, and raise concerns about fairness and bias in their outputs.</p>
+<h3>False Positives and Negatives</h3>
+<p>False positives happen when AI detectors incorrectly label human-written content as AI-generated. This can lead to innocent people being wrongly accused or flagged. False negatives occur when AI content passes undetected, making the tool unreliable for preventing misuse.</p>
+<p>Both errors reduce trust in detection tools. The balance between sensitivity and accuracy is hard to achieve. If a detector is too strict, it flags too much human writing. If it’s too loose, it misses actual AI content.</p>
+<h3>Adapting to Evolving AI Models</h3>
+<p>AI models are constantly improving. New versions can write more naturally and mimic human style better. This makes detection harder because patterns that detectors rely on disappear or change.</p>
+<p>Detection systems need frequent updates and retraining with new data. Without updates, their performance drops over time. Staying current requires significant effort, including collecting fresh examples and adjusting detection rules.</p>
+<h3>Bias and Fairness Issues</h3>
+<p>AI detectors can inherit bias from the data they were trained on. They may be more likely to flag text written by people from certain backgrounds or using specific language styles. This leads to unfair treatment.</p>
+<p><strong>Common bias issues include:</strong></p>
+<ul>
+<li>Penalizing non-native speakers</li>
+<li>Misclassifying casual or creative writing</li>
+<li>Overlooking AI text in formal or scientific style</li>
+</ul>
+<p>Addressing bias involves using diverse training data and testing for fairness. Bias reduction remains a key concern in creating reliable AI detection tools.</p>
+
+<h2>Choosing the Right AI Detector</h2>
+<p>Selecting an AI detector requires attention to how well it fits the specific needs of its user. Important factors include accuracy, ease of use, and compatibility with existing tools. The choice of vendor also affects support, updates, and trustworthiness.</p>
+<h3>Factors to Consider</h3>
+<p>Accuracy is crucial. The detector should correctly identify AI-generated content without too many false positives or negatives. Users must check if the tool works well for the types of content they handle, like essays, code, or social media posts.</p>
+<p>Ease of use matters. A user-friendly interface saves time and reduces errors. It should offer clear results and explanations. Integration with popular platforms, such as learning management systems or content editors, is a plus.</p>
+<p>Price is also a key factor. Some detectors have subscription fees, while others offer free versions with limited features. The cost should match the detector’s performance and the user’s budget.</p>
+<h3>Evaluating Vendors</h3>
+<p>Reputation is important when choosing a vendor. Established companies often provide reliable tools and better customer support. Reading reviews and user feedback helps assess trustworthiness.</p>
+<p>Check how often the vendor updates the detector. AI technology evolves quickly, so regular updates improve detection accuracy. Vendors that share clear information about their update schedule tend to be more transparent.</p>
+<p>Support services can vary. Good vendors offer tutorials, FAQs, and responsive customer service. This assistance is useful for troubleshooting and learning how to use the tool effectively.</p>
+<table>
+<thead>
+<tr>
+<th>Vendor Feature</th>
+<th>What to Look For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reputation</td>
+<td>Positive reviews, industry experience</td>
+</tr>
+<tr>
+<td>Update Frequency</td>
+<td>Regular software updates and improvements</td>
+</tr>
+<tr>
+<td>Customer Support</td>
+<td>Accessible help, quick responses, detailed resources</td>
+</tr>
+<tr>
+<td>Pricing Options</td>
+<td>Clear plans, value for cost</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Future Trends in AI Detection</h2>
+<p>AI detection tools will become more advanced as AI technology grows. They will use better algorithms to spot AI-generated content with higher accuracy. This will help reduce false positives and negatives.</p>
+<p>Many future detectors will combine several methods. For example, they may analyze writing style, word choice, and metadata together. This mix improves detection by covering different clues.</p>
+<p>Another trend is using <strong>real-time detection</strong>. Tools will check AI use while content is being created. This can help educators, publishers, and companies catch AI content early.</p>
+<p>Privacy will be a focus as well. Future detectors will try to balance detecting AI output and protecting user data. Transparent practices about how data is used will become more common.</p>
+<p>In addition, AI detectors might use <em>explainability features</em>. This means the tools will show why they flagged certain text as AI-generated. It helps users trust the detection results.</p>
+<table>
+<thead>
+<tr>
+<th>Trend</th>
+<th>Description</th>
+<th>Benefit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Improved Algorithms</td>
+<td>Better methods to identify AI text</td>
+<td>More accurate detection</td>
+</tr>
+<tr>
+<td>Combined Methods</td>
+<td>Use multiple approaches in detection</td>
+<td>Covers more types of AI content</td>
+</tr>
+<tr>
+<td>Real-Time Detection</td>
+<td>Check content as it is created</td>
+<td>Quick response</td>
+</tr>
+<tr>
+<td>Privacy Focus</td>
+<td>Protect user data during detection</td>
+<td>Build user trust</td>
+</tr>
+<tr>
+<td>Explainability</td>
+<td>Show reasons for detection decisions</td>
+<td>Understandable results</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Conclusion</h2>
+<p>AI detectors help identify whether text is created by a human or a machine. They use algorithms to analyze patterns in writing. These tools can be useful in education, publishing, and online security.</p>
+<p>However, AI detectors are not always perfect. They might give false positives or miss some AI-generated content. Users should treat their results as one of many tools to check text authenticity.</p>
+<p>The technology behind AI detectors continues to improve. Developers work on making them more accurate and reliable over time. This means their role in detecting AI content will likely grow.</p>
+<p>In short, AI detectors serve as helpful aids but should not be the only method used to judge text origin.</p>
+<p><strong>Key points about AI detectors:</strong></p>
+<ul>
+<li>Detect machine-written text by analyzing writing style</li>
+<li>Not 100% accurate, errors can happen</li>
+<li>Use with other verification methods</li>
+<li>Technology is evolving and getting better</li>
+</ul>
+<p>People who rely on AI detectors should stay updated on new versions and improvements. This ensures they use the most effective tools available.</p>
+  `
+};
+
+
+    const suggestedBlogs = [
+      {
+        title: "Blog Post 4",
+        image: "../blog-img/blog4-thumbnail.jpg",
+        link: "../blog-list/blog4.html",
+        description: "Understand the basics of SEO for better website visibility."
+      },
+      {
+        title: "Blog Post 5",
+        image: "../blog-img/blog5-thumbnail.jpg",
+        link: "../blog-list/blog5.html",
+        description: "Explore the impact of AI on modern education."
+      },
+      {
+        title: "Blog Post 6",
+        image: "../blog-img/blog6-thumbnail.jpg",
+        link: "../blog-list/blog6.html",
+        description: "Discover the latest trends in AI technology."
+      }
+    ];
+
+    // Function to handle "Continue Reading" functionality
+    const handleReadMore = () => {
+      const paragraphs = document.querySelectorAll('.content-container p');
+      const readMoreBtn = document.getElementById('readMoreBtn');
+
+      if (readMoreBtn.dataset.expanded === "false") {
+        paragraphs.forEach((p, index) => {
+          if (index >= 4) p.style.display = "block"; // Show remaining paragraphs
+        });
+        readMoreBtn.textContent = "Show Less";
+        readMoreBtn.dataset.expanded = "true";
+      } else {
+        paragraphs.forEach((p, index) => {
+          if (index >= 4) p.style.display = "none"; // Hide remaining paragraphs
+        });
+        readMoreBtn.textContent = "Continue Reading";
+        readMoreBtn.dataset.expanded = "false";
+      }
+    };
+
+    // Populate the blog content dynamically
+    const blogContent = document.getElementById('blogContent');
+    blogContent.innerHTML = `
+      <h1>${blogData.title}</h1>
+      <img src="${blogData.image}" alt="${blogData.title}" style="width: 100%; border-radius: 10px; margin-bottom: 1.5em;">
+      ${blogData.content}
+    `;
+
+    // Add "Continue Reading" button dynamically
+    const readMoreBtn = document.createElement('button');
+    readMoreBtn.id = 'readMoreBtn';
+    readMoreBtn.className = 'read-more-btn';
+    readMoreBtn.textContent = "Continue Reading";
+    readMoreBtn.dataset.expanded = "false";
+    readMoreBtn.addEventListener('click', handleReadMore);
+    blogContent.appendChild(readMoreBtn);
+
+    // Ensure only the first 4 paragraphs are visible initially
+    const paragraphs = document.querySelectorAll('.content-container p');
+    paragraphs.forEach((p, index) => {
+      if (index >= 4) p.style.display = "none"; // Hide paragraphs beyond the first 4
+    });
+
+    // Populate suggested blogs dynamically
+    const suggestedBlogsContainer = document.getElementById('suggestedBlogs');
+    suggestedBlogs.forEach(blog => {
+      const blogCard = document.createElement('div');
+      blogCard.classList.add('blog-card');
+      blogCard.innerHTML = `
+        <img src="${blog.image}" alt="${blog.title}">
+        <div class="blog-card-content">
+          <h3>${blog.title}</h3>
+          <p>${blog.description}</p>
+          <a href="${blog.link}">Read More</a>
+        </div>
+      `;
+      suggestedBlogsContainer.appendChild(blogCard);
+    });
+
+    // Dark mode toggle (same as index.html)
+    const toggleMode = document.getElementById('toggleMode');
+    const body = document.body;
+    const darkIcon = document.getElementById('darkIcon');
+    const lightIcon = document.getElementById('lightIcon');
+
+    toggleMode.addEventListener('click', () => {
+      body.classList.toggle('light');
+      darkIcon.style.display = body.classList.contains('light') ? 'none' : 'inline';
+      lightIcon.style.display = body.classList.contains('light') ? 'inline' : 'none';
+    });
+
+    // Function to handle scroll animation
+    const handleScrollAnimation = () => {
+      const blogCards = document.querySelectorAll('.suggested-blogs .blog-card');
+      blogCards.forEach((card) => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 50) {
+          card.classList.add('visible'); // Add the 'visible' class when in view
+        }
+      });
+    };
+
+    // Attach scroll event listener
+    window.addEventListener('scroll', handleScrollAnimation);
+
+    // Trigger animation on page load
+    document.addEventListener('DOMContentLoaded', handleScrollAnimation);
+  </script>
+</body>
+</html>
