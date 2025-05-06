@@ -1396,52 +1396,56 @@
         }
       });
     });
+
   // Initialize EmailJS with your Public Key
-  (function() {
-    emailjs.init('Y5Zzx5gdrO2rOGSkv'); // Replace with your actual public key
-  })();
+(function() {
+  emailjs.init('Y5Zzx5gdrO2rOGSkv'); // Replace with your actual public key
+})();
 
-  // Wait for the DOM to load
-  document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contactForm');
-    const thankYouMessage = document.getElementById('thankYouMessage');
+// Wait for the DOM to load
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contactForm');
+  const thankYouMessage = document.getElementById('thankYouMessage');
 
-    if (!contactForm) {
-      console.error('Contact form not found on the page.');
+  if (!contactForm) {
+    console.error('Contact form not found on the page.');
+    return;
+  }
+
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !email || !message) {
+      alert('Please fill in all fields.');
       return;
     }
 
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-
-      if (!name || !email || !message) {
-        alert('Please fill in all fields.');
-        return;
+    // Send form data to EmailJS
+    emailjs.send('service_npwwilk', 'template_e62g2gf', {
+      from_name: name,
+      from_email: email,
+      message: message,
+    }).then(() => {
+      // Show success message and hide form
+      contactForm.reset(); // Clear the form fields
+      contactForm.style.display = 'none'; // Hide the form
+      if (thankYouMessage) {
+        thankYouMessage.style.display = 'block';
+        thankYouMessage.classList.add('fade-in');
+      } else {
+        alert('Thank you! Your message has been sent.');
       }
-
-      emailjs.send('service_npwwilk', 'template_e62g2gf', {
-        from_name: name,
-        from_email: email,
-        message: message,
-      }).then(() => {
-        contactForm.reset(); // Clear the form fields
-        contactForm.style.display = 'none'; // Hide the form
-        if (thankYouMessage) {
-          thankYouMessage.style.display = 'block';
-          thankYouMessage.classList.add('fade-in');
-        } else {
-          alert('Thank you! Your message has been sent.');
-        }
-      }).catch((error) => {
-        console.error('EmailJS Error:', error);
-        alert('Failed to send the message. Please try again later.');
-      });
+    }).catch((error) => {
+      console.error('EmailJS Error:', error);
+      alert('Failed to send the message. Please try again later.');
     });
   });
+});
+
   </script>
 </body>
 </html>
