@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nahush - Web Developer</title>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <link rel="icon" href="img/dark-image.png" type="image/png" sizes="16x16">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <meta name="description" content="Portfolio of Nahush Patel, a web developer showcasing skills, projects, and contact information.">
@@ -1398,16 +1397,14 @@
       });
     });
   // Initialize EmailJS with your Public Key
-  (function(){
-    emailjs.init({
-      publicKey: 'Y5Zzx5gdrO2rOGSkv',  // Replace with your actual public key
-    });
+  (function() {
+    emailjs.init('Y5Zzx5gdrO2rOGSkv'); // Replace with your actual public key
   })();
 
   // Wait for the DOM to load
   document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contact-form');
-    const thankYouMessage = document.getElementById('thank-you-message');
+    const contactForm = document.getElementById('contactForm');
+    const thankYouMessage = document.getElementById('thankYouMessage');
 
     if (!contactForm) {
       console.error('Contact form not found on the page.');
@@ -1431,7 +1428,8 @@
         from_email: email,
         message: message,
       }).then(() => {
-        contactForm.style.display = 'none';
+        contactForm.reset(); // Clear the form fields
+        contactForm.style.display = 'none'; // Hide the form
         if (thankYouMessage) {
           thankYouMessage.style.display = 'block';
           thankYouMessage.classList.add('fade-in');
