@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nahush - Web Developer</title>
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
   <link rel="icon" href="img/dark-image.png" type="image/png" sizes="16x16">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <meta name="description" content="Portfolio of Nahush Patel, a web developer showcasing skills, projects, and contact information.">
@@ -1397,43 +1398,55 @@
       });
     });
     // Initialize EmailJS with your Public Key
-try {
-  emailjs.init('Y5Zzx5gdrO2rOGSkv');  // Make sure this is the PUBLIC key
-} catch (error) {
-  console.error('EmailJS Initialization Error:', error);
-}
+<script type="text/javascript">
+  // Initialize EmailJS with your Public Key
+  (function(){
+    emailjs.init({
+      publicKey: 'Y5Zzx5gdrO2rOGSkv',  // Replace with your actual public key
+    });
+  })();
 
-// Select the form and thank-you message by ID
+  // Wait for the DOM to load
+  document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contact-form');
+    const thankYouMessage = document.getElementById('thank-you-message');
 
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault(); // Prevent form refresh
+    if (!contactForm) {
+      console.error('Contact form not found on the page.');
+      return;
+    }
 
-  // Collect form data
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const message = document.getElementById('message').value.trim();
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
 
-  // Validate basic fields
-  if (!name || !email || !message) {
-    alert('Please fill in all fields.');
-    return;
-  }
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
 
-  // Send email using EmailJS
-  emailjs.send('service_npwwilk', 'template_e62g2gf', {
-    from_name: name,
-    from_email: email,
-    message: message,
-  }).then(() => {
-    // Show thank you message and hide the form
-    contactForm.style.display = 'none';
-    thankYouMessage.style.display = 'block';
-    thankYouMessage.classList.add('fade-in');
-  }).catch((error) => {
-    console.error('EmailJS Error:', error);
-    alert('Failed to send the message. Please try again later.');
+      if (!name || !email || !message) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      emailjs.send('service_npwwilk', 'template_e62g2gf', {
+        from_name: name,
+        from_email: email,
+        message: message,
+      }).then(() => {
+        contactForm.style.display = 'none';
+        if (thankYouMessage) {
+          thankYouMessage.style.display = 'block';
+          thankYouMessage.classList.add('fade-in');
+        } else {
+          alert('Thank you! Your message has been sent.');
+        }
+      }).catch((error) => {
+        console.error('EmailJS Error:', error);
+        alert('Failed to send the message. Please try again later.');
+      });
+    });
   });
-});
+</script>
   </script>
 </body>
 </html>
