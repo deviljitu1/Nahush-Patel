@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mastering JavaScript Frameworks: Choosing the Right Tool for Your Web Projects</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <meta name="description" content="Mastering JavaScript Frameworks: Choosing the Right Tool for Your Web Projects. Explore the strengths of React, Vue, and Angular to make informed decisions for your web development projects.">
+  <meta name="keywords" content="JavaScript, React, Vue, Angular, Web Development, Nahush Patel">
+  <style>
+    :root {
+      --gradient: linear-gradient(90deg, #f72585, #7209b7, #3a0ca3, #4361ee, #4cc9f0);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+      transition: background-color 0.5s, color 0.5s;
+    }
+
+    body.light {
+      background-color: #fff;
+      color: #000;
+    }
+
+    nav.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1em 2em;
+      background: inherit;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1), 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5em;
+      list-style: none;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: inherit;
+      font-size: 1.1rem;
+      position: relative;
+    }
+
+    .nav-links li a:hover::after,
+    .nav-links li a.active::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 2px;
+      background: var(--gradient);
+    }
+
+    .toggle-switch {
+      width: 40px;
+      height: 20px;
+      border-radius: 999px;
+      background: #ccc;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .toggle-switch .circle {
+      width: 16px;
+      height: 16px;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      transition: left 0.3s;
+    }
+
+    body.light .toggle-switch {
+      background: #444;
+    }
+
+    body.light .toggle-switch .circle {
+      left: 22px;
+      background: #000;
+    }
+
+    .content-container {
+      max-width: 800px;
+      margin: 2em auto;
+      padding: 1.5em;
+      background: #1a1a1a;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .content-container h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1em;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .content-container p {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1.2em;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .content-container img {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      border-radius: 10px;
+      margin-bottom: 1.5em;
+      object-fit: cover;
+    }
+
+    .content-container p.truncated {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+
+    .read-more-btn {
+      display: inline-block;
+      margin-top: 1em;
+      padding: 0.5em 1em;
+      background: var(--gradient);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .read-more-btn:hover {
+      opacity: 0.9;
+    }
+
+    .suggested-blogs {
+      max-width: 800px;
+      margin: 2em auto;
+      padding: 1em;
+      background: #1a1a1a;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .suggested-blogs h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1em;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .suggested-blogs .blog-card {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      margin-bottom: 1em;
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 1em;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .suggested-blogs .blog-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .suggested-blogs .blog-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .suggested-blogs .blog-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .suggested-blogs .blog-card-content {
+      flex: 1;
+    }
+
+    .suggested-blogs .blog-card-content h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5em;
+    }
+
+    .suggested-blogs .blog-card-content a {
+      text-decoration: none;
+      color: var(--gradient);
+    }
+
+    .footer-container {
+      text-align: center;
+      padding: 1.5em 0;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .footer-container .name-gradient {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    body.light .content-container {
+      background: #f9f9f9;
+      color: #000;
+    }
+
+    body.light .suggested-blogs {
+      background: #f9f9f9;
+      color: #000;
+    }
+
+    body.light .footer-container {
+      background: #f9f9f9;
+      color: #000;
+    }
+
+    body.light .suggested-blogs .blog-card {
+      background: #f0f0f0;
+      color: #000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    body.light .suggested-blogs .blog-card a {
+      color: #007BFF;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Nahush</div>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+    </ul>
+    <div id="toggleMode" style="cursor: pointer;">
+      <img src="../img/moon-icon.png" id="darkIcon" alt="Dark Mode" style="width: 20px; height: 20px;">
+      <img src="../img/sun-icon.png" id="lightIcon" alt="Light Mode" style="width: 20px; height: 20px; display: none;">
+    </div>
+  </nav>
+  
+  <div class="content-container" id="blogContent">
+    <!-- Blog content will be dynamically inserted here -->
+  </div>
+
+  <div class="suggested-blogs" id="suggestedBlogs">
+    <h2>Suggested Blogs</h2>
+    <!-- Suggested blogs will be dynamically populated here -->
+  </div>
+
+  <section id="footer" class="footer-container">
+    <p>&copy; 2025 <span class="name-gradient"><a href="#hero">Nahush Patel</a></span>. All rights reserved.</p>
+  </section>
+
+  <script>
+    // =============================================
+    // BLOG DATA CONFIGURATION - EASY TO UPDATE
+    // =============================================
+    
+    // Current blog content (update this for each new blog)
+    const currentBlog = {
+      id: "blog3", // Unique identifier for the blog
+      title: "Mastering JavaScript Frameworks: Choosing the Right Tool for Your Web Projects",
+      image: "../blog-img/Mastering JavaScript Frameworks.png",
+      alt: "Visual comparison of React, Vue, and Angular JavaScript frameworks in web development",
+      date: "May 15, 2025",
+      author: "Nahush Patel",
+      content: `
+        <p>Welcome to this comprehensive guide on <strong>JavaScript frameworks</strong> by Nahush Patel. JavaScript has become the backbone of modern web applications, and frameworks like <strong>React</strong>, <strong>Vue</strong>, and <strong>Angular</strong> have revolutionized how developers build interactive, efficient, and scalable websites.</p>
+      
+        <p>Each framework offers unique advantages, and choosing the right one can significantly impact your project's success. In this blog, we break down their strengths, ideal use cases, and how to make informed decisions as a web developer.</p>
+      
+        <h3>React: Component-Based UI Made Easy</h3>
+        <p><strong>React.js</strong>, developed by Meta, is a lightweight, component-driven library used for building high-performance user interfaces. Its virtual DOM, reusable components, and unidirectional data flow make it ideal for dynamic single-page applications (SPAs).</p>
+        <p><strong>Best for:</strong> Scalable front-end applications, SPAs, and projects requiring a large ecosystem of integrations.</p>
+      
+        <h3>Vue.js: Simplicity Meets Power</h3>
+        <p><strong>Vue</strong> offers a progressive approach to building user interfaces. Its gentle learning curve, flexible architecture, and clear documentation make it beginner-friendly yet powerful enough for enterprise-grade apps.</p>
+        <p><strong>Best for:</strong> Lightweight projects, small to medium-sized applications, and developers looking for a balance between simplicity and control.</p>
+      
+        <h3>Angular: The Full-Fledged Framework</h3>
+        <p><strong>Angular</strong>, maintained by Google, is a comprehensive solution for building full-scale web applications. With features like dependency injection, two-way data binding, and built-in testing utilities, Angular is preferred for complex enterprise-level projects.</p>
+        <p><strong>Best for:</strong> Large-scale enterprise apps, teams requiring structure, and applications with real-time features and deep routing.</p>
+      
+        <h3>How to Choose the Right Framework</h3>
+        <p>Your project's requirements, team experience, scalability needs, and long-term maintenance goals should guide your framework choice. Consider the community support, documentation, performance benchmarks, and ecosystem before committing.</p>
+      
+        <h3>Staying Current and Efficient</h3>
+        <p>JavaScript frameworks evolve rapidly. Following GitHub repositories, reading official changelogs, and contributing to open source projects help you stay updated. Also, explore tools like <strong>Next.js</strong>, <strong>Nuxt</strong>, or <strong>Angular CLI</strong> for enhanced developer productivity.</p>
+      
+        <p>Thanks for reading! Stay connected for more expert guides on modern web technologies, best practices, and real-world implementation tips to elevate your web development career.</p>
+      `
+    };
+
+    // All blogs database (add new blogs here)
+    const allBlogs = [
+      {
+        id: "blog1",
+        title: "The Future of Web Development",
+        image: "../blog-img/blog1-thumbnail.jpg",
+        link: "../blog-list/blog1.html",
+        description: "Exploring emerging trends in web development technologies.",
+        date: "April 10, 2025"
+      },
+      {
+        id: "blog2",
+        title: "Responsive Design Best Practices",
+        image: "../blog-img/blog2-thumbnail.jpg",
+        link: "../blog-list/blog2.html",
+        description: "Master the art of creating websites that work on any device.",
+        date: "April 25, 2025"
+      },
+      {
+        id: "blog3",
+        title: "Mastering JavaScript Frameworks",
+        image: "../blog-img/Mastering JavaScript Frameworks.png",
+        link: "../blog-list/blog3.html",
+        description: "Choosing between React, Vue, and Angular for your projects.",
+        date: "May 15, 2025"
+      },
+      {
+        id: "blog4",
+        title: "SEO Fundamentals for Developers",
+        image: "../blog-img/blog4-thumbnail.jpg",
+        link: "../blog-list/blog4.html",
+        description: "Understand the basics of SEO for better website visibility.",
+        date: "May 28, 2025"
+      },
+      {
+        id: "blog5",
+        title: "AI in Modern Education",
+        image: "../blog-img/blog5-thumbnail.jpg",
+        link: "../blog-list/blog5.html",
+        description: "Explore the impact of AI on modern education.",
+        date: "June 10, 2025"
+      },
+      {
+        id: "blog6",
+        title: "Latest Trends in AI Technology",
+        image: "../blog-img/blog6-thumbnail.jpg",
+        link: "../blog-list/blog6.html",
+        description: "Discover the latest trends in AI technology.",
+        date: "June 22, 2025"
+      }
+    ];
+
+    // =============================================
+    // BLOG RENDERING FUNCTIONS
+    // =============================================
+
+    // Function to render the current blog
+    function renderCurrentBlog() {
+      const blogContent = document.getElementById('blogContent');
+      
+      blogContent.innerHTML = `
+        <h1>${currentBlog.title}</h1>
+        <img src="${currentBlog.image}" alt="${currentBlog.alt || currentBlog.title}">
+        <div class="blog-meta">
+          <span><i class="fas fa-calendar-alt"></i> ${currentBlog.date}</span>
+          <span><i class="fas fa-user"></i> ${currentBlog.author}</span>
+        </div>
+        ${currentBlog.content}
+      `;
+    }
+
+    // Function to render suggested blogs (excluding the current one)
+    function renderSuggestedBlogs() {
+      const suggestedBlogsContainer = document.getElementById('suggestedBlogs');
+      
+      // Filter out the current blog from suggestions
+      const suggestedBlogs = allBlogs.filter(blog => blog.id !== currentBlog.id);
+      
+      // Sort by date (newest first) and take 3
+      const sortedBlogs = suggestedBlogs.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
+      
+      // Clear existing content
+      suggestedBlogsContainer.innerHTML = '<h2>Suggested Blogs</h2>';
+      
+      // Add each suggested blog card
+      sortedBlogs.forEach(blog => {
+        const blogCard = document.createElement('div');
+        blogCard.classList.add('blog-card');
+        blogCard.innerHTML = `
+          <img src="${blog.image}" alt="${blog.title}">
+          <div class="blog-card-content">
+            <h3>${blog.title}</h3>
+            <p>${blog.description}</p>
+            <span class="blog-date">${blog.date}</span>
+            <a href="${blog.link}">Read More</a>
+          </div>
+        `;
+        suggestedBlogsContainer.appendChild(blogCard);
+      });
+    }
+
+    // =============================================
+    // UTILITY FUNCTIONS
+    // =============================================
+
+    // Dark mode toggle functionality
+    function setupDarkModeToggle() {
+      const toggleMode = document.getElementById('toggleMode');
+      const body = document.body;
+      const darkIcon = document.getElementById('darkIcon');
+      const lightIcon = document.getElementById('lightIcon');
+
+      // Check for saved user preference or use system preference
+      const savedMode = localStorage.getItem('darkMode');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      if (savedMode === 'light' || (!savedMode && !systemPrefersDark)) {
+        body.classList.add('light');
+        darkIcon.style.display = 'none';
+        lightIcon.style.display = 'inline';
+      }
+
+      toggleMode.addEventListener('click', () => {
+        body.classList.toggle('light');
+        const isLight = body.classList.contains('light');
+        
+        darkIcon.style.display = isLight ? 'none' : 'inline';
+        lightIcon.style.display = isLight ? 'inline' : 'none';
+        
+        // Save user preference
+        localStorage.setItem('darkMode', isLight ? 'light' : 'dark');
+      });
+    }
+
+    // Scroll animation for blog cards
+    function setupScrollAnimation() {
+      const handleScrollAnimation = () => {
+        const blogCards = document.querySelectorAll('.suggested-blogs .blog-card');
+        blogCards.forEach((card) => {
+          const rect = card.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 50) {
+            card.classList.add('visible');
+          }
+        });
+      };
+
+      window.addEventListener('scroll', handleScrollAnimation);
+      document.addEventListener('DOMContentLoaded', handleScrollAnimation);
+    }
+
+    // =============================================
+    // INITIALIZE THE PAGE
+    // =============================================
+
+    // When the DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCurrentBlog();
+      renderSuggestedBlogs();
+      setupDarkModeToggle();
+      setupScrollAnimation();
+    });
+  </script>
+</body>
+</html>
