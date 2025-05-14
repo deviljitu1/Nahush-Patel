@@ -1207,12 +1207,13 @@
       justify-content: center;
       align-items: center;
       gap: 0.5em;
+      flex-wrap: wrap; /* Allow wrapping for smaller screens */
     }
 
     .search-bar input {
-      width: 100%;
-      max-width: 400px;
-      padding: 0.8em;
+      flex: 1; /* Allow input to take available space */
+      max-width: 300px; /* Limit maximum width */
+      padding: 0.6em;
       border: 1px solid #ccc;
       border-radius: 5px;
       font-size: 1rem;
@@ -1228,7 +1229,7 @@
     }
 
     .search-bar button {
-      padding: 0.8em 1.5em;
+      padding: 0.6em 1em;
       background: var(--gradient);
       color: #fff;
       border: none;
@@ -1245,19 +1246,19 @@
 
     @media (max-width: 768px) {
       .search-bar {
-        flex-direction: column; /* Stack input and button vertically */
-        align-items: stretch; /* Stretch to full width */
-        gap: 0.8em; /* Increase gap for better spacing */
+        flex-direction: row; /* Keep input and button side by side */
+        justify-content: space-between; /* Add spacing between input and button */
+        gap: 0.5em;
       }
 
       .search-bar input {
-        font-size: 0.9rem; /* Adjust font size for smaller screens */
-        padding: 0.6em; /* Adjust padding */
+        font-size: 0.9rem;
+        padding: 0.5em;
       }
 
       .search-bar button {
-        font-size: 0.9rem; /* Adjust font size for smaller screens */
-        padding: 0.6em 1em; /* Adjust padding */
+        font-size: 0.9rem;
+        padding: 0.5em 0.8em;
       }
     }
 
@@ -1500,9 +1501,10 @@
         return;
       }
 
-      const filteredBlogs = blogsData.filter(blog =>
-        blog.title.toLowerCase().includes(query) ||
-        blog.description.toLowerCase().includes(query)
+      const filteredBlogs = blogsData.filter((blog, index, self) =>
+        (blog.title.toLowerCase().includes(query) ||
+          blog.description.toLowerCase().includes(query)) &&
+        self.findIndex(b => b.title === blog.title) === index // Avoid duplicates
       );
 
       if (filteredBlogs.length > 0) {
