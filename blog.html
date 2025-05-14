@@ -1135,6 +1135,13 @@
       overflow: hidden;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s, box-shadow 0.3s;
+      opacity: 1; /* Make static blogs visible by default */
+      transform: translateY(0); /* Ensure they are in their original position */
+    }
+
+    .blog-card.visible {
+      opacity: 1; /* Keep this for dynamically loaded blogs */
+      transform: translateY(0);
     }
 
     .blog-card:hover {
@@ -1193,6 +1200,59 @@
         font-size: 0.9rem;
       }
     }
+
+    .search-bar {
+      margin-top: 1em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5em;
+    }
+
+    .search-bar input {
+      width: 100%;
+      max-width: 400px;
+      padding: 0.8em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      background: #1a1a1a;
+      color: #fff;
+      transition: border-color 0.3s ease;
+    }
+
+    .search-bar input:focus {
+      border-color: var(--gradient);
+      outline: none;
+      box-shadow: 0 0 8px var(--gradient);
+    }
+
+    .search-bar button {
+      padding: 0.8em 1.5em;
+      background: var(--gradient);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .search-bar button:hover {
+      background: #4cc9f0;
+      transform: scale(1.05);
+    }
+
+    .search-results {
+      margin-top: 2em;
+      display: none; /* Hidden by default */
+    }
+
+    .search-results .not-found {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -1221,10 +1281,15 @@
     <!-- Hero section with title and subtitle -->
     <h1>Welcome to My Blog</h1>
     <h2>Insights, Stories, and Tutorials</h2>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search blogs..." />
+      <button id="searchButton">Search</button>
+    </div>
   </section>
 
   <section id="blog" class="blog-container">
     <h2><span class="name-gradient blinking-underline">Latest Blogs</span></h2>
+    <div id="searchResults" class="search-results"></div>
     <div class="blog-grid" id="blogGrid">
       <!-- Static blog cards -->
       <div class="blog-card">
@@ -1252,8 +1317,6 @@
         </div>
       </div>
     </div>
-    <!-- Button to load more blogs dynamically -->
-    <button id="viewMoreBtn" class="glow-btn" style="margin-top: 2em;">View More</button>
   </section>
 
   <section id="footer" class="footer-container">
@@ -1284,9 +1347,7 @@
 
     // Dynamic content for additional blogs
     const blogGrid = document.getElementById('blogGrid');
-    const viewMoreBtn = document.getElementById('viewMoreBtn');
 
-    // Updated array of additional blogs to include the date
     const additionalBlogs = [
       {
         img: 'blog-img/blog4-thumbnail.jpg',
@@ -1342,12 +1403,12 @@
     ];
 
     let blogsLoaded = 0; // Track the number of blogs loaded
-    const blogsPerClick = 3; // Number of blogs to load per click
+    const blogsPerScroll = 3; // Number of blogs to load per scroll
 
-    // Event listener to load more blogs dynamically
-    viewMoreBtn.addEventListener('click', () => {
-      const blogsToLoad = additionalBlogs.slice(blogsLoaded, blogsLoaded + blogsPerClick);
-      blogsToLoad.forEach(blog => {
+    // Function to load more blogs dynamically
+    const loadMoreBlogs = () => {
+      const blogsToLoad = additionalBlogs.slice(blogsLoaded, blogsLoaded + blogsPerScroll);
+      blogsToLoad.forEach((blog, index) => {
         const blogCard = document.createElement('div');
         blogCard.classList.add('blog-card');
         blogCard.innerHTML = `
@@ -1360,12 +1421,101 @@
           </div>
         `;
         blogGrid.appendChild(blogCard);
+
+        // Add visible class with a slight delay for smooth fade-in
+        setTimeout(() => {
+          blogCard.classList.add('visible');
+        }, index * 150); // Delay each card slightly for a staggered effect
       });
       blogsLoaded += blogsToLoad.length;
 
-      // Hide the button if all blogs are loaded
+      // Remove scroll event listener if all blogs are loaded
       if (blogsLoaded >= additionalBlogs.length) {
-        viewMoreBtn.style.display = 'none';
+        window.removeEventListener('scroll', handleScroll);
+      }
+    };
+
+    // Scroll event handler
+    const handleScroll = () => {
+      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+      if (scrollTop + clientHeight >= scrollHeight - 10) {
+        loadMoreBlogs();
+      }
+    };
+
+    // Attach scroll event listener
+    window.addEventListener('scroll', handleScroll);
+
+    const blogsData = [
+      {
+        title: "Web Development Insights",
+        image: "blog-img/blog1-thumbnail.png",
+        link: "blog-list/blog1.html",
+        description: "Explore essential web development insights including HTML, CSS, JavaScript, SEO strategies, and performance optimization."
+      },
+      {
+        title: "Web Development Best Practices: A Guide for Modern Developers",
+        image: "blog-img/Web Development Best Practices.png",
+        link: "blog-list/blog2.html",
+        description: "Discover industry-standard web development best practices to write clean, scalable, and high-performing code for modern websites and web apps."
+      },
+      {
+        title: "Mastering JavaScript Frameworks",
+        image: "blog-img/Mastering JavaScript Frameworks.png",
+        link: "blog-list/blog3.html",
+        description: "Dive into popular JavaScript frameworks, including React, Vue, and Angular, and discover their ideal use cases for building dynamic web applications."
+      }
+    ];
+
+    const searchInput = document.getElementById("searchInput");
+    const searchButton = document.getElementById("searchButton");
+    const searchResults = document.getElementById("searchResults");
+
+    // Function to handle search
+    const handleSearch = () => {
+      const query = searchInput.value.trim().toLowerCase();
+      searchResults.innerHTML = ""; // Clear previous results
+
+      if (!query) {
+        searchResults.style.display = "none";
+        return;
+      }
+
+      const filteredBlogs = blogsData.filter(blog =>
+        blog.title.toLowerCase().includes(query) ||
+        blog.description.toLowerCase().includes(query)
+      );
+
+      if (filteredBlogs.length > 0) {
+        filteredBlogs.forEach(blog => {
+          const blogCard = document.createElement("div");
+          blogCard.classList.add("blog-card");
+          blogCard.innerHTML = `
+            <img src="${blog.image}" alt="${blog.title}">
+            <div class="blog-card-content">
+              <h3>${blog.title}</h3>
+              <p>${blog.description}</p>
+              <a href="${blog.link}" class="blog-btn">Read More</a>
+            </div>
+          `;
+          searchResults.appendChild(blogCard);
+        });
+      } else {
+        searchResults.innerHTML = `
+          <p class="not-found">No blogs found for your search. Please try again.</p>
+        `;
+      }
+
+      searchResults.style.display = "block"; // Show results
+    };
+
+    // Attach event listener to the search button
+    searchButton.addEventListener("click", handleSearch);
+
+    // Trigger search on Enter key press
+    searchInput.addEventListener("keypress", event => {
+      if (event.key === "Enter") {
+        handleSearch();
       }
     });
   </script>

@@ -253,6 +253,216 @@
     body.light .suggested-blogs .blog-card a {
       color: #007BFF; /* Blue color for links in light mode */
     }
+
+    .main-container {
+      display: flex;
+      flex-direction: column; /* Default to column layout for smaller screens */
+      gap: 2em;
+      max-width: 1200px;
+      margin: 2em auto;
+      padding: 0 1em;
+    }
+
+    @media (min-width: 768px) {
+      .main-container {
+        flex-direction: row; /* Switch to row layout for larger screens */
+      }
+
+      .content-container {
+        flex: 2; /* Take up more space */
+      }
+
+      .suggested-blogs {
+        flex: 1; /* Take up less space */
+        margin: 0; /* Remove top margin */
+      }
+    }
+
+    .search-bar {
+      margin-bottom: 1em;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 0.5em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .search-bar button {
+      padding: 0.5em 1em;
+      background: var(--gradient);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .search-bar button:hover {
+      opacity: 0.9;
+    }
+
+    .search-results {
+      margin-top: 1em;
+      padding: 1em;
+      background: #1a1a1a;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      display: none; /* Hidden by default */
+    }
+
+    .search-results h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1em;
+    }
+
+    .search-results .blog-card {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      margin-bottom: 1em;
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 1em;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .search-results .blog-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .search-results .blog-card-content {
+      flex: 1;
+    }
+
+    .search-results .blog-card-content h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5em;
+    }
+
+    .search-results .blog-card-content a {
+      text-decoration: none;
+      color: var(--gradient);
+    }
+
+    .search-results .not-found {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+      margin-top: 2em;
+    }
+
+    .social-icons .icon {
+      font-size: 1.5rem;
+      color: #fff;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .social-icons .icon:hover {
+      transform: scale(1.2);
+      color: var(--gradient);
+    }
+
+    /* Responsive styles for mobile devices */
+    @media (max-width: 768px) {
+      .main-container {
+        flex-direction: column; /* Stack content vertically */
+        padding: 1em;
+      }
+
+      .content-container {
+        margin: 1em 0; /* Add spacing between sections */
+        padding: 1em; /* Reduce padding for smaller screens */
+      }
+
+      .content-container h1 {
+        font-size: 1.8rem; /* Adjust heading size */
+      }
+
+      .content-container p {
+        font-size: 0.9rem; /* Adjust paragraph font size */
+        line-height: 1.5; /* Adjust line height */
+      }
+
+      .content-container img {
+        max-height: 300px; /* Reduce image height */
+      }
+
+      .suggested-blogs {
+        margin: 1em 0; /* Add spacing between sections */
+        padding: 1em; /* Reduce padding for smaller screens */
+      }
+
+      .suggested-blogs h2 {
+        font-size: 1.5rem; /* Adjust heading size */
+      }
+
+      .suggested-blogs .blog-card {
+        flex-direction: column; /* Stack blog card content vertically */
+        align-items: flex-start;
+      }
+
+      .suggested-blogs .blog-card img {
+        width: 100%; /* Make images full width */
+        height: auto; /* Maintain aspect ratio */
+      }
+
+      .suggested-blogs .blog-card-content h3 {
+        font-size: 1rem; /* Adjust title size */
+      }
+
+      .suggested-blogs .blog-card-content p {
+        font-size: 0.9rem; /* Adjust description size */
+      }
+
+      .social-icons {
+        margin-top: 1em; /* Add spacing above social icons */
+        gap: 0.8em; /* Reduce gap between icons */
+      }
+
+      .social-icons .icon {
+        font-size: 1.2rem; /* Adjust icon size */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .content-container h1 {
+        font-size: 1.5rem; /* Further reduce heading size */
+      }
+
+      .content-container p {
+        font-size: 0.85rem; /* Further reduce paragraph font size */
+      }
+
+      .suggested-blogs h2 {
+        font-size: 1.3rem; /* Further reduce heading size */
+      }
+
+      .suggested-blogs .blog-card-content h3 {
+        font-size: 0.9rem; /* Further adjust title size */
+      }
+
+      .suggested-blogs .blog-card-content p {
+        font-size: 0.8rem; /* Further adjust description size */
+      }
+
+      .social-icons .icon {
+        font-size: 1rem; /* Further adjust icon size */
+      }
+    }
   </style>
 </head>
 <body>
@@ -268,18 +478,43 @@
     </div>
   </nav>
 
-  <div class="content-container" id="blogContent">
-    <h1>Blog Post 1: Web Development Insights</h1>
-    <img src="blog-img/blog1-image.png" alt="Web Development Insights" style="width: 100%; border-radius: 10px; margin-bottom: 1.5em;">
-    <p>Welcome to Blog Post 1 by Nahush Patel, where we delve into the world of web development. In this post, we explore essential tips and techniques for creating responsive, user-friendly websites.</p>
-    <p>Web development is a dynamic field that requires continuous learning. From mastering HTML, CSS, and JavaScript to understanding frameworks like React and Angular, staying updated is crucial for success.</p>
-    <p>Additionally, we discuss the importance of SEO (Search Engine Optimization) in driving traffic to your website. Implementing SEO-friendly practices, such as optimizing meta tags and using relevant keywords, can significantly improve your site's visibility.</p>
-    <p>Stay tuned for more insights and practical advice on web development in our upcoming blog posts.</p>
-  </div>
+  <div class="main-container">
+    <div class="content-container" id="blogContent">
+      <h1>Blog Post 1: Web Development Insights</h1>
+      <img src="blog-img/blog1-image.png" alt="Web Development Insights" style="width: 100%; border-radius: 10px; margin-bottom: 1.5em;">
+      <p>Welcome to Blog Post 1 by Nahush Patel, where we delve into the world of web development. In this post, we explore essential tips and techniques for creating responsive, user-friendly websites.</p>
+      <p>Web development is a dynamic field that requires continuous learning. From mastering HTML, CSS, and JavaScript to understanding frameworks like React and Angular, staying updated is crucial for success.</p>
+      <p>Additionally, we discuss the importance of SEO (Search Engine Optimization) in driving traffic to your website. Implementing SEO-friendly practices, such as optimizing meta tags and using relevant keywords, can significantly improve your site's visibility.</p>
+      <p>Stay tuned for more insights and practical advice on web development in our upcoming blog posts.</p>
+    </div>
 
-  <div class="suggested-blogs" id="suggestedBlogs">
-    <h2>Suggested Blogs</h2>
-    <!-- Suggested blogs will be dynamically populated here -->
+    <div class="suggested-blogs" id="suggestedBlogs">
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search blogs..." />
+        <button id="searchButton">Search</button>
+      </div>
+      <!-- Social Media Icons -->
+      <div class="social-icons">
+        <a href="https://twitter.com" target="_blank" class="icon">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://facebook.com" target="_blank" class="icon">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="icon">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" class="icon">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+      <div class="search-results" id="searchResults">
+        <!-- Search results dynamically populated here -->
+         
+      </div>
+      <h2>Suggested Blogs</h2>
+      <!-- Suggested blogs will be dynamically populated here -->
+    </div>
   </div>
 
   <section id="footer" class="footer-container">
@@ -432,6 +667,98 @@
 
     // Trigger animation on page load
     document.addEventListener('DOMContentLoaded', handleScrollAnimation);
+
+    const blogsData = [
+      {
+        title: "Web Development Insights",
+        image: "../blog-img/blog1-image.png",
+        link: "../blog-list/blog1.html",
+        description: "Explore essential web development insights including HTML, CSS, JavaScript, SEO strategies, and performance optimization."
+      },
+      {
+        title: "Web Development Best Practices: A Guide for Modern Developers",
+        image: "../../blog-img/Web Development Best Practices.png",
+        link: "../blog-list/blog2.html",
+        description: "Discover industry-standard web development best practices to write clean, scalable, and high-performing code for modern websites and web apps."
+      },
+      {
+        title: "Mastering JavaScript Frameworks",
+        image: "../../blog-img/Mastering JavaScript Frameworks.png",
+        link: "../blog-list/blog3.html",
+        description: "Dive into popular JavaScript frameworks, including React, Vue, and Angular, and discover their ideal use cases for building dynamic web applications."
+      },
+      {
+        title: "SEO Basics for Beginners",
+        image: "../blog-img/blog4-thumbnail.jpg",
+        link: "../blog-list/blog4.html",
+        description: "Understand the basics of SEO for better website visibility."
+      }
+    ];
+
+    const searchInput = document.getElementById("searchInput");
+    const searchButton = document.getElementById("searchButton");
+    const searchResults = document.getElementById("searchResults");
+
+    // Function to handle search
+    const handleSearch = () => {
+      const query = searchInput.value.trim().toLowerCase();
+      searchResults.innerHTML = ""; // Clear previous results
+
+      if (!query) {
+        searchResults.style.display = "none";
+        return;
+      }
+
+      const filteredBlogs = blogsData.filter(blog =>
+        blog.title.toLowerCase().includes(query) ||
+        blog.description.toLowerCase().includes(query)
+      );
+
+      if (filteredBlogs.length > 0) {
+        filteredBlogs.forEach(blog => {
+          const blogCard = document.createElement("div");
+          blogCard.classList.add("blog-card");
+          blogCard.innerHTML = `
+            <img src="${blog.image}" alt="${blog.title}">
+            <div class="blog-card-content">
+              <h4>${blog.title}</h4>
+              <p>${blog.description}</p>
+              <a href="${blog.link}">Read More</a>
+            </div>
+          `;
+          searchResults.appendChild(blogCard);
+        });
+      } else {
+        searchResults.innerHTML = `
+          <p class="not-found">No blogs found for your search. You may like:</p>
+        `;
+        suggestedBlogs.forEach(blog => {
+          const blogCard = document.createElement("div");
+          blogCard.classList.add("blog-card");
+          blogCard.innerHTML = `
+            <img src="${blog.image}" alt="${blog.title}">
+            <div class="blog-card-content">
+              <h4>${blog.title}</h4>
+              <p>${blog.description}</p>
+              <a href="${blog.link}">Read More</a>
+            </div>
+          `;
+          searchResults.appendChild(blogCard);
+        });
+      }
+
+      searchResults.style.display = "block"; // Show results
+    };
+
+    // Attach event listener to the search button
+    searchButton.addEventListener("click", handleSearch);
+
+    // Trigger search on Enter key press
+    searchInput.addEventListener("keypress", event => {
+      if (event.key === "Enter") {
+        handleSearch();
+      }
+    });
   </script>
 </body>
 </html>
