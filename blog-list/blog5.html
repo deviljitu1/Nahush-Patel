@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How AI is Revolutionizing Web Development | Nahush Patel</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="../css/blog-styles.css" rel="stylesheet">
+  <meta name="description" content="Discover how AI tools like GitHub Copilot, ChatGPT, and AI-powered testing are transforming modern web development workflows.">
+  <meta name="keywords" content="AI, web development, ChatGPT, GitHub Copilot, automated testing">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Nahush</div>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+    </ul>
+    <div id="toggleMode">
+      <img src="../img/moon-icon.png" id="darkIcon" alt="Dark Mode">
+      <img src="../img/sun-icon.png" id="lightIcon" alt="Light Mode" style="display: none;">
+    </div>
+  </nav>
+  
+  <div class="content-container" id="blogContent">
+    <!-- Content will be inserted by JavaScript -->
+  </div>
+
+  <div class="suggested-blogs" id="suggestedBlogs">
+    <h2>You Might Also Like</h2>
+    <!-- Suggested blogs will be inserted by JavaScript -->
+  </div>
+
+  <section id="footer" class="footer-container">
+    <p>&copy; 2025 <span class="name-gradient"><a href="#hero">Nahush Patel</a></span>. All rights reserved.</p>
+  </section>
+
+  <!-- Define current blog before loading script -->
+  <script>
+    const currentBlog = {
+      id: "blog5",
+      title: "How AI is Revolutionizing Web Development",
+      image: "../blog-img/ai-webdev.jpg",
+      alt: "AI assistant helping with web development code",
+      date: "June 10, 2025",
+      author: "Nahush Patel",
+      tags: ["AI", "web development", "productivity"],
+      content: `
+        <p>The integration of <strong>Artificial Intelligence</strong> in web development is no longer futuristic—it's here. As a developer, understanding these tools can give you a competitive edge. Here's how AI is changing our workflow:</p>
+
+        <h3>1. AI-Powered Coding Assistants</h3>
+        <div class="tool-example">
+          <img src="../blog-img/copilot-demo.gif" alt="GitHub Copilot in action" class="demo-gif">
+          <div>
+            <p><strong>GitHub Copilot</strong> and similar tools:</p>
+            <ul>
+              <li>Suggest entire code blocks in real-time</li>
+              <li>Reduce boilerplate code by 40-60%</li>
+              <li>Explain complex code in plain English</li>
+            </ul>
+            <p class="tip"><i class="fas fa-lightbulb"></i> <strong>Pro Tip:</strong> Use comments to guide Copilot. Try "// Create a responsive navbar with dropdown"</p>
+          </div>
+        </div>
+
+        <h3>2. Smarter Debugging</h3>
+        <p>AI-enhanced developer tools can:</p>
+        <ul>
+          <li>Predict potential bugs before runtime</li>
+          <li>Suggest optimal fixes based on similar issues</li>
+          <li>Auto-detect memory leaks and performance bottlenecks</li>
+        </ul>
+        <div class="code-snippet">
+          <p><strong>Example:</strong> ChatGPT analyzing error logs</p>
+          <pre><code>// Before AI
+[Error] Uncaught TypeError: Cannot read property 'length' of undefined
+
+// With AI explanation:
+"Your code fails because 'userData' array isn't initialized.
+Add null check: if (userData?.length) {...}"</code></pre>
+        </div>
+
+        <h3>3. Automated Testing</h3>
+        <p>Tools like <strong>Testim.io</strong> and <strong>Mabl</strong> use AI to:</p>
+        <ul>
+          <li>Generate test cases by analyzing user flows</li>
+          <li>Self-heal tests when UI changes</li>
+          <li>Detect visual regressions with 98% accuracy</li>
+        </ul>
+
+        <h3>4. Content Generation</h3>
+        <div class="comparison">
+          <div>
+            <p><strong>Traditional CMS</strong></p>
+            <ul>
+              <li>Manual content entry</li>
+              <li>Fixed templates</li>
+              <li>Static personalization</li>
+            </ul>
+          </div>
+          <div>
+            <p><strong>AI-Powered CMS</strong></p>
+            <ul>
+              <li>Auto-generates SEO content</li>
+              <li>Dynamic layout adaptation</li>
+              <li>Real-time personalization</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>5. The Future: AI-First Development</h3>
+        <p>Emerging trends to watch:</p>
+        <ul>
+          <li><strong>Natural language to code</strong> (like OpenAI's Codex)</li>
+          <li><strong>AI-generated UI components</strong> from sketches</li>
+          <li><strong>Self-optimizing websites</strong> that A/B test in real-time</li>
+        </ul>
+
+        <div class="conclusion">
+          <p><strong>Key Takeaway:</strong> AI won't replace developers but will become our most powerful collaborator. The most successful developers will be those who learn to effectively partner with AI tools.</p>
+          <p>Which AI tool has helped your workflow the most? Let me know on <a href="#">Twitter</a>!</p>
+        </div>
+      `
+    };
+  </script>
+  
+  <!-- Load the shared JavaScript file -->
+  <script src="../js/blog-script.js"></script>
+</body>
+</html>
