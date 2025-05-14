@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mastering JavaScript Frameworks: Choosing the Right Tool for Your Web Projects</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  <meta name="description" content="Mastering JavaScript Frameworks: Choosing the Right Tool for Your Web Projects. Explore the strengths of React, Vue, and Angular to make informed decisions for your web development projects.">
-  <meta name="keywords" content="JavaScript, React, Vue, Angular, Web Development, Nahush Patel">
   <style>
     :root {
       --gradient: linear-gradient(90deg, #f72585, #7209b7, #3a0ca3, #4361ee, #4cc9f0);
@@ -129,28 +127,43 @@
       object-fit: cover;
     }
 
-    .content-container p.truncated {
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
+    .blog-meta {
+      display: flex;
+      gap: 1.5em;
+      margin-bottom: 1.5em;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    body.light .blog-meta {
+      color: #666;
+    }
+
+    .blog-meta i {
+      margin-right: 0.3em;
+    }
+
+    .read-more-section {
+      text-align: center;
+      margin: 2em 0;
     }
 
     .read-more-btn {
       display: inline-block;
-      margin-top: 1em;
-      padding: 0.5em 1em;
+      padding: 0.8em 1.5em;
       background: var(--gradient);
       color: #fff;
       border: none;
-      border-radius: 5px;
+      border-radius: 30px;
       cursor: pointer;
       font-size: 1rem;
-      text-align: center;
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .read-more-btn:hover {
-      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
 
     .suggested-blogs {
@@ -191,7 +204,7 @@
     }
 
     .suggested-blogs .blog-card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-5px);
       box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
     }
 
@@ -200,6 +213,7 @@
       height: 100px;
       border-radius: 10px;
       object-fit: cover;
+      flex-shrink: 0;
     }
 
     .suggested-blogs .blog-card-content {
@@ -211,9 +225,54 @@
       margin-bottom: 0.5em;
     }
 
+    .suggested-blogs .blog-card-content p {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-bottom: 0.5em;
+    }
+
+    body.light .suggested-blogs .blog-card-content p {
+      color: #666;
+    }
+
+    .suggested-blogs .blog-card-content .blog-date {
+      font-size: 0.8rem;
+      color: #888;
+      display: block;
+      margin-bottom: 0.5em;
+    }
+
     .suggested-blogs .blog-card-content a {
       text-decoration: none;
       color: var(--gradient);
+      font-weight: bold;
+      font-size: 0.9rem;
+      display: inline-block;
+      margin-top: 0.5em;
+    }
+
+    .view-all-blogs {
+      text-align: center;
+      margin-top: 1.5em;
+    }
+
+    .view-all-btn {
+      display: inline-block;
+      padding: 0.6em 1.2em;
+      background: transparent;
+      color: var(--gradient);
+      border: 2px solid;
+      border-image: var(--gradient) 1;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    .view-all-btn:hover {
+      background: var(--gradient);
+      color: #fff;
     }
 
     .footer-container {
@@ -230,16 +289,8 @@
       -webkit-text-fill-color: transparent;
     }
 
-    body.light .content-container {
-      background: #f9f9f9;
-      color: #000;
-    }
-
-    body.light .suggested-blogs {
-      background: #f9f9f9;
-      color: #000;
-    }
-
+    body.light .content-container,
+    body.light .suggested-blogs,
     body.light .footer-container {
       background: #f9f9f9;
       color: #000;
@@ -253,6 +304,26 @@
 
     body.light .suggested-blogs .blog-card a {
       color: #007BFF;
+    }
+
+    @media (max-width: 768px) {
+      .content-container,
+      .suggested-blogs {
+        margin: 1em;
+        padding: 1em;
+      }
+
+      .suggested-blogs .blog-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .suggested-blogs .blog-card img {
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+        margin-bottom: 1em;
+      }
     }
   </style>
 </head>
@@ -274,8 +345,11 @@
   </div>
 
   <div class="suggested-blogs" id="suggestedBlogs">
-    <h2>Suggested Blogs</h2>
+    <h2>You Might Also Like</h2>
     <!-- Suggested blogs will be dynamically populated here -->
+    <div class="view-all-blogs">
+      <button class="view-all-btn" id="viewAllBtn">View All Blogs</button>
+    </div>
   </div>
 
   <section id="footer" class="footer-container">
@@ -289,7 +363,7 @@
     
     // Current blog content (update this for each new blog)
     const currentBlog = {
-      id: "blog3", // Unique identifier for the blog
+      id: "blog3",
       title: "Mastering JavaScript Frameworks: Choosing the Right Tool for Your Web Projects",
       image: "../blog-img/Mastering JavaScript Frameworks.png",
       alt: "Visual comparison of React, Vue, and Angular JavaScript frameworks in web development",
@@ -319,7 +393,9 @@
         <p>JavaScript frameworks evolve rapidly. Following GitHub repositories, reading official changelogs, and contributing to open source projects help you stay updated. Also, explore tools like <strong>Next.js</strong>, <strong>Nuxt</strong>, or <strong>Angular CLI</strong> for enhanced developer productivity.</p>
       
         <p>Thanks for reading! Stay connected for more expert guides on modern web technologies, best practices, and real-world implementation tips to elevate your web development career.</p>
-      `
+      `,
+      // Add tags for better suggestions
+      tags: ["javascript", "frameworks", "web development"]
     };
 
     // All blogs database (add new blogs here)
@@ -330,7 +406,8 @@
         image: "../blog-img/blog1-thumbnail.jpg",
         link: "../blog-list/blog1.html",
         description: "Exploring emerging trends in web development technologies.",
-        date: "April 10, 2025"
+        date: "April 10, 2025",
+        tags: ["web development", "trends"]
       },
       {
         id: "blog2",
@@ -338,7 +415,8 @@
         image: "../blog-img/blog2-thumbnail.jpg",
         link: "../blog-list/blog2.html",
         description: "Master the art of creating websites that work on any device.",
-        date: "April 25, 2025"
+        date: "April 25, 2025",
+        tags: ["design", "responsive", "css"]
       },
       {
         id: "blog3",
@@ -346,7 +424,8 @@
         image: "../blog-img/Mastering JavaScript Frameworks.png",
         link: "../blog-list/blog3.html",
         description: "Choosing between React, Vue, and Angular for your projects.",
-        date: "May 15, 2025"
+        date: "May 15, 2025",
+        tags: ["javascript", "frameworks", "web development"]
       },
       {
         id: "blog4",
@@ -354,7 +433,8 @@
         image: "../blog-img/blog4-thumbnail.jpg",
         link: "../blog-list/blog4.html",
         description: "Understand the basics of SEO for better website visibility.",
-        date: "May 28, 2025"
+        date: "May 28, 2025",
+        tags: ["seo", "web development"]
       },
       {
         id: "blog5",
@@ -362,7 +442,8 @@
         image: "../blog-img/blog5-thumbnail.jpg",
         link: "../blog-list/blog5.html",
         description: "Explore the impact of AI on modern education.",
-        date: "June 10, 2025"
+        date: "June 10, 2025",
+        tags: ["ai", "education", "technology"]
       },
       {
         id: "blog6",
@@ -370,7 +451,8 @@
         image: "../blog-img/blog6-thumbnail.jpg",
         link: "../blog-list/blog6.html",
         description: "Discover the latest trends in AI technology.",
-        date: "June 22, 2025"
+        date: "June 22, 2025",
+        tags: ["ai", "technology", "trends"]
       }
     ];
 
@@ -390,36 +472,85 @@
           <span><i class="fas fa-user"></i> ${currentBlog.author}</span>
         </div>
         ${currentBlog.content}
+        <div class="read-more-section">
+          <button class="read-more-btn" id="showSuggestionsBtn">Show Related Articles</button>
+        </div>
       `;
     }
 
-    // Function to render suggested blogs (excluding the current one)
-    function renderSuggestedBlogs() {
+    // Function to get related blogs based on tags
+    function getRelatedBlogs() {
+      // Filter out current blog
+      const availableBlogs = allBlogs.filter(blog => blog.id !== currentBlog.id);
+      
+      // If current blog has tags, find blogs with matching tags
+      if (currentBlog.tags && currentBlog.tags.length > 0) {
+        const related = availableBlogs.filter(blog => 
+          blog.tags && blog.tags.some(tag => currentBlog.tags.includes(tag))
+        );
+        
+        if (related.length >= 3) {
+          return related.slice(0, 3);
+        }
+      }
+      
+      // Fallback to newest blogs if not enough related ones
+      return availableBlogs
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, 3);
+    }
+
+    // Function to render suggested blogs
+    function renderSuggestedBlogs(blogs) {
       const suggestedBlogsContainer = document.getElementById('suggestedBlogs');
       
-      // Filter out the current blog from suggestions
-      const suggestedBlogs = allBlogs.filter(blog => blog.id !== currentBlog.id);
-      
-      // Sort by date (newest first) and take 3
-      const sortedBlogs = suggestedBlogs.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
-      
-      // Clear existing content
-      suggestedBlogsContainer.innerHTML = '<h2>Suggested Blogs</h2>';
-      
-      // Add each suggested blog card
-      sortedBlogs.forEach(blog => {
-        const blogCard = document.createElement('div');
-        blogCard.classList.add('blog-card');
-        blogCard.innerHTML = `
-          <img src="${blog.image}" alt="${blog.title}">
-          <div class="blog-card-content">
-            <h3>${blog.title}</h3>
-            <p>${blog.description}</p>
-            <span class="blog-date">${blog.date}</span>
-            <a href="${blog.link}">Read More</a>
+      // Clear existing content except the header and view all button
+      suggestedBlogsContainer.innerHTML = `
+        <h2>You Might Also Like</h2>
+        ${blogs.map(blog => `
+          <div class="blog-card">
+            <img src="${blog.image}" alt="${blog.title}">
+            <div class="blog-card-content">
+              <h3>${blog.title}</h3>
+              <p>${blog.description}</p>
+              <span class="blog-date"><i class="fas fa-calendar-alt"></i> ${blog.date}</span>
+              <a href="${blog.link}">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
           </div>
-        `;
-        suggestedBlogsContainer.appendChild(blogCard);
+        `).join('')}
+        <div class="view-all-blogs">
+          <button class="view-all-btn" id="viewAllBtn">View All Blogs</button>
+        </div>
+      `;
+    }
+
+    // =============================================
+    // INTERACTIVITY FUNCTIONS
+    // =============================================
+
+    // Function to handle the "Show Related Articles" button
+    function setupShowSuggestionsButton() {
+      document.addEventListener('click', function(e) {
+        if (e.target && e.target.id === 'showSuggestionsBtn') {
+          const relatedBlogs = getRelatedBlogs();
+          renderSuggestedBlogs(relatedBlogs);
+          e.target.textContent = "More Suggestions";
+          
+          // Scroll to suggestions
+          document.getElementById('suggestedBlogs').scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    }
+
+    // Function to handle the "View All Blogs" button
+    function setupViewAllButton() {
+      document.addEventListener('click', function(e) {
+        if (e.target && e.target.id === 'viewAllBtn') {
+          // Replace with your actual blog listing page
+          window.location.href = "../blog-list/all-blogs.html";
+        }
       });
     }
 
@@ -459,30 +590,107 @@
     // Scroll animation for blog cards
     function setupScrollAnimation() {
       const handleScrollAnimation = () => {
-        const blogCards = document.querySelectorAll('.suggested-blogs .blog-card');
+        const blogCards = document.querySelectorAll('.blog-card');
         blogCards.forEach((card) => {
           const rect = card.getBoundingClientRect();
-          if (rect.top < window.innerHeight - 50) {
+          if (rect.top < window.innerHeight - 100) {
             card.classList.add('visible');
           }
         });
       };
 
       window.addEventListener('scroll', handleScrollAnimation);
-      document.addEventListener('DOMContentLoaded', handleScrollAnimation);
+      handleScrollAnimation(); // Run once on load
     }
 
     // =============================================
     // INITIALIZE THE PAGE
     // =============================================
 
-    // When the DOM is fully loaded
     document.addEventListener('DOMContentLoaded', () => {
       renderCurrentBlog();
-      renderSuggestedBlogs();
       setupDarkModeToggle();
       setupScrollAnimation();
+      setupShowSuggestionsButton();
+      setupViewAllButton();
+      
+      // Show initial suggestions (newest blogs) after a short delay
+      setTimeout(() => {
+        const initialSuggestions = allBlogs
+          .filter(blog => blog.id !== currentBlog.id)
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
+          .slice(0, 3);
+        renderSuggestedBlogs(initialSuggestions);
+      }, 500);
     });
+//Search functionality
+    function addSearch() {
+  const searchInput = document.createElement('input');
+  searchInput.placeholder = "Search blogs...";
+  searchInput.classList.add('search-input');
+  document.querySelector('.content-container').prepend(searchInput);
+
+  searchInput.addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase();
+    const filtered = allBlogs.filter(blog => 
+      blog.title.toLowerCase().includes(term) || 
+      blog.tags.some(tag => tag.includes(term))
+    );
+    renderFilteredBlogs(filtered);
+  });
+}
+
+function renderFilteredBlogs(blogs) {
+  const container = document.getElementById('allBlogsContainer');
+  if (!container) return;
+  
+  container.innerHTML = blogs.length ? 
+    blogs.map(blog => `
+      <div class="blog-card">
+        <img src="${blog.image}" alt="${blog.title}">
+        <div class="blog-card-content">
+          <h3>${blog.title}</h3>
+          <p>${blog.description}</p>
+          <span class="blog-date"><i class="fas fa-calendar-alt"></i> ${blog.date}</span>
+          <a href="${blog.link}">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    `).join('') : 
+    '<p>No matching posts found</p>';
+    // Add this to your existing blog-script.js
+
+function renderAllBlogs() {
+  const container = document.getElementById('allBlogsContainer');
+  if (!container) return;
+
+  container.innerHTML = allBlogs
+    .sort((a, b) => new Date(b.date) - new Date(a.date)) // Newest first
+    .map(blog => `
+      <div class="blog-listing">
+        <div class="blog-listing-image">
+          <img src="${blog.image}" alt="${blog.title}">
+        </div>
+        <div class="blog-listing-content">
+          <h2><a href="${blog.link}">${blog.title}</a></h2>
+          <div class="blog-meta">
+            <span><i class="fas fa-calendar-alt"></i> ${blog.date}</span>
+            <span><i class="fas fa-tags"></i> ${blog.tags.join(', ')}</span>
+          </div>
+          <p>${blog.description}</p>
+          <a href="${blog.link}" class="read-more-btn">Read Post</a>
+        </div>
+      </div>
+    `).join('');
+}
+
+// Update your existing event listener
+document.addEventListener('click', (e) => {
+  if (e.target?.id === 'viewAllBtn') {
+    window.location.href = "all-blogs.html"; // Updated path
+  }
+  // ... other event handlers ...
+});
+}
   </script>
 </body>
 </html>
