@@ -1243,6 +1243,24 @@
       transform: scale(1.05);
     }
 
+    @media (max-width: 768px) {
+      .search-bar {
+        flex-direction: column; /* Stack input and button vertically */
+        align-items: stretch; /* Stretch to full width */
+        gap: 0.8em; /* Increase gap for better spacing */
+      }
+
+      .search-bar input {
+        font-size: 0.9rem; /* Adjust font size for smaller screens */
+        padding: 0.6em; /* Adjust padding */
+      }
+
+      .search-bar button {
+        font-size: 0.9rem; /* Adjust font size for smaller screens */
+        padding: 0.6em 1em; /* Adjust padding */
+      }
+    }
+
     .search-results {
       margin-top: 2em;
       display: none; /* Hidden by default */
@@ -1422,14 +1440,14 @@
         `;
         blogGrid.appendChild(blogCard);
 
-        // Add visible class with a slight delay for smooth fade-in
+        // Ensure the visible class is added immediately
         setTimeout(() => {
           blogCard.classList.add('visible');
-        }, index * 150); // Delay each card slightly for a staggered effect
+        }, index * 150);
       });
       blogsLoaded += blogsToLoad.length;
 
-      // Remove scroll event listener if all blogs are loaded
+      // Stop loading if all blogs are loaded
       if (blogsLoaded >= additionalBlogs.length) {
         window.removeEventListener('scroll', handleScroll);
       }
@@ -1437,6 +1455,7 @@
 
     // Scroll event handler
     const handleScroll = () => {
+      console.log('Scroll event triggered'); // Debugging
       const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
       if (scrollTop + clientHeight >= scrollHeight - 10) {
         loadMoreBlogs();
