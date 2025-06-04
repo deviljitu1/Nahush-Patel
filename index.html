@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nahush - Web Developer</title>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <link rel="icon" href="img/dark-image.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="img/dark-image.jpg" type="image/jpg" sizes="16x16">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <meta name="description" content="Portfolio of Nahush Patel, a web developer showcasing skills, projects, and contact information.">
   <meta name="keywords" content="Nahush Patel, Web Developer, Portfolio, Projects, Contact">
@@ -34,9 +34,9 @@
       align-items: center;
       padding: 1em 2em;
       background: inherit;
-      position: sticky; /* Make the navigation sticky */
-      top: 0; /* Stick to the top of the viewport */
-      z-index: 1000; /* Ensure it stays above other elements */
+      position: sticky; 
+      top: 0; 
+      z-index: 1000; 
       box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1), 0 4px 6px rgba(0, 0, 0, 0.3); /* Adjust shadow for visibility in both modes */
     }
 
@@ -77,11 +77,11 @@
 
     .nav-links li a:hover::after,
     .nav-links li a.active::after {
-      width: 100%; /* Show underline on hover or active */
+      width: 100%; 
     }
 
     .nav-links li a.active {
-      color: #4cc9f0; /* Highlight active link */
+      color: #4cc9f0; 
     }
 
     .toggle-switch {
@@ -117,28 +117,28 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center; /* Center align content */
-      padding-left: 20%; /* Adjust padding for better spacing */
+      justify-content: center; 
+      padding-left: 20%; 
       padding-right: 20%;
-      padding-top: 2em; /* Add top padding for larger screens */
-      padding-bottom: 2em; /* Add bottom padding for larger screens */
-      gap: 2em; /* Add gap between left and right content */
-      text-align: center; /* Center align content */
-      background: url('background-image.jpg') no-repeat center center/cover; /* Add background image */
+      padding-top: 2em; 
+      padding-bottom: 2em; 
+      gap: 2em; 
+      text-align: center; 
+      background: url('background-image.jpg') no-repeat center center/cover; 
       text-align: center;
-      position: relative; /* Ensure the pseudo-elements are positioned correctly */
+      position: relative; 
     }
 
     @media (min-width: 768px) {
       .hero {
         flex-direction: row;
         justify-content: space-between;
-        padding-left: 20%; /* Adjust padding for better spacing */
+        padding-left: 20%; 
         padding-right: 20%;
-        padding-top: 5em; /* Add top padding for larger screens */
-        padding-bottom: 5em; /* Add bottom padding for larger screens */
-        text-align: center; /* Center align content */
-        gap: 2em; /* Add gap between left and right content */
+        padding-top: 5em; 
+        padding-bottom: 5em; 
+        text-align: center; 
+        gap: 2em; 
         text-align: left;
       }
     }
@@ -166,7 +166,7 @@
     }
 
     h1 {
-      font-size: 4rem; /* Increase font size for the main heading */
+      font-size: 4rem; 
     }
 
     .name-gradient {
@@ -185,7 +185,7 @@
     h2 {
       margin-top: 0.3em;
       font-weight: 400;
-      font-size: 1.5rem; /* Increase font size for the subheading */
+      font-size: 1.5rem; 
     }
 
     .glow-btn {
@@ -225,18 +225,769 @@
       justify-content: center;
       align-items: center;
       margin-top: 2em;
+      position: relative; /* Needed for the frame */
     }
 
-    @media (min-width: 768px) {
-      .right-content {
-        margin-top: 0;
+    .profile-frame {
+      position: relative;
+      display: inline-block;
+      width: 320px;
+      height: 320px;
+    }
+
+    .profile-frame::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      background: var(--gradient);
+      z-index: 1;
+      filter: blur(0px);
+      animation: profileFramePulse 4s infinite linear;
+      opacity: 0.7;
+    }
+
+    @keyframes profileFramePulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0px #4cc9f0, 0 0 30px 10px #7209b7;
+        opacity: 0.7;
+      }
+      50% {
+        box-shadow: 0 0 0 10px #4cc9f0, 0 0 60px 30px #7209b7;
+        opacity: 1;
       }
     }
 
-    .right-content img {
-      width: 250px;
-      border-radius: 10px;
-      transition: all 0.4s;
+    #profileImg {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 10px solid #1a1a1a;
+      position: relative;
+      z-index: 2;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+      transition: border-color 0.3s;
+    }
+
+    body.light #profileImg {
+      border-color: #fff;
+      background: #fff;
+    }
+
+    @media (max-width: 1024px) {
+      .profile-frame {
+        width: 240px;
+        height: 240px;
+      }
+      #profileImg {
+        width: 220px;
+        height: 220px;
+        border-width: 8px;
+      }
+      .hero::before {
+        width: 240px;
+        height: 240px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .profile-frame {
+        width: 180px;
+        height: 180px;
+      }
+      #profileImg {
+        width: 160px;
+        height: 160px;
+        border-width: 6px;
+      }
+      .hero::before {
+        width: 180px;
+        height: 180px;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .profile-frame {
+        width: 120px;
+        height: 120px;
+      }
+      #profileImg {
+        width: 100px;
+        height: 100px;
+        border-width: 4px;
+      }
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; 
+      padding-left: 20%; 
+      padding-right: 20%;
+      padding-top: 2em; 
+      padding-bottom: 2em; 
+      gap: 2em; 
+      text-align: center; 
+      background: url('background-image.jpg') no-repeat center center/cover; 
+      text-align: center;
+      position: relative; 
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        flex-direction: row;
+        justify-content: space-between;
+        padding-left: 20%; 
+        padding-right: 20%;
+        padding-top: 5em; 
+        padding-bottom: 5em; 
+        text-align: center; 
+        gap: 2em; 
+        text-align: left;
+      }
+    }
+
+    .left-content {
+      flex: 1;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1.2em;
+      margin-bottom: 1em;
+    }
+
+    .icon {
+      font-size: 1.5em;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: transform 0.3s;
+    }
+
+    .icon:hover {
+      transform: scale(1.2);
+    }
+
+    h1 {
+      font-size: 4rem; 
+    }
+
+    .name-gradient {
+      background: var(--gradient);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove 3s linear infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    h2 {
+      margin-top: 0.3em;
+      font-weight: 400;
+      font-size: 1.5rem; 
+    }
+
+    .glow-btn {
+      margin-top: 1em;
+      padding: 0.75em 1.5em;
+      font-size: 1em;
+      background: transparent;
+      border: 2px solid transparent;
+      border-image: var(--gradient);
+      border-image-slice: 1;
+      color: inherit;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow-btn::before {
+      content: '';
+      position: absolute;
+      top: -2px; left: -2px;
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      background: var(--gradient);
+      z-index: -1;
+      filter: blur(8px);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .glow-btn:hover::before {
+      opacity: 1;
+    }
+
+    .right-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2em;
+      position: relative; /* Needed for the frame */
+    }
+
+    .profile-frame {
+      position: relative;
+      display: inline-block;
+      width: 320px;
+      height: 320px;
+    }
+
+    .profile-frame::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      background: var(--gradient);
+      z-index: 1;
+      filter: blur(0px);
+      animation: profileFramePulse 4s infinite linear;
+      opacity: 0.7;
+    }
+
+    @keyframes profileFramePulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0px #4cc9f0, 0 0 30px 10px #7209b7;
+        opacity: 0.7;
+      }
+      50% {
+        box-shadow: 0 0 0 10px #4cc9f0, 0 0 60px 30px #7209b7;
+        opacity: 1;
+      }
+    }
+
+    #profileImg {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 10px solid #1a1a1a;
+      position: relative;
+      z-index: 2;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+      transition: border-color 0.3s;
+    }
+
+    body.light #profileImg {
+      border-color: #fff;
+      background: #fff;
+    }
+
+    @media (max-width: 1024px) {
+      .profile-frame {
+        width: 240px;
+        height: 240px;
+      }
+      #profileImg {
+        width: 220px;
+        height: 220px;
+        border-width: 8px;
+      }
+      .hero::before {
+        width: 240px;
+        height: 240px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .profile-frame {
+        width: 240px;
+        height: 240px;
+      }
+      #profileImg {
+        width: 220px;
+        height: 220px;
+        border-width: 8px;
+      }
+      .hero::before {
+        width: 240px;
+        height: 240px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .profile-frame {
+        width: 180px;
+        height: 180px;
+      }
+      #profileImg {
+        width: 160px;
+        height: 160px;
+        border-width: 6px;
+      }
+      .hero::before {
+        width: 180px;
+        height: 180px;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; 
+      padding-left: 20%; 
+      padding-right: 20%;
+      padding-top: 2em; 
+      padding-bottom: 2em; 
+      gap: 2em; 
+      text-align: center; 
+      background: url('background-image.jpg') no-repeat center center/cover; 
+      text-align: center;
+      position: relative; 
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        flex-direction: row;
+        justify-content: space-between;
+        padding-left: 20%; 
+        padding-right: 20%;
+        padding-top: 5em; 
+        padding-bottom: 5em; 
+        text-align: center; 
+        gap: 2em; 
+        text-align: left;
+      }
+    }
+
+    .left-content {
+      flex: 1;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1.2em;
+      margin-bottom: 1em;
+    }
+
+    .icon {
+      font-size: 1.5em;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: transform 0.3s;
+    }
+
+    .icon:hover {
+      transform: scale(1.2);
+    }
+
+    h1 {
+      font-size: 4rem; 
+    }
+
+    .name-gradient {
+      background: var(--gradient);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove 3s linear infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    h2 {
+      margin-top: 0.3em;
+      font-weight: 400;
+      font-size: 1.5rem; 
+    }
+
+    .glow-btn {
+      margin-top: 1em;
+      padding: 0.75em 1.5em;
+      font-size: 1em;
+      background: transparent;
+      border: 2px solid transparent;
+      border-image: var(--gradient);
+      border-image-slice: 1;
+      color: inherit;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow-btn::before {
+      content: '';
+      position: absolute;
+      top: -2px; left: -2px;
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      background: var(--gradient);
+      z-index: -1;
+      filter: blur(8px);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .glow-btn:hover::before {
+      opacity: 1;
+    }
+
+    .right-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2em;
+      position: relative; /* Needed for the frame */
+    }
+
+    .profile-frame {
+      position: relative;
+      display: inline-block;
+      width: 320px;
+      height: 320px;
+    }
+
+    .profile-frame::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      background: var(--gradient);
+      z-index: 1;
+      filter: blur(0px);
+      animation: profileFramePulse 4s infinite linear;
+      opacity: 0.7;
+    }
+
+    @keyframes profileFramePulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0px #4cc9f0, 0 0 30px 10px #7209b7;
+        opacity: 0.7;
+      }
+      50% {
+        box-shadow: 0 0 0 10px #4cc9f0, 0 0 60px 30px #7209b7;
+        opacity: 1;
+      }
+    }
+
+    #profileImg {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 10px solid #1a1a1a;
+      position: relative;
+      z-index: 2;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+      transition: border-color 0.3s;
+    }
+
+    body.light #profileImg {
+      border-color: #fff;
+      background: #fff;
+    }
+
+    @media (max-width: 1024px) {
+      .profile-frame {
+        width: 240px;
+        height: 240px;
+      }
+      #profileImg {
+        width: 220px;
+        height: 220px;
+        border-width: 8px;
+      }
+      .hero::before {
+        width: 240px;
+        height: 240px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .profile-frame {
+        width: 240px;
+        height: 240px;
+      }
+      #profileImg {
+        width: 220px;
+        height: 220px;
+        border-width: 8px;
+      }
+      .hero::before {
+        width: 240px;
+        height: 240px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .profile-frame {
+        width: 180px;
+        height: 180px;
+      }
+      #profileImg {
+        width: 160px;
+        height: 160px;
+        border-width: 6px;
+      }
+      .hero::before {
+        width: 180px;
+        height: 180px;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; 
+      padding-left: 20%; 
+      padding-right: 20%;
+      padding-top: 2em; 
+      padding-bottom: 2em; 
+      gap: 2em; 
+      text-align: center; 
+      background: url('background-image.jpg') no-repeat center center/cover; 
+      text-align: center;
+      position: relative; 
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        flex-direction: row;
+        justify-content: space-between;
+        padding-left: 20%; 
+        padding-right: 20%;
+        padding-top: 5em; 
+        padding-bottom: 5em; 
+        text-align: center; 
+        gap: 2em; 
+        text-align: left;
+      }
+    }
+
+    .left-content {
+      flex: 1;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1.2em;
+      margin-bottom: 1em;
+    }
+
+    .icon {
+      font-size: 1.5em;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: transform 0.3s;
+    }
+
+    .icon:hover {
+      transform: scale(1.2);
+    }
+
+    h1 {
+      font-size: 4rem; 
+    }
+
+    .name-gradient {
+      background: var(--gradient);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove 3s linear infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    h2 {
+      margin-top: 0.3em;
+      font-weight: 400;
+      font-size: 1.5rem; 
+    }
+
+    .glow-btn {
+      margin-top: 1em;
+      padding: 0.75em 1.5em;
+      font-size: 1em;
+      background: transparent;
+      border: 2px solid transparent;
+      border-image: var(--gradient);
+      border-image-slice: 1;
+      color: inherit;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow-btn::before {
+      content: '';
+      position: absolute;
+      top: -2px; left: -2px;
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      background: var(--gradient);
+      z-index: -1;
+      filter: blur(8px);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .glow-btn:hover::before {
+      opacity: 1;
+    }
+
+    .right-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2em;
+      position: relative; /* Needed for the frame */
+    }
+
+    .profile-frame {
+      position: relative;
+      display: inline-block;
+      width: 320px;
+      height: 320px;
+    }
+
+    .profile-frame::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      background: var(--gradient);
+      z-index: 1;
+      filter: blur(0px);
+      animation: profileFramePulse 4s infinite linear;
+      opacity: 0.7;
+    }
+
+    @keyframes profileFramePulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0px #4cc9f0, 0 0 30px 10px #7209b7;
+        opacity: 0.7;
+      }
+      50% {
+        box-shadow: 0 0 0 10px #4cc9f0, 0 0 60px 30px #7209b7;
+        opacity: 1;
+      }
+    }
+
+    #profileImg {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 10px solid #1a1a1a;
+      position: relative;
+      z-index: 2;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+      transition: border-color 0.3s;
+    }
+
+    body.light #profileImg {
+      border-color: #fff;
+      background: #fff;
+    }
+
+    @media (max-width: 1024px) {
+      .profile-frame {
+        width: 240px;
+        height: 240px;
+      }
+      #profileImg {
+        width: 220px;
+        height: 220px;
+        border-width: 8px;
+      }
+      .hero::before {
+        width: 240px;
+        height: 240px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .profile-frame {
+        width: 240px;
+        height: 240px;
+      }
+      #profileImg {
+        width: 220px;
+        height: 220px;
+        border-width: 8px;
+      }
+      .hero::before {
+        width: 240px;
+        height: 240px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .profile-frame {
+        width: 180px;
+        height: 180px;
+      }
+      #profileImg {
+        width: 160px;
+        height: 160px;
+        border-width: 6px;
+      }
+      .hero::before {
+        width: 180px;
+        height: 180px;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
 
     @media (max-width: 768px) {
@@ -344,23 +1095,23 @@
         display: flex;
         position: absolute;
         top: 1em;
-        right: 1em; /* Position hamburger on the right side */
+        right: 1em; 
       }
 
       .nav-links {
         display: none;
         flex-direction: column;
         gap: 1em;
-        position: fixed; /* Ensure it overlays the content */
+        position: fixed; 
         top: 0;
-        left: 0; /* Open navigation from the left side */
-        width: 70%; /* Adjust width for responsiveness */
+        left: 0; 
+        width: 70%; 
         height: 100%;
         background: #0d0d0d;
         padding: 2em 1em;
-        z-index: 10; /* Ensure it appears above other elements */
-        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Add shadow for better visibility */
-        overflow-y: auto; /* Handle overflow for smaller screens */
+        z-index: 10; 
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); 
+        overflow-y: auto; 
       }
 
       .nav-links.active {
@@ -371,54 +1122,54 @@
         position: fixed;
         bottom: 20px;
         right: 20px;
-        z-index: 20; /* Ensure it appears above other elements */
+        z-index: 20; 
       }
     }
 
     body.light .hamburger span {
-      background: #000; /* Change hamburger lines to black in light mode */
+      background: #000; 
     }
 
     body.light .nav-links {
-      background: #fff; /* Change navigation background to white in light mode */
-      color: #000; /* Change text color to black in light mode */
+      background: #fff; 
+      color: #000; 
     }
 
     body.light .nav-links li {
-      color: #000; /* Ensure individual navigation items are visible */
+      color: #000; 
     }
 
     body.light .nav-links li:hover {
-      color: #555; /* Add hover effect for better visibility */
+      color: #555; 
     }
 
     /* About Section*/
     .about-container {
       display: flex;
-      flex-direction: column; /* Align items vertically */
-      align-items: center; /* Center align content */
+      flex-direction: column; 
+      align-items: center; 
       text-align: center;
-      gap: 20px; /* Adjust gap between elements */
-      padding-left: 10%; /* Adjust padding for better spacing */
+      gap: 20px; 
+      padding-left: 10%; 
       padding-right: 20%;
-      padding-top: 2em; /* Add top padding for larger screens */
-      padding-bottom: 2em; /* Add bottom padding for larger screens */
-      background: url('about-background.jpg') no-repeat center center/cover; /* Add background image */
+      padding-top: 2em; 
+      padding-bottom: 2em; 
+      background: url('about-background.jpg') no-repeat center center/cover; 
       text-align: center;
-      position: relative; /* Ensure the pseudo-elements are positioned correctly */
+      position: relative; 
     }
 
     .about-img {
       width: 300px;
-      animation: float 3s ease-in-out infinite; /* Add floating animation */
+      animation: float 3s ease-in-out infinite; 
     }
 
     @keyframes float {
       0%, 100% {
         transform: translateY(0px);
-        padding-left: 10%; /* Adjust padding for better spacing */
+        padding-left: 10%;
         padding-right: 20%;
-        background: url('about-background.jpg') no-repeat center center/cover; /* Add background image */
+        background: url('about-background.jpg') no-repeat center center/cover; 
         text-align: center;
         
       }
@@ -428,7 +1179,7 @@
     }
 
     .about-text h2 {
-      font-size: 2.8rem; /* Increase heading size */
+      font-size: 2.8rem; 
       background: linear-gradient(90deg, #ff0080, #7928ca);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -445,8 +1196,8 @@
     }
 
     .about-text p {
-      font-size: 1.3rem; /* Increase paragraph text size */
-      line-height: 1.8; /* Adjust line height for better readability */
+      font-size: 1.3rem; 
+      line-height: 1.8; 
       max-width: 600px;
     }
 
@@ -463,24 +1214,24 @@
 
     @media (max-width: 480px) {
       .about-img {
-        display: none; /* Hide the image on mobile devices */
+        display: none; 
       }
     }
 
     @media (min-width: 1024px) {
       .about-container {
-        flex-direction: row; /* Align items horizontally */
-        text-align: left; /* Align text to the left */
-        gap: 60px; /* Increase gap between image and text */
+        flex-direction: row; 
+        text-align: left; 
+        gap: 60px; 
       }
 
       .about-text h2 {
-        font-size: 3rem; /* Increase heading size */
+        font-size: 3rem; 
       }
 
       .about-text p {
-        font-size: 1.2rem; /* Increase paragraph text size */
-        line-height: 1.8; /* Adjust line height for better readability */
+        font-size: 1.2rem; 
+        line-height: 1.8; 
       }
     }
 
@@ -488,8 +1239,8 @@
       display: inline-block;
       overflow: hidden;
       white-space: nowrap;
-      border-right: 2px solid; /* Keeps the typing cursor */
-      animation: typing 4s steps(12, end) infinite; /* Removed the blink animation */
+      border-right: 2px solid; 
+      animation: typing 4s steps(12, end) infinite; 
     }
 
     @keyframes typing {
@@ -497,32 +1248,30 @@
         width: 0;
       }
       50%, 100% {
-        width: 13ch; /* Ensure full text is displayed */
+        width: 13ch; 
       }
     }
 
-    .hero::before {
+    /**.hero::before {
       content: '';
       position: absolute;
-      width: 300px; /* Size for hero circle */
+      width: 300px; 
       height: 300px;
-      /*filter: blur(10px); /* Add blur effect */
-      /* Adjusted height for hero circle */
       background: var(--gradient);
       border-radius: 50%;
       z-index: -1;
-      top: 50%; /* Adjust vertical position for hero */
-      left: calc(57% + 125px); /* Adjust horizontal position for hero */
+      top: 50%; 
+      left: calc(57% + 125px); 
       transform: translate(-50%, -50%);
       animation: pulse 6s infinite ease-in-out;
-    }
+    }**/
 
     @media (max-width: 768px) {
       .hero::before {
-        width: 200px; /* Smaller size for tablets */
+        width: 200px; 
         height: 200px;
-        top: 50%; /* Keep vertically centered */
-        left: 50%; /* Center horizontally */
+        top: 50%; 
+        left: 50%; 
         transform: translate(-50%, -50%);
       }
     }
@@ -530,47 +1279,44 @@
 
     @media (max-width: 480px) {
       .hero::before {
-        width: 150px; /* Even smaller size for mobile */
+        width: 150px; 
         height: 150px;
-        top: 73%; /* Slightly adjust vertical position */
-        left: 50%; /* Center horizontally */
-        /* Adjusted transform for hero circle */
+        top: 73%; 
+        left: 50%; 
         transform: translate(-50%, -50%);
-
       }
     }
-    
 
     .about-container::before {
       content: '';
       position: absolute;
-      width: 300px; /* Size for about circle */
-      height: 300px; /* Adjusted height for about circle */
+      width: 300px; 
+      height: 300px; 
       background: var(--gradient);
       border-radius: 50%;
       z-index: -1;
-      top: 49%; /* Adjust vertical position for about */
-      left: calc(17% + 150px); /* Adjust horizontal position for about */
+      top: 49%; 
+      left: calc(17% + 150px); 
       transform: translate(-55%, -55%);
       /* Adjusted transform for about circle */
-      filter: blur(40px); /* Add blur effect */
+      filter: blur(40px); 
       animation: pulse 6s infinite ease-in-out;
     }
 
 
     @media (max-width: 768px) {
       .hero::before, .about-container::before {
-        width: 200px; /* Smaller size for mobile */
+        width: 200px; 
         height: 200px;
-        left: 50%; /* Center horizontally for smaller screens */
+        left: 50%; 
       }
     }
 
     @media (max-width: 480px) {
       .hero::before, .about-container::before {
-        width: 150px; /* Even smaller size for very small screens */
+        width: 150px; 
         height: 150px;
-        left: 50%; /* Center horizontally for very small screens */
+        left: 50%; 
       }
     }
 
@@ -591,8 +1337,8 @@
       align-items: center;
       text-align: center;
       gap: 20px;
-      padding: 3em 10%; /* Add padding for spacing */
-      background: none; /* No background */
+      padding: 3em 10%; 
+      background: none; 
       position: relative;
     }
 
@@ -772,12 +1518,12 @@
       gap: 2em;
       max-width: 800px;
       margin: 0 auto;
-      padding: 0 20px; /* Equal padding on both sides */
+      padding: 0 20px; 
     }
 
     .contact-card {
       background: #1a1a1a;
-      padding: 2em 20px; /* Ensure consistent padding inside the card */
+      padding: 2em 20px; 
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s, box-shadow 0.3s;
@@ -796,11 +1542,11 @@
 
     .contact-form input, .contact-form textarea, .contact-btn {
       width: 100%;
-      padding: 0.8em; /* Ensure consistent padding */
+      padding: 0.8em; 
       border: 1px solid #ccc;
       border-radius: 5px;
       font-size: 1rem;
-      box-sizing: border-box; /* Ensure padding doesn't affect width */
+      box-sizing: border-box; 
       transition: box-shadow 0.3s, transform 0.3s;
     }
 
@@ -987,7 +1733,6 @@
 
       .about-text p {
         font-size: 0.9rem; /* Adjust paragraph size */
-        line-height: 1.5; /* Adjust line height */
       }
 
       .skills-container h2,
@@ -1240,7 +1985,9 @@
       <button class="glow-btn" aria-label="Download CV"><a href="img/Nahush's CV.pdf" style="text-decoration: none; color: inherit;">Download CV</a></button>
     </div>
     <div class="right-content">
-      <img id="profileImg" src="img/dark-image.png" alt="Nahush Patel's Profile Picture" />
+      <span class="profile-frame">
+        <img id="profileImg" src="img/dark-image.jpg" alt="Nahush Patel's Profile Picture" />
+      </span>
     </div>
   </section>
   
@@ -1339,7 +2086,7 @@
 
     toggle.addEventListener('click', () => {
       body.classList.toggle('light');
-      profileImg.src = body.classList.contains('light') ? 'img/light-image.png' : 'img/dark-image.png';
+      profileImg.src = body.classList.contains('light') ? 'img/light-image.jpg' : 'img/dark-image.jpg';
       darkIcon.style.display = body.classList.contains('light') ? 'none' : 'inline';
       lightIcon.style.display = body.classList.contains('light') ? 'inline' : 'none';
     });
