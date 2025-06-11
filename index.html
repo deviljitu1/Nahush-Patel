@@ -298,220 +298,6 @@
 
     @media (max-width: 768px) {
       .profile-frame {
-        width: 180px;
-        height: 180px;
-      }
-      #profileImg {
-        width: 160px;
-        height: 160px;
-        border-width: 6px;
-      }
-      .hero::before {
-        width: 180px;
-        height: 180px;
-        top: 60%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .profile-frame {
-        width: 120px;
-        height: 120px;
-      }
-      #profileImg {
-        width: 100px;
-        height: 100px;
-        border-width: 4px;
-      }
-    }
-
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center; 
-      padding-left: 20%; 
-      padding-right: 20%;
-      padding-top: 2em; 
-      padding-bottom: 2em; 
-      gap: 2em; 
-      text-align: center; 
-      background: url('background-image.jpg') no-repeat center center/cover; 
-      text-align: center;
-      position: relative; 
-    }
-
-    @media (min-width: 768px) {
-      .hero {
-        flex-direction: row;
-        justify-content: space-between;
-        padding-left: 20%; 
-        padding-right: 20%;
-        padding-top: 5em; 
-        padding-bottom: 5em; 
-        text-align: center; 
-        gap: 2em; 
-        text-align: left;
-      }
-    }
-
-    .left-content {
-      flex: 1;
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 1.2em;
-      margin-bottom: 1em;
-    }
-
-    .icon {
-      font-size: 1.5em;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      transition: transform 0.3s;
-    }
-
-    .icon:hover {
-      transform: scale(1.2);
-    }
-
-    h1 {
-      font-size: 4rem; 
-    }
-
-    .name-gradient {
-      background: var(--gradient);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: gradientMove 3s linear infinite;
-    }
-
-    @keyframes gradientMove {
-      0% { background-position: 0% center; }
-      100% { background-position: 200% center; }
-    }
-
-    h2 {
-      margin-top: 0.3em;
-      font-weight: 400;
-      font-size: 1.5rem; 
-    }
-
-    .glow-btn {
-      margin-top: 1em;
-      padding: 0.75em 1.5em;
-      font-size: 1em;
-      background: transparent;
-      border: 2px solid transparent;
-      border-image: var(--gradient);
-      border-image-slice: 1;
-      color: inherit;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .glow-btn::before {
-      content: '';
-      position: absolute;
-      top: -2px; left: -2px;
-      width: calc(100% + 4px);
-      height: calc(100% + 4px);
-      background: var(--gradient);
-      z-index: -1;
-      filter: blur(8px);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    .glow-btn:hover::before {
-      opacity: 1;
-    }
-
-    .right-content {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 2em;
-      position: relative; /* Needed for the frame */
-    }
-
-    .profile-frame {
-      position: relative;
-      display: inline-block;
-      width: 320px;
-      height: 320px;
-    }
-
-    .profile-frame::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border-radius: 50%;
-      background: var(--gradient);
-      z-index: 1;
-      filter: blur(0px);
-      animation: profileFramePulse 4s infinite linear;
-      opacity: 0.7;
-    }
-
-    @keyframes profileFramePulse {
-      0%, 100% {
-        box-shadow: 0 0 0 0px #4cc9f0, 0 0 30px 10px #7209b7;
-        opacity: 0.7;
-      }
-      50% {
-        box-shadow: 0 0 0 10px #4cc9f0, 0 0 60px 30px #7209b7;
-        opacity: 1;
-      }
-    }
-
-    #profileImg {
-      width: 300px;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 10px solid #1a1a1a;
-      position: relative;
-      z-index: 2;
-      background: #fff;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.2);
-      transition: border-color 0.3s;
-    }
-
-    body.light #profileImg {
-      border-color: #fff;
-      background: #fff;
-    }
-
-    @media (max-width: 1024px) {
-      .profile-frame {
-        width: 240px;
-        height: 240px;
-      }
-      #profileImg {
-        width: 220px;
-        height: 220px;
-        border-width: 8px;
-      }
-      .hero::before {
-        width: 240px;
-        height: 240px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .profile-frame {
         width: 240px;
         height: 240px;
       }
@@ -1949,6 +1735,39 @@
         height: 150px; /* Larger portfolio image */
       }
     }
+
+    /* Glowing Gradient Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 20px;
+  background: #181828;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #f72585 0%, #7209b7 25%, #3a0ca3 50%, #4361ee 75%, #4cc9f0 100%);
+  border-radius: 8px;
+  border: 2px solid #181828;
+  box-shadow: 0 0 16px 4px #f04ca1, 0 0 32px 8px #7209b7;
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  transition: background-position 0.6s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-position: 100% 50%;
+  box-shadow: 0 0 32px 12px #f72585, 0 0 48px 16px #4361ee;
+}
+
+::-webkit-scrollbar-track {
+  background: #181828;
+  border-radius: 8px;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #4cc9f0 #181828;
+}
+
   </style>
 </head>
 <body>
