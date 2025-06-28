@@ -1373,7 +1373,8 @@
           image: "blog-img/blog1-thumbnail.png",
           link: "blog-list/blog1.html",
           description: "Explore essential web development insights including HTML, CSS, JavaScript, SEO strategies, and performance optimization.",
-          date: "06/28/2025",
+          published_date: "06/28/2025",
+          published_time: "10:00 AM",
           excerpt: "Explore essential web development insights including HTML, CSS, JavaScript, SEO strategies, and performance optimization to build modern websites."
         },
         {
@@ -1381,7 +1382,8 @@
           image: "blog-img/Web Development Best Practices.png",
           link: "blog-list/blog2.html",
           description: "Discover industry-standard web development best practices to write clean, scalable, and high-performing code for modern websites and web apps.",
-          date: "05/08/2025",
+          published_date: "05/08/2025",
+          published_time: "02:30 PM",
           excerpt: "Discover industry-standard web development best practices to write clean, scalable, and high-performing code for modern websites and web apps."
         },
         {
@@ -1389,7 +1391,8 @@
           image: "blog-img/Mastering JavaScript Frameworks.png",
           link: "blog-list/blog3.html",
           description: "Dive into popular JavaScript frameworks, including React, Vue, and Angular, and discover their ideal use cases for building dynamic web applications.",
-          date: "05/07/2025",
+          published_date: "05/07/2025",
+          published_time: "11:15 AM",
           excerpt: "Dive into popular JavaScript frameworks, including React, Vue, and Angular, and discover their ideal use cases for building dynamic web applications."
         }
       ];
@@ -1409,7 +1412,7 @@
             <h3>${blog.title}</h3>
             <p style="font-size:0.9em;color:#888;margin:0 0 0.5em 0;">
               <i class="fa-regular fa-calendar"></i>
-              Posted on ${blog.date} by
+              Published on ${blog.published_date} at ${blog.published_time} by
               <a href="https://www.linkedin.com/in/nahush-patel/" target="_blank" style="color:#4cc9f0;text-decoration:underline;">Nahush Patel</a>
             </p>
             <p>${blog.excerpt || blog.description}</p>
@@ -1456,7 +1459,7 @@
               <h3>${blog.title}</h3>
               <p style="font-size:0.9em;color:#888;margin:0 0 0.5em 0;">
                 <i class="fa-regular fa-calendar"></i>
-                Posted on ${blog.date} by
+                Published on ${blog.published_date} at ${blog.published_time} by
                 <a href="https://www.linkedin.com/in/nahush-patel/" target="_blank" style="color:#4cc9f0;text-decoration:underline;">Nahush Patel</a>
               </p>
               <p>${blog.excerpt || blog.description}</p>

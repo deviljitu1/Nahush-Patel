@@ -126,6 +126,35 @@
       -webkit-box-orient: vertical;
     }
 
+    /* Code syntax highlighting styles */
+    .content-container pre {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 1em;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 1em 0;
+      border-left: 4px solid #4cc9f0;
+    }
+
+    .content-container code {
+      background: #2a2a2a;
+      color: #4cc9f0;
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+    }
+
+    .content-container ul, 
+    .content-container ol {
+      margin: 1em 0;
+      padding-left: 2em;
+    }
+
+    .content-container li {
+      margin: 0.5em 0;
+    }
+
     .read-more-btn {
       display: inline-block;
       margin-top: 1em;
@@ -201,6 +230,12 @@
       margin-bottom: 0.5em;
     }
 
+    .suggested-blogs .blog-card-content p {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 0.5em;
+    }
+
     .suggested-blogs .blog-card-content a {
       text-decoration: none;
       color: var(--gradient);
@@ -208,10 +243,8 @@
 
     .footer-container {
       text-align: center;
-      padding: 1.5em 0;
-      background: #1a1a1a;
-      color: #fff;
-      font-size: 1rem;
+      padding: 2em;
+      background: inherit;
     }
 
     .footer-container .name-gradient {
@@ -221,39 +254,38 @@
     }
 
     body.light .content-container {
-      background: #f9f9f9; /* Light gray background for contrast */
-      color: #000; /* Black text for readability */
+      background: #fff;
+      color: #000;
     }
 
     body.light .suggested-blogs {
-      background: #f9f9f9; /* Light gray background for contrast */
-      color: #000; /* Black text for readability */
+      background: #fff;
+      color: #000;
     }
 
     body.light .footer-container {
-      background: #f9f9f9; /* Light gray background for contrast */
-      color: #000; /* Black text for readability */
+      background: #fff;
+      color: #000;
     }
 
     body.light .suggested-blogs .blog-card {
-      background: #f0f0f0; /* Light gray background for contrast */
-      color: #000; /* Black text for readability */
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Softer shadow for light mode */
+      background: #f8f9fa;
+      color: #000;
     }
 
     body.light .suggested-blogs .blog-card a {
-      color: #007BFF; /* Blue color for links in light mode */
+      color: #007bff;
     }
 
     .main-container {
       display: flex;
-      flex-direction: column; /* Default to column layout for smaller screens */
-      gap: 2em;
+      flex-direction: column;
       max-width: 1200px;
-      margin: 2em auto;
-      padding: 0 1em;
+      margin: 0 auto;
+      padding: 1em;
     }
 
+    /* Responsive layout for larger screens */
     @media (min-width: 768px) {
       .main-container {
         flex-direction: row; /* Switch to row layout for larger screens */
