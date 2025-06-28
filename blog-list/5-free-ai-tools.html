@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mastering JavaScript Frameworks: React, Vue, and Angular</title>
+  <meta name="description" content="Learn how to master popular JavaScript frameworks like React, Vue, and Angular to build modern, dynamic web applications." />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Nahush</div>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+    </ul>
+    <div id="toggleMode" style="cursor: pointer;">
+      <img src="../img/moon-icon.png" id="darkIcon" alt="Dark Mode" style="width: 20px; height: 20px;">
+      <img src="../img/sun-icon.png" id="lightIcon" alt="Light Mode" style="width: 20px; height: 20px; display: none;">
+    </div>
+  </nav>
+
+  <div class="main-container">
+    <div class="content-container" id="blogContent">
+      <h1>Blog Post 2: Mastering JavaScript Frameworks</h1>
+      <img src="../../blog-img/Mastering JavaScript Frameworks.png" alt="Mastering JavaScript Frameworks" style="width: 100%; border-radius: 10px; margin-bottom: 1.5em;">
+      <p>Welcome to our in-depth guide on mastering JavaScript frameworks. In this post, we'll explore React, Vue, and Angular to help you choose the right tool for your next web development project.</p>
+      <p>JavaScript frameworks have revolutionized front-end development by providing structured approaches to building dynamic user interfaces. Understanding their core concepts, strengths, and use cases will empower you to create robust web applications.</p>
+      <p>We'll compare React's component-based architecture with Vue's progressive framework approach and Angular's comprehensive full-stack capabilities. By the end of this guide, you'll have a clear perspective on which framework best suits your development needs.</p>
+      <p>Let's dive into the world of modern JavaScript frameworks and discover how they can enhance your development workflow.</p>
+    </div>
+
+    <div class="suggested-blogs" id="suggestedBlogs">
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search blogs..." />
+        <button id="searchButton">Search</button>
+      </div>
+      <!-- Social Media Icons -->
+      <div class="social-icons">
+        <a href="https://twitter.com" target="_blank" class="icon">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://facebook.com" target="_blank" class="icon">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="icon">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" class="icon">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+      <div class="search-results" id="searchResults">
+        <!-- Search results dynamically populated here -->
+      </div>
+      <h2>Suggested Blogs</h2>
+      <!-- Suggested blogs will be dynamically populated here -->
+    </div>
+  </div>
+
+  <section id="footer" class="footer-container">
+    <p>&copy; 2025 <span class="name-gradient"><a href="#hero">Nahush Patel</a></span>. All rights reserved.</p>
+  </section>
+
+  <script>
+    // Dynamic blog content
+    const blogData = {
+  title: "Mastering JavaScript Frameworks: React, Vue, and Angular",
+  image: "../../blog-img/Mastering JavaScript Frameworks.png",
+  content: `
+    <p>Welcome to this comprehensive guide on <strong>mastering JavaScript frameworks</strong> by Nahush Patel. Whether you're a beginner or an experienced developer, this guide will help you understand the key differences and benefits of <strong>React</strong>, <strong>Vue</strong>, and <strong>Angular</strong> to make informed decisions for your web development projects.</p>
+
+    <h3>Why Learn JavaScript Frameworks?</h3>
+    <p>JavaScript frameworks provide structured solutions for building <strong>dynamic</strong> and <strong>responsive</strong> web applications. They offer features like component-based architecture, state management, and efficient rendering, making it easier to develop complex applications with maintainable code.</p>
+
+    <h3>1. React: The Component-Based Powerhouse</h3>
+    <p><strong>React</strong>, developed by Facebook, is a declarative, efficient, and flexible JavaScript library for building user interfaces. Its key features include:</p>
+    <ul>
+      <li><strong>Virtual DOM</strong>: Improves performance by minimizing direct DOM manipulation</li>
+      <li><strong>Component-Based Architecture</strong>: Encourages reusability and modularization of code</li>
+      <li><strong>JSX Syntax</strong>: Allows writing HTML-like structures in JavaScript</li>
+      <li><strong>Rich Ecosystem</strong>: Has a vast range of libraries and tools (e.g., Redux, React Router)</li>
+    </ul>
+    <p>React is ideal for building <strong>single-page applications (SPAs)</strong> and <strong>interactive UIs</strong>. It's widely adopted by companies like Netflix, Airbnb, and Instagram.</p>
+
+    <h3>2. Vue: The Progressive Framework</h3>
+    <p><strong>Vue.js</strong> is a progressive framework for building UIs that's designed to be incrementally adoptable. Its key features include:</p>
+    <ul>
+      <li><strong>Reactive Data Binding</strong>: Automatically updates the DOM when the data changes</li>
+      <li><strong>Component System</strong>: Similar to React but with a simpler API</li>
+      <li><strong>Template-Based Syntax</strong>: Familiar HTML-based syntax with directive extensions</li>
+      <li><strong>Flexible Integration</strong>: Can be used for small parts of a project or full-fledged SPAs</li>
+    </ul>
+    <p>Vue is known for its gentle learning curve and is ideal for developers who prefer flexibility and simplicity. It's used by companies like GitLab, Alibaba, and Xiaomi.</p>
+
+    <h3>3. Angular: The Full-Fledged Framework</h3>
+    <p><strong>Angular</strong>, developed by Google, is a complete framework for building complex web applications. Its key features include:</p>
+    <ul>
+      <li><strong>Two-Way Data Binding</strong>: Synchronous data between model and view</li>
+      <li><strong>Dependency Injection</strong>: Facilitates reusable and testable code</li>
+      <li><strong>TypeScript Integration</strong>: Provides type safety and advanced features</li>
+      <li><strong>Complete Ecosystem</strong>: Includes routing, forms, HTTP clients, and more</li>
+    </ul>
+    <p>Angular is suited for large-scale enterprise applications and is used by companies like PayPal, Microsoft, and Upwork.</p>
+
+    <h3>Choosing the Right Framework</h3>
+    <p>Selecting the right framework depends on your project requirements, team expertise, and long-term maintainability. Here's a quick comparison:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Criteria</th>
+          <th>React</th>
+          <th>Vue</th>
+          <th>Angular</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Learning Curve</td>
+          <td>Moderate</td>
+          <td>Easy</td>
+          <td>Steep</td>
+        </tr>
+        <tr>
+          <td>Performance</td>
+          <td>Excellent</td>
+          <td>Very Good</td>
+          <td>Good</td>
+        </tr>
+        <tr>
+          <td>Flexibility</td>
+          <td>High</td>
+          <td>Very High</td>
+          <td>Structured</td>
+        </tr>
+        <tr>
+          <td>Ecosystem</td>
+          <td>Large</td>
+          <td>Growing</td>
+          <td>Comprehensive</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Consider these factors when choosing a framework:</p>
+    <ul>
+      <li><strong>Project Size</strong>: Angular for large applications, Vue for quick projects</li>
+      <li><strong>Team Expertise</strong>: React has a high demand for developers</li>
+      <li><strong>Performance Needs</strong>: React offers the best performance</li>
+      <li><strong>Long-Term Support</strong>: Angular has enterprise backing</li>
+    </ul>
+
+    <h3>Getting Started with Each Framework</h3>
+    <h4>React</h4>
+    <p>To begin with React:</p>
+    <code>
+    npx create-react-app my-app<br>
+    cd my-app<br>
+    npm start
+    </code>
+
+    <h4>Vue</h4>
+    <p>To start with Vue:</p>
+    <code>
+    npm install -g @vue/cli<br>
+    vue create my-project<br>
+    cd my-project<br>
+    npm run serve
+    </code>
+
+    <h4>Angular</h4>
+    <p>To set up Angular:</p>
+    <code>
+    npm install -g @angular/cli<br>
+    ng new my-angular-app<br>
+    cd my-angular-app<br>
+    ng serve
+    </code>
+
+    <h3>Best Practices for JavaScript Frameworks</h3>
+    <p>Regardless of the framework, follow these best practices:</p>
+    <ul>
+      <li>Componentize your code for reusability and maintainability</li>
+      <li>Use state management solutions (e.g., Redux, Vuex, NgRx) for complex state</li>
+      <li>Follow the framework's recommended project structure</li>
+      <li>Implement proper error handling and validation</li>
+      <li>Regularly update dependencies for security and performance</li>
+      <li>Optimize performance with code splitting, lazy loading, and efficient rendering</li>
+    </ul>
+
+    <h3>Future of JavaScript Frameworks</h3>
+    <p>JavaScript frameworks continue to evolve with exciting new features:</p>
+    <ul>
+      <li><strong>React</strong>: Server components, Suspense, and improved concurrency</li>
+      <li><strong>Vue</strong>: Composition API improvements and better TypeScript integration</li>
+      <li><strong>Angular</strong>: Standalone components, new control flow syntax, and improved performance</li>
+    </ul>
+    <p>Each framework is moving toward better performance, developer experience, and alignment with modern web standards.</p>
+
+    <p>Thanks for reading this guide on <strong>mastering JavaScript frameworks</strong>. Whether you're building your first app or optimizing your development workflow, choosing the right framework is a crucial decision that will impact your project's success. Experiment with each one and find what works best for you!</p>
+  `
+};
+
+    const suggestedBlogs = [
+      {
+        title: "Web Development Best Practices: A Guide for Modern Developers",
+        image: "../../blog-img/Web Development Best Practices.png",
+        link: "../blog-list/blog2.html",
+        description: "Discover industry-standard web development best practices to write clean, scalable, and high-performing code for modern websites and web apps."
+      },
+      {
+        title: "SEO Basics for Beginners",
+        image: "../blog-img/blog4-thumbnail.jpg",
+        link: "../blog-list/blog4.html",
+        description: "Understand the basics of SEO for better website visibility."
+      },
+      {
+        title: "Web Development Insights",
+        image: "../blog-img/blog1-image.png",
+        link: "../blog-list/blog1.html",
+        description: "Explore essential web development insights including HTML, CSS, JavaScript, SEO strategies, and performance optimization."
+      }
+    ];
+
+    // Function to handle "Continue Reading" functionality
+    const handleReadMore = () => {
+      const paragraphs = document.querySelectorAll('.content-container p');
+      const readMoreBtn = document.getElementById('readMoreBtn');
+
+      if (readMoreBtn.dataset.expanded === "false") {
+        paragraphs.forEach((p, index) => {
+          if (index >= 4) p.style.display = "block"; // Show remaining paragraphs
+        });
+        readMoreBtn.textContent = "Show Less";
+        readMoreBtn.dataset.expanded = "true";
+      } else {
+        paragraphs.forEach((p, index) => {
+          if (index >= 4) p.style.display = "none"; // Hide remaining paragraphs
+        });
+        readMoreBtn.textContent = "Continue Reading";
+        readMoreBtn.dataset.expanded = "false";
+      }
+    };
+
+    // Populate the blog content dynamically
+    const blogContent = document.getElementById('blogContent');
+    blogContent.innerHTML = `
+      <h1>${blogData.title}</h1>
+      <img src="${blogData.image}" alt="${blogData.title}" style="width: 100%; border-radius: 10px; margin-bottom: 1.5em;">
+      ${blogData.content}
+    `;
+
+    // Add "Continue Reading" button dynamically
+    const readMoreBtn = document.createElement('button');
+    readMoreBtn.id = 'readMoreBtn';
+    readMoreBtn.className = 'read-more-btn';
+    readMoreBtn.textContent = "Continue Reading";
+    readMoreBtn.dataset.expanded = "false";
+    readMoreBtn.addEventListener('click', handleReadMore);
+    blogContent.appendChild(readMoreBtn);
+
+    // Ensure only the first 4 paragraphs are visible initially
+    const paragraphs = document.querySelectorAll('.content-container p');
+    paragraphs.forEach((p, index) => {
+      if (index >= 4) p.style.display = "none"; // Hide paragraphs beyond the first 4
+    });
+
+    // Populate suggested blogs dynamically
+    const suggestedBlogsContainer = document.getElementById('suggestedBlogs');
+    const suggestedTitle = document.createElement('h2');
+    suggestedTitle.textContent = "Suggested Blogs";
+    suggestedBlogsContainer.prepend(suggestedTitle);
+    suggestedBlogs.forEach(blog => {
+      const blogCard = document.createElement('div');
+      blogCard.classList.add('blog-card');
+      blogCard.innerHTML = `
+        <img src="${blog.image}" alt="${blog.title}">
+        <div class="blog-card-content">
+          <h3>${blog.title}</h3>
+          <p>${blog.description}</p>
+          <a href="${blog.link}">Read More</a>
+        </div>
+      `;
+      suggestedBlogsContainer.appendChild(blogCard);
+    });
+
+    // Dark mode toggle (same as index.html)
+    const toggleMode = document.getElementById('toggleMode');
+    const body = document.body;
+    const darkIcon = document.getElementById('darkIcon');
+    const lightIcon = document.getElementById('lightIcon');
+
+    toggleMode.addEventListener('click', () => {
+      body.classList.toggle('light');
+      darkIcon.style.display = body.classList.contains('light') ? 'none' : 'inline';
+      lightIcon.style.display = body.classList.contains('light') ? 'inline' : 'none';
+    });
+
+    // Function to handle scroll animation
+    const handleScrollAnimation = () => {
+      const blogCards = document.querySelectorAll('.suggested-blogs .blog-card');
+      blogCards.forEach((card) => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 50) {
+          card.classList.add('visible'); // Add the 'visible' class when in view
+        }
+      });
+    };
+
+    // Attach scroll event listener
+    window.addEventListener('scroll', handleScrollAnimation);
+
+    // Trigger animation on page load
+    document.addEventListener('DOMContentLoaded', handleScrollAnimation);
+
+    const blogsData = [
+      {
+        title: "Web Development Insights",
+        image: "../blog-img/blog1-image.png",
+        link: "../blog-list/blog1.html",
+        description: "Explore essential web development insights including HTML, CSS, JavaScript, SEO strategies, and performance optimization."
+      },
+      {
+        title: "Web Development Best Practices: A Guide for Modern Developers",
+        image: "../../blog-img/Web Development Best Practices.png",
+        link: "../blog-list/blog2.html",
+        description: "Discover industry-standard web development best practices to write clean, scalable, and high-performing code for modern websites and web apps."
+      },
+      {
+        title: "Mastering JavaScript Frameworks: React, Vue, and Angular",
+        image: "../../blog-img/Mastering JavaScript Frameworks.png",
+        link: "../blog-list/blog3.html",
+        description: "Dive into popular JavaScript frameworks, including React, Vue, and Angular, and discover their ideal use cases for building dynamic web applications."
+      },
+      {
+        title: "SEO Basics for Beginners",
+        image: "../blog-img/blog4-thumbnail.jpg",
+        link: "../blog-list/blog4.html",
+        description: "Understand the basics of SEO for better website visibility."
+      }
+    ];
+
+    const searchInput = document.getElementById("searchInput");
+    const searchButton = document.getElementById("searchButton");
+    const searchResults = document.getElementById("searchResults");
+
+    // Function to handle search
+    const handleSearch = () => {
+      const query = searchInput.value.trim().toLowerCase();
+      searchResults.innerHTML = ""; // Clear previous results
+
+      if (!query) {
+        searchResults.style.display = "none";
+        return;
+      }
+
+      const filteredBlogs = blogsData.filter(blog =>
+        blog.title.toLowerCase().includes(query) ||
+        blog.description.toLowerCase().includes(query)
+      );
+
+      if (filteredBlogs.length > 0) {
+        filteredBlogs.forEach(blog => {
+          const blogCard = document.createElement("div");
+          blogCard.classList.add("blog-card");
+          blogCard.innerHTML = `
+            <img src="${blog.image}" alt="${blog.title}">
+            <div class="blog-card-content">
+              <h4>${blog.title}</h4>
+              <p>${blog.description}</p>
+              <a href="${blog.link}">Read More</a>
+            </div>
+          `;
+          searchResults.appendChild(blogCard);
+        });
+      } else {
+        searchResults.innerHTML = `
+          <p class="not-found">No blogs found for your search. You may like:</p>
+        `;
+        suggestedBlogs.forEach(blog => {
+          const blogCard = document.createElement("div");
+          blogCard.classList.add("blog-card");
+          blogCard.innerHTML = `
+            <img src="${blog.image}" alt="${blog.title}">
+            <div class="blog-card-content">
+              <h4>${blog.title}</h4>
+              <p>${blog.description}</p>
+              <a href="${blog.link}">Read More</a>
+            </div>
+          `;
+          searchResults.appendChild(blogCard);
+        });
+      }
+
+      searchResults.style.display = "block"; // Show results
+    };
+
+    // Attach event listener to the search button
+    searchButton.addEventListener("click", handleSearch);
+
+    // Trigger search on Enter key press
+    searchInput.addEventListener("keypress", event => {
+      if (event.key === "Enter") {
+        handleSearch();
+      }
+    });
+  </script>
+</body>
+</html>
