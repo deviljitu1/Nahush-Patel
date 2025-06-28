@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mastering JavaScript Frameworks: React, Vue, and Angular</title>
+  <link rel="stylesheet" href="style.css">
   <meta name="description" content="Learn how to master popular JavaScript frameworks like React, Vue, and Angular to build modern, dynamic web applications." />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -200,26 +201,47 @@
   `
 };
 
+    // Add a date property to each suggested blog
     const suggestedBlogs = [
       {
         title: "Web Development Best Practices: A Guide for Modern Developers",
         image: "../../blog-img/Web Development Best Practices.png",
         link: "../blog-list/blog2.html",
-        description: "Discover industry-standard web development best practices to write clean, scalable, and high-performing code for modern websites and web apps."
+        description: "Discover industry-standard web development best practices to write clean, scalable, and high-performing code for modern websites and web apps.",
+        date: "2024-06-10"
       },
       {
         title: "SEO Basics for Beginners",
         image: "../blog-img/blog4-thumbnail.jpg",
         link: "../blog-list/blog4.html",
-        description: "Understand the basics of SEO for better website visibility."
+        description: "Understand the basics of SEO for better website visibility.",
+        date: "2024-06-08"
       },
       {
         title: "Web Development Insights",
         image: "../blog-img/blog1-image.png",
         link: "../blog-list/blog1.html",
-        description: "Explore essential web development insights including HTML, CSS, JavaScript, SEO strategies, and performance optimization."
+        description: "Explore essential web development insights including HTML, CSS, JavaScript, SEO strategies, and performance optimization.",
+        date: "2024-06-05"
+      },
+      {
+        title: "5 Free AI Tools That Will Change Your Workflow",
+        image: "../../blog-img/ai-tools-thumbnail.png",
+        link: "../blog-list/5-free-ai-tools.html",
+        description: "Discover five powerful and free AI tools to boost your productivity and streamline your daily workflow.",
+        date: "2024-06-12"
+      },
+      {
+        title: "How to Build a Portfolio Website",
+        image: "../../blog-img/portfolio-website.png",
+        link: "../blog-list/portfolio-website.html",
+        description: "Step-by-step guide to building a modern, responsive portfolio website to showcase your work.",
+        date: "2024-06-03"
       }
     ];
+
+    // Sort suggested blogs by date descending (latest first)
+    suggestedBlogs.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     // Function to handle "Continue Reading" functionality
     const handleReadMore = () => {
@@ -264,11 +286,18 @@
       if (index >= 4) p.style.display = "none"; // Hide paragraphs beyond the first 4
     });
 
-    // Populate suggested blogs dynamically
+    // Populate suggested blogs dynamically (latest first)
     const suggestedBlogsContainer = document.getElementById('suggestedBlogs');
+    // Remove duplicate h2 if present
+    const oldH2 = suggestedBlogsContainer.querySelector('h2');
+    if (oldH2) oldH2.remove();
     const suggestedTitle = document.createElement('h2');
     suggestedTitle.textContent = "Suggested Blogs";
     suggestedBlogsContainer.prepend(suggestedTitle);
+
+    // Remove old blog cards if any
+    suggestedBlogsContainer.querySelectorAll('.blog-card').forEach(card => card.remove());
+
     suggestedBlogs.forEach(blog => {
       const blogCard = document.createElement('div');
       blogCard.classList.add('blog-card');
@@ -276,6 +305,7 @@
         <img src="${blog.image}" alt="${blog.title}">
         <div class="blog-card-content">
           <h3>${blog.title}</h3>
+          <p style="font-size:0.9em;color:#888;margin:0 0 0.5em 0;">${new Date(blog.date).toLocaleDateString()}</p>
           <p>${blog.description}</p>
           <a href="${blog.link}">Read More</a>
         </div>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>All Blog Posts | Nahush Patel</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  <link href="../css/blog-styles.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
 </head>
 <body>
   <!-- Reuse your navigation -->
@@ -23,19 +23,77 @@
 
   <div class="content-container">
     <h1>All Blog Posts</h1>
-    <div id="allBlogsContainer"></div>
+    <div id="allBlogsContainer">
+      <!--
+        Add your blog post cards here in the following format.
+        Update/add/remove cards as needed. The JS will read these and render the list dynamically.
+      -->
+      <div class="blog-card" data-title="5 Free AI Tools That Will Change Your Workflow" data-date="2024-06-12" data-link="5-free-ai-tools.html" data-image="../../blog-img/ai-tools-thumbnail.png" data-description="Discover five powerful and free AI tools to boost your productivity and streamline your daily workflow."></div>
+      <div class="blog-card" data-title="Web Development Best Practices: A Guide for Modern Developers" data-date="2024-06-10" data-link="blog2.html" data-image="../../blog-img/Web Development Best Practices.png" data-description="Discover industry-standard web development best practices to write clean, scalable, and high-performing code for modern websites and web apps."></div>
+      <div class="blog-card" data-title="SEO Basics for Beginners" data-date="2024-06-08" data-link="blog4.html" data-image="../blog-img/blog4-thumbnail.jpg" data-description="Understand the basics of SEO for better website visibility."></div>
+      <div class="blog-card" data-title="Web Development Insights" data-date="2024-06-05" data-link="blog1.html" data-image="../blog-img/blog1-image.png" data-description="Explore essential web development insights including HTML, CSS, JavaScript, SEO strategies, and performance optimization."></div>
+      <div class="blog-card" data-title="How to Build a Portfolio Website" data-date="2024-06-03" data-link="portfolio-website.html" data-image="../../blog-img/portfolio-website.png" data-description="Step-by-step guide to building a modern, responsive portfolio website to showcase your work."></div>
+      <!-- ...add more blog-card divs as needed... -->
+    </div>
   </div>
 
   <!-- Load the same JS file -->
   <script src="../js/blog-script.js"></script>
-  
-  <!-- Initialize listing -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Dynamically render blog cards from the data attributes in #allBlogsContainer
+      function renderAllBlogs() {
+        const container = document.getElementById('allBlogsContainer');
+        // Get all .blog-card divs with data attributes
+        const cards = Array.from(container.querySelectorAll('.blog-card'));
+        // Map to objects
+        const blogs = cards.map(card => ({
+          title: card.getAttribute('data-title'),
+          date: card.getAttribute('data-date'),
+          link: card.getAttribute('data-link'),
+          image: card.getAttribute('data-image'),
+          description: card.getAttribute('data-description')
+        }));
+        // Sort by date descending
+        blogs.sort((a, b) => new Date(b.date) - new Date(a.date));
+        // Clear container
+        container.innerHTML = '';
+        // Render cards
+        blogs.forEach(blog => {
+          const blogCard = document.createElement('div');
+          blogCard.className = 'blog-card';
+          blogCard.innerHTML = `
+            <img src="${blog.image}" alt="${blog.title}">
+            <div class="blog-card-content">
+              <h3>${blog.title}</h3>
+              <p style="font-size:0.9em;color:#888;margin:0 0 0.5em 0;">
+                <i class="fa-regular fa-calendar"></i>
+                Posted on ${new Date(blog.date).toLocaleDateString()} by
+                <a href="https://www.linkedin.com/in/nahush-patel/" target="_blank" style="color:#4cc9f0;text-decoration:underline;">Nahush Patel</a>
+              </p>
+              <p>${blog.description}</p>
+              <a href="${blog.link}">Read More</a>
+            </div>
+          `;
+          container.appendChild(blogCard);
+        });
+      }
+
+      function setupDarkModeToggle() {
+        const toggle = document.getElementById('toggleMode');
+        const body = document.body;
+        const darkIcon = document.getElementById('darkIcon');
+        const lightIcon = document.getElementById('lightIcon');
+        toggle.addEventListener('click', () => {
+          body.classList.toggle('light');
+          darkIcon.style.display = body.classList.contains('light') ? 'none' : 'inline';
+          lightIcon.style.display = body.classList.contains('light') ? 'inline' : 'none';
+        });
+      }
+
       renderAllBlogs();
       setupDarkModeToggle();
     });
-    
   </script>
 </body>
 </html>
