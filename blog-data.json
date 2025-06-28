@@ -1,5 +1,5 @@
 {
-  "last_updated": "2025-06-28T19:18:58.473996",
+  "last_updated": "2025-06-28T19:24:56.876877",
   "total_blogs": 13,
   "blogs": [
     {
@@ -10,7 +10,7 @@
       "published_date": "06/28/2025",
       "published_time": "07:12 PM",
       "filename": "mastering-react-hooks-complete-guide-2025",
-      "link": "blog-list/mastering-react-hooks-complete-guide-2025.html"
+      "link": "mastering-react-hooks-complete-guide-2025.html"
     },
     {
       "title": "Best AI Tools for Web Developers in 2025",
@@ -20,7 +20,7 @@
       "published_date": "06/28/2025",
       "published_time": "07:00 PM",
       "filename": "best-ai-tools-for-web-developers-2025",
-      "link": "blog-list/best-ai-tools-for-web-developers-2025.html"
+      "link": "best-ai-tools-for-web-developers-2025.html"
     },
     {
       "title": "Advanced CSS Techniques for Modern Web Design 2025",
@@ -30,7 +30,7 @@
       "published_date": "06/28/2025",
       "published_time": "06:31 PM",
       "filename": "advanced-css-techniques-modern-web-design-2025",
-      "link": "blog-list/advanced-css-techniques-modern-web-design-2025.html"
+      "link": "advanced-css-techniques-modern-web-design-2025.html"
     },
     {
       "title": "Top JavaScript Frameworks to Learn in 2025",
@@ -40,7 +40,7 @@
       "published_date": "06/28/2025",
       "published_time": "05:54 PM",
       "filename": "top-javascript-frameworks-to-learn-2025",
-      "link": "blog-list/top-javascript-frameworks-to-learn-2025.html"
+      "link": "top-javascript-frameworks-to-learn-2025.html"
     },
     {
       "title": "Complete Guide to CSS Grid Layout in 2025 | Nahush Patel",
@@ -50,7 +50,7 @@
       "published_date": "06/28/2025",
       "published_time": "05:31 PM",
       "filename": "blog11",
-      "link": "blog-list/blog11.html"
+      "link": "blog11.html"
     },
     {
       "title": "Web Development Insights: Learn HTML, CSS, JavaScript & SEO Tips",
@@ -60,7 +60,7 @@
       "published_date": "06/28/2025",
       "published_time": "05:16 PM",
       "filename": "blog10",
-      "link": "blog-list/blog10.html"
+      "link": "blog10.html"
     },
     {
       "title": "Web Development Insights: Learn HTML, CSS, JavaScript & SEO Tips",
@@ -70,7 +70,7 @@
       "published_date": "06/28/2025",
       "published_time": "05:05 PM",
       "filename": "blog6",
-      "link": "blog-list/blog6.html"
+      "link": "blog6.html"
     },
     {
       "title": "Mastering JavaScript Frameworks: React, Vue, and Angular",
@@ -80,7 +80,7 @@
       "published_date": "06/28/2025",
       "published_time": "04:39 PM",
       "filename": "5-free-ai-tools",
-      "link": "blog-list/5-free-ai-tools.html"
+      "link": "5-free-ai-tools.html"
     },
     {
       "title": "Web Development Insights: Learn HTML, CSS, JavaScript & SEO Tips",
@@ -90,7 +90,7 @@
       "published_date": "06/28/2025",
       "published_time": "04:39 PM",
       "filename": "blog1",
-      "link": "blog-list/blog1.html"
+      "link": "blog1.html"
     },
     {
       "title": "How AI is Revolutionizing Web Development | Nahush Patel",
@@ -100,7 +100,7 @@
       "published_date": "05/14/2025",
       "published_time": "07:12 PM",
       "filename": "blog5",
-      "link": "blog-list/blog5.html"
+      "link": "blog5.html"
     },
     {
       "title": "SEO Fundamentals Every Developer Should Know | Nahush Patel",
@@ -110,7 +110,7 @@
       "published_date": "05/08/2025",
       "published_time": "08:31 AM",
       "filename": "blog4",
-      "link": "blog-list/blog4.html"
+      "link": "blog4.html"
     },
     {
       "title": "Mastering JavaScript Frameworks: Choosing the Right Tool for Your Web Projects",
@@ -120,7 +120,7 @@
       "published_date": "05/03/2025",
       "published_time": "07:05 PM",
       "filename": "blog3",
-      "link": "blog-list/blog3.html"
+      "link": "blog3.html"
     },
     {
       "title": "Web Development Best Practices: Build Scalable, High-Performing Websites",
@@ -130,7 +130,7 @@
       "published_date": "05/03/2025",
       "published_time": "07:05 PM",
       "filename": "blog2",
-      "link": "blog-list/blog2.html"
+      "link": "blog2.html"
     }
   ]
 }

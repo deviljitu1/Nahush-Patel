@@ -264,8 +264,10 @@ class SEOBlogGenerator:
         const response = await fetch('../blog-data.json');
         const data = await response.json();
         
+        // Get current blog slug dynamically
+        const currentBlogSlug = window.location.pathname.split('/').pop().replace('.html', '');
+        
         // Filter out the current blog and get the latest 3 blogs
-        const currentBlogSlug = '{topic['slug']}';
         const filteredBlogs = data.blogs
           .filter(blog => !blog.filename.includes(currentBlogSlug))
           .slice(0, 3);

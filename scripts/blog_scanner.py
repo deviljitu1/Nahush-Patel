@@ -96,7 +96,7 @@ def extract_metadata_from_html(file_path):
             "published_date": published_date,
             "published_time": published_time,
             "filename": Path(file_path).stem,
-            "link": f"blog-list/{Path(file_path).stem}.html",
+            "link": f"{Path(file_path).stem}.html",
             "creation_time": ctime,  # For sorting by creation date
             "modification_time": mtime  # For sorting by modification date
         }
