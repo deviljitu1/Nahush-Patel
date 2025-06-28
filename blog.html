@@ -1310,47 +1310,7 @@
     <h2><span class="name-gradient blinking-underline">Latest Blogs</span></h2>
     <div id="searchResults" class="search-results"></div>
     <div class="blog-grid" id="blogGrid">
-      <!-- Static blog cards -->
-      <div class="blog-card">
-        <img src="blog-img/blog1-thumbnail.png" alt="Blog 1">
-        <div class="blog-card-content">
-          <h3>Web Development Insights</h3>
-          <p style="font-size:0.9em;color:#888;margin:0 0 0.5em 0;">
-            <i class="fa-regular fa-calendar"></i>
-            Posted on 06/05/2024 by
-            <a href="https://www.linkedin.com/in/nahush-patel/" target="_blank" style="color:#4cc9f0;text-decoration:underline;">Nahush Patel</a>
-          </p>
-          <p>Explore essential web development insights including HTML, CSS, JavaScript, SEO strategies, and performance optimization to build modern websites.</p>
-          <a href="blog-list/blog1.html" class="blog-btn">Read More</a>
-        </div>
-      </div>
-      <div class="blog-card">
-        <img src="blog-img/Web Development Best Practices.png" alt="Illustration showcasing HTML, CSS, JavaScript and coding best practices in web development">
-        <div class="blog-card-content">
-          <h3>Web Development Best Practices: A Guide for Modern Developers</h3>
-          <p style="font-size:0.9em;color:#888;margin:0 0 0.5em 0;">
-            <i class="fa-regular fa-calendar"></i>
-            Posted on 06/10/2024 by
-            <a href="https://www.linkedin.com/in/nahush-patel/" target="_blank" style="color:#4cc9f0;text-decoration:underline;">Nahush Patel</a>
-          </p>
-          <p>Discover industry-standard web development best practices to write clean, scalable, and high-performing code for modern websites and web apps.</p>
-          <a href="blog-list/blog2.html" class="blog-btn">Read More</a>
-        </div>
-      </div>
-      <div class="blog-card">
-        <img src="blog-img/Mastering JavaScript Frameworks.png" alt="Mastering JavaScript Frameworks">
-        <div class="blog-card-content">
-          <h3>Mastering JavaScript Frameworks</h3>
-          <p style="font-size:0.9em;color:#888;margin:0 0 0.5em 0;">
-            <i class="fa-regular fa-calendar"></i>
-            Posted on 06/12/2024 by
-            <a href="https://www.linkedin.com/in/nahush-patel/" target="_blank" style="color:#4cc9f0;text-decoration:underline;">Nahush Patel</a>
-          </p>
-          <p>Dive into popular JavaScript frameworks, including React, Vue, and Angular, and discover their ideal use cases for building dynamic web applications.</p>
-          <a href="blog-list/blog3.html" class="blog-btn">Read More</a>
-        </div>
-      </div>
-      <!-- ...existing code for dynamically loaded blogs... -->
+      <!-- Blog cards will be dynamically loaded here -->
     </div>
   </section>
 
@@ -1380,79 +1340,71 @@
       navLinks.classList.toggle('active');
     });
 
-    // Dynamic content for additional blogs
+    // Global variable to store blog data
+    let blogsData = [];
     const blogGrid = document.getElementById('blogGrid');
+    const searchInput = document.getElementById("searchInput");
+    const searchButton = document.getElementById("searchButton");
+    const searchResults = document.getElementById("searchResults");
 
-    const additionalBlogs = [
-      {
-        img: 'blog-img/blog4-thumbnail.jpg',
-        title: 'Blog Post 4',
-        description: 'A brief description of Blog Post 4 goes here.',
-        link: 'blog-list/blog4.html',
-        date: '04/25/2025'
-      },
-      {
-        img: 'blog-img/blog5-thumbnail.jpg',
-        title: 'Blog Post 5',
-        description: 'A brief description of Blog Post 5 goes here.',
-        link: 'blog-list/blog5.html',
-        date: '04/20/2025'
-      },
-      {
-        img: 'blog-img/blog6-thumbnail.jpg',
-        title: 'Blog Post 6',
-        description: 'A brief description of Blog Post 6 goes here.',
-        link: 'blog-list/blog6.html',
-        date: '04/15/2025'
-      },
-      {
-        img: 'blog-img/blog7-thumbnail.jpg',
-        title: 'Blog Post 7',
-        description: 'A brief description of Blog Post 7 goes here.',
-        link: 'blog-list/blog7.html',
-        date: '04/10/2025'
-      },
-      {
-        img: 'blog-img/blog8-thumbnail.jpg',
-        title: 'Blog Post 8',
-        description: 'A brief description of Blog Post 8 goes here.',
-        link: 'blog-list/blog8.html',
-        date: '04/05/2025'
-      },
-      {
-        img: 'blog-img/blog9-thumbnail.jpg',
-        title: 'Blog Post 9',
-        description: 'A brief description of Blog Post 9 goes here.',
-        link: 'blog-list/blog9.html',
-        date: '04/01/2025'
-      },
-      {
-        img: 'blog-img/blog10-thumbnail.jpg',
-        title: 'Blog Post 10',
-        description: 'A brief description of Blog Post 10 goes here.',
-        link: 'blog-list/blog10.html',
-        date: '03/28/2025'
-      },
-      {
-        img: 'blog-img/blog11-thumbnail.jpg',
-        title: 'Blog Post 11',
-        description: 'A brief description of Blog Post 11 goes here.',
-        link: 'blog-list/blog11.html',
-        date: '03/25/2025'
+    // Function to load blogs from JSON file
+    async function loadBlogs() {
+      try {
+        const response = await fetch('blog-data.json');
+        if (!response.ok) {
+          throw new Error('Failed to load blog data');
+        }
+        const data = await response.json();
+        blogsData = data.blogs;
+        displayBlogs(blogsData);
+        console.log(`Loaded ${blogsData.length} blogs from blog-data.json`);
+      } catch (error) {
+        console.error('Error loading blogs:', error);
+        // Fallback to static data if JSON loading fails
+        loadFallbackBlogs();
       }
-    ];
+    }
 
-    let blogsLoaded = 0; // Track the number of blogs loaded
-    const blogsPerScroll = 3; // Number of blogs to load per scroll
+    // Fallback function with static blog data
+    function loadFallbackBlogs() {
+      blogsData = [
+        {
+          title: "Web Development Insights",
+          image: "blog-img/blog1-thumbnail.png",
+          link: "blog-list/blog1.html",
+          description: "Explore essential web development insights including HTML, CSS, JavaScript, SEO strategies, and performance optimization.",
+          date: "06/28/2025",
+          excerpt: "Explore essential web development insights including HTML, CSS, JavaScript, SEO strategies, and performance optimization to build modern websites."
+        },
+        {
+          title: "Web Development Best Practices: A Guide for Modern Developers",
+          image: "blog-img/Web Development Best Practices.png",
+          link: "blog-list/blog2.html",
+          description: "Discover industry-standard web development best practices to write clean, scalable, and high-performing code for modern websites and web apps.",
+          date: "05/08/2025",
+          excerpt: "Discover industry-standard web development best practices to write clean, scalable, and high-performing code for modern websites and web apps."
+        },
+        {
+          title: "Mastering JavaScript Frameworks",
+          image: "blog-img/Mastering JavaScript Frameworks.png",
+          link: "blog-list/blog3.html",
+          description: "Dive into popular JavaScript frameworks, including React, Vue, and Angular, and discover their ideal use cases for building dynamic web applications.",
+          date: "05/07/2025",
+          excerpt: "Dive into popular JavaScript frameworks, including React, Vue, and Angular, and discover their ideal use cases for building dynamic web applications."
+        }
+      ];
+      displayBlogs(blogsData);
+    }
 
-    // Function to load more blogs dynamically
-    const loadMoreBlogs = () => {
-      const blogsToLoad = additionalBlogs.slice(blogsLoaded, blogsLoaded + blogsPerScroll);
-      blogsToLoad.forEach((blog, index) => {
+    // Function to display blogs
+    function displayBlogs(blogs) {
+      blogGrid.innerHTML = '';
+      
+      blogs.forEach((blog, index) => {
         const blogCard = document.createElement('div');
         blogCard.classList.add('blog-card');
         blogCard.innerHTML = `
-          <img src="${blog.img}" alt="${blog.title}">
+          <img src="${blog.image}" alt="${blog.title}" onerror="this.src='img/profile.png'">
           <div class="blog-card-content">
             <h3>${blog.title}</h3>
             <p style="font-size:0.9em;color:#888;margin:0 0 0.5em 0;">
@@ -1460,57 +1412,18 @@
               Posted on ${blog.date} by
               <a href="https://www.linkedin.com/in/nahush-patel/" target="_blank" style="color:#4cc9f0;text-decoration:underline;">Nahush Patel</a>
             </p>
-            <p>${blog.description}</p>
+            <p>${blog.excerpt || blog.description}</p>
             <a href="${blog.link}" class="blog-btn">Read More</a>
           </div>
         `;
         blogGrid.appendChild(blogCard);
+        
+        // Add animation delay for staggered appearance
         setTimeout(() => {
           blogCard.classList.add('visible');
         }, index * 150);
       });
-      blogsLoaded += blogsToLoad.length;
-      if (blogsLoaded >= additionalBlogs.length) {
-        window.removeEventListener('scroll', handleScroll);
-      }
-    };
-
-    // Scroll event handler
-    const handleScroll = () => {
-      console.log('Scroll event triggered'); // Debugging
-      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-      if (scrollTop + clientHeight >= scrollHeight - 10) {
-        loadMoreBlogs();
-      }
-    };
-
-    // Attach scroll event listener
-    window.addEventListener('scroll', handleScroll);
-
-    const blogsData = [
-      {
-        title: "Web Development Insights",
-        image: "blog-img/blog1-thumbnail.png",
-        link: "blog-list/blog1.html",
-        description: "Explore essential web development insights including HTML, CSS, JavaScript, SEO strategies, and performance optimization."
-      },
-      {
-        title: "Web Development Best Practices: A Guide for Modern Developers",
-        image: "blog-img/Web Development Best Practices.png",
-        link: "blog-list/blog2.html",
-        description: "Discover industry-standard web development best practices to write clean, scalable, and high-performing code for modern websites and web apps."
-      },
-      {
-        title: "Mastering JavaScript Frameworks",
-        image: "blog-img/Mastering JavaScript Frameworks.png",
-        link: "blog-list/blog3.html",
-        description: "Dive into popular JavaScript frameworks, including React, Vue, and Angular, and discover their ideal use cases for building dynamic web applications."
-      }
-    ];
-
-    const searchInput = document.getElementById("searchInput");
-    const searchButton = document.getElementById("searchButton");
-    const searchResults = document.getElementById("searchResults");
+    }
 
     // Function to handle search
     const handleSearch = () => {
@@ -1519,47 +1432,79 @@
 
       if (!query) {
         searchResults.style.display = "none";
+        displayBlogs(blogsData); // Show all blogs when search is cleared
         return;
       }
 
-      const filteredBlogs = blogsData.filter((blog, index, self) =>
-        (blog.title.toLowerCase().includes(query) ||
-          blog.description.toLowerCase().includes(query)) &&
-        self.findIndex(b => b.title === blog.title) === index // Avoid duplicates
+      const filteredBlogs = blogsData.filter(blog =>
+        blog.title.toLowerCase().includes(query) ||
+        (blog.excerpt && blog.excerpt.toLowerCase().includes(query)) ||
+        (blog.description && blog.description.toLowerCase().includes(query))
       );
 
       if (filteredBlogs.length > 0) {
+        searchResults.innerHTML = '<h3>Search Results:</h3>';
+        const resultsGrid = document.createElement('div');
+        resultsGrid.className = 'blog-grid';
+        
         filteredBlogs.forEach(blog => {
           const blogCard = document.createElement("div");
           blogCard.classList.add("blog-card");
           blogCard.innerHTML = `
-            <img src="${blog.image}" alt="${blog.title}">
+            <img src="${blog.image}" alt="${blog.title}" onerror="this.src='img/profile.png'">
             <div class="blog-card-content">
               <h3>${blog.title}</h3>
-              <p>${blog.description}</p>
+              <p style="font-size:0.9em;color:#888;margin:0 0 0.5em 0;">
+                <i class="fa-regular fa-calendar"></i>
+                Posted on ${blog.date} by
+                <a href="https://www.linkedin.com/in/nahush-patel/" target="_blank" style="color:#4cc9f0;text-decoration:underline;">Nahush Patel</a>
+              </p>
+              <p>${blog.excerpt || blog.description}</p>
               <a href="${blog.link}" class="blog-btn">Read More</a>
             </div>
           `;
-          searchResults.appendChild(blogCard);
+          resultsGrid.appendChild(blogCard);
         });
+        
+        searchResults.appendChild(resultsGrid);
+        blogGrid.style.display = "none"; // Hide main blog grid
       } else {
         searchResults.innerHTML = `
           <p class="not-found">No blogs found for your search. Please try again.</p>
         `;
+        blogGrid.style.display = "none"; // Hide main blog grid
       }
 
       searchResults.style.display = "block"; // Show results
     };
 
-    // Attach event listener to the search button
-    searchButton.addEventListener("click", handleSearch);
+    // Function to clear search and show all blogs
+    const clearSearch = () => {
+      searchInput.value = "";
+      searchResults.style.display = "none";
+      blogGrid.style.display = "grid";
+      displayBlogs(blogsData);
+    };
 
-    // Trigger search on Enter key press
+    // Attach event listeners
+    searchButton.addEventListener("click", handleSearch);
     searchInput.addEventListener("keypress", event => {
       if (event.key === "Enter") {
         handleSearch();
       }
     });
+
+    // Clear search when clicking outside search area
+    document.addEventListener('click', (event) => {
+      if (!searchInput.contains(event.target) && !searchButton.contains(event.target)) {
+        if (searchInput.value.trim() === '') {
+          clearSearch();
+        }
+      }
+    });
+
+    // Load blogs when page loads
+    document.addEventListener('DOMContentLoaded', loadBlogs);
   </script>
 </body>
 </html>
