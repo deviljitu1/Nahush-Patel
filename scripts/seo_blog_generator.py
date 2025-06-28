@@ -214,7 +214,7 @@ class SEOBlogGenerator:
   <div class="main-container">
     <div class="content-container" id="blogContent">
       <h1>Blog Post: {topic['title']}</h1>
-      <img src="blog-img/{topic['slug']}.png" alt="{topic['title']}" style="width: 100%; border-radius: 10px; margin-bottom: 1.5em;">
+      <img src="../blog-img/{topic['slug']}.png" alt="{topic['title']}" style="width: 100%; border-radius: 10px; margin-bottom: 1.5em;">
       {topic['content']}
     </div>
 
@@ -254,7 +254,7 @@ class SEOBlogGenerator:
     // Dynamic blog content
     const blogData = {{
       title: "{topic['title']}",
-      image: "blog-img/{topic['slug']}.png",
+      image: "../blog-img/{topic['slug']}.png",
       content: `{topic['content']}`
     }};
 

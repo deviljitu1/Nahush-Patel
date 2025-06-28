@@ -1,17 +1,23 @@
-name: Auto Tech Blog
+name: Auto Blog Generation
 on:
   schedule:
-    - cron: '0 18 * * 3' # Every Wednesday at 6PM UTC
-  workflow_dispatch:
+    # Run 3 times per week: Monday, Wednesday, Friday at 6 PM UTC
+    - cron: '0 18 * * 1'  # Monday
+    - cron: '0 18 * * 3'  # Wednesday  
+    - cron: '0 18 * * 5'  # Friday
+  workflow_dispatch:  # Allow manual trigger
 
 env:
   HF_TOKEN: ${{ secrets.HF_TOKEN }}
+  TOGETHER_API_KEY: ${{ secrets.TOGETHER_API_KEY }}
+  REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
 
 jobs:
-  generate:
+  generate-blog:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
       
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -21,35 +27,72 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests feedparser beautifulsoup4
+          pip install requests pillow
           
-      - name: Get Tech Trends
-        id: get-trends
+      - name: Generate blog with AI image
+        id: generate
         run: |
           cd scripts/
-          echo "TREND=$(python trends.py | grep -E '^[0-9]+\.' | head -1 | sed 's/^[0-9]\+\. //')" >> $GITHUB_OUTPUT
-          echo "Selected trend: ${{ steps.get-trends.outputs.TREND }}"
+          python automated_blog_system.py
           
-      - name: Generate Post
+      - name: Check if blog was generated
+        id: check
         run: |
-          mkdir -p _posts
-          DATE=$(date +'%Y-%m-%d')
-          TREND="${{ steps.get-trends.outputs.TREND }}"
-          FILENAME="_posts/$DATE-$(echo "$TREND" | tr ' ' '-' | tr -cd '[:alnum:]-').md"
+          if [ -f "../blog_generation_result.json" ]; then
+            echo "BLOG_GENERATED=true" >> $GITHUB_OUTPUT
+            echo "Blog was generated successfully"
+          else
+            echo "BLOG_GENERATED=false" >> $GITHUB_OUTPUT
+            echo "No blog scheduled for today"
+          fi
           
-          echo "---" > "$FILENAME"
-          echo "layout: post" >> "$FILENAME"
-          echo "title: \"$TREND\"" >> "$FILENAME"
-          echo "date: $DATE" >> "$FILENAME"
-          echo "---" >> "$FILENAME"
-          
-          python scripts/writer.py "$TREND" >> "$FILENAME"
-          echo "✅ Generated AI post: $FILENAME"
-          echo "POST_PATH=$FILENAME" >> $GITHUB_ENV
-
-      - name: Verify Output
+      - name: Commit and push if blog generated
+        if: steps.check.outputs.BLOG_GENERATED == 'true'
         run: |
-          echo "=== Generated Post Location ==="
-          echo "${{ env.POST_PATH }}"
-          echo "=== First 10 Lines ==="
-          head -n 10 "${{ env.POST_PATH }}"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          # Add all changes
+          git add .
+          
+          # Commit with descriptive message
+          if [ -f "blog_generation_result.json" ]; then
+            RESULT=$(cat blog_generation_result.json)
+            TITLE=$(echo $RESULT | jq -r '.title')
+            TYPE=$(echo $RESULT | jq -r '.type')
+            echo "🤖 Auto-generated $TYPE blog: $TITLE"
+            git commit -m "🤖 Auto-generated $TYPE blog: $TITLE"
+          else
+            git commit -m "🤖 Auto-generated blog post"
+          fi
+          
+          # Push to main branch
+          git push origin main
+          
+      - name: Create summary
+        if: steps.check.outputs.BLOG_GENERATED == 'true'
+        run: |
+          if [ -f "blog_generation_result.json" ]; then
+            echo "## 🎉 Blog Generated Successfully!" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### 📝 Blog Details:" >> $GITHUB_STEP_SUMMARY
+            RESULT=$(cat blog_generation_result.json)
+            echo "- **Title:** $(echo $RESULT | jq -r '.title')" >> $GITHUB_STEP_SUMMARY
+            echo "- **Type:** $(echo $RESULT | jq -r '.type')" >> $GITHUB_STEP_SUMMARY
+            echo "- **File:** $(echo $RESULT | jq -r '.filename')" >> $GITHUB_STEP_SUMMARY
+            echo "- **Image:** $(echo $RESULT | jq -r '.image')" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "🚀 Your blog is now live and SEO-ready!" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+      - name: No blog scheduled
+        if: steps.check.outputs.BLOG_GENERATED == 'false'
+        run: |
+          echo "## ⏰ No Blog Scheduled Today" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📅 **Schedule:**" >> $GITHUB_STEP_SUMMARY
+          echo "- **Monday:** Advanced blog with code examples" >> $GITHUB_STEP_SUMMARY
+          echo "- **Wednesday:** SEO-optimized blog" >> $GITHUB_STEP_SUMMARY
+          echo "- **Friday:** Simple daily blog" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Next scheduled blog will be generated automatically!" >> $GITHUB_STEP_SUMMARY

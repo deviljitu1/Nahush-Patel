@@ -40,9 +40,17 @@ def extract_metadata_from_html(file_path):
         if not image and img_matches:
             image = img_matches[0]
         
-        # Clean up image path (remove ../ if present)
+        # Clean up image path (ensure consistent format)
         if image.startswith('../'):
-            image = image[3:]
+            # Keep the ../blog-img/ format for consistency
+            pass
+        elif image.startswith('blog-img/'):
+            # Add ../ prefix for consistency
+            image = '../' + image
+        elif not image.startswith('http') and 'blog-img' in image:
+            # Ensure proper format for blog images
+            if not image.startswith('../'):
+                image = '../' + image
         
         # Get file creation and modification times
         ctime = os.path.getctime(file_path)  # Creation time
