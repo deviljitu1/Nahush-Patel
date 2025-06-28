@@ -1,41 +1,21 @@
 {
-  "last_updated": "2025-06-28T19:24:56.876877",
-  "total_blogs": 13,
+  "last_updated": "2025-06-28T21:05:45.737511",
+  "total_blogs": 4,
   "blogs": [
-    {
-      "title": "Mastering React Hooks: A Complete Guide for 2025",
-      "description": "Learn React Hooks from basics to advanced patterns. Master useState, useEffect, useContext, and custom hooks for modern React development.",
-      "excerpt": "Welcome to this comprehensive guide on React Hooks by Nahush Patel. React Hooks have revolutionized how we write functional components, making state management and side effects more intuitive and powe...",
-      "image": "../blog-img/mastering-react-hooks-complete-guide-2025.png",
-      "published_date": "06/28/2025",
-      "published_time": "07:12 PM",
-      "filename": "mastering-react-hooks-complete-guide-2025",
-      "link": "mastering-react-hooks-complete-guide-2025.html"
-    },
     {
       "title": "Best AI Tools for Web Developers in 2025",
       "description": "Discover the top AI tools that every web developer should use in 2025. From code generation to testing automation, these tools will revolutionize your workflow.",
       "excerpt": "Welcome to this comprehensive guide on AI tools for web developers by Nahush Patel. In today's rapidly evolving web development landscape, artificial intelligence has become an indispensable part of t...",
       "image": "../blog-img/best-ai-tools-for-web-developers-2025.png",
       "published_date": "06/28/2025",
-      "published_time": "07:00 PM",
+      "published_time": "09:05 PM",
       "filename": "best-ai-tools-for-web-developers-2025",
       "link": "best-ai-tools-for-web-developers-2025.html"
     },
     {
-      "title": "Advanced CSS Techniques for Modern Web Design 2025",
-      "description": "Master advanced CSS techniques including Grid, Flexbox, animations, and modern layout patterns for creating stunning web designs.",
-      "excerpt": "Welcome to this comprehensive guide on Advanced CSS Techniques by Nahush Patel. Modern web design requires mastery of advanced CSS features to create stunning, responsive, and performant websites.",
-      "image": "../blog-img/advanced-css-techniques-modern-web-design-2025.png",
-      "published_date": "06/28/2025",
-      "published_time": "06:31 PM",
-      "filename": "advanced-css-techniques-modern-web-design-2025",
-      "link": "advanced-css-techniques-modern-web-design-2025.html"
-    },
-    {
       "title": "Top JavaScript Frameworks to Learn in 2025",
-      "description": "Explore the most in-demand JavaScript frameworks for 2025. Learn which frameworks are worth your time and how to choose the right one for your projects.",
-      "excerpt": "Welcome to this comprehensive guide on JavaScript frameworks by Nahush Patel. In today's rapidly evolving web development landscape, choosing the right JavaScript framework is crucial for building mod...",
+      "description": "Explore the top JavaScript frameworks to learn in 2025. Discover which frameworks are most in-demand and how to choose the right one for your projects.",
+      "excerpt": "Welcome to this expert guide on JavaScript frameworks for 2025 by Nahush Patel. Discover the most in-demand frameworks and how to choose the best one for your needs.",
       "image": "../blog-img/top-javascript-frameworks-to-learn-2025.png",
       "published_date": "06/28/2025",
       "published_time": "05:54 PM",
@@ -43,40 +23,10 @@
       "link": "top-javascript-frameworks-to-learn-2025.html"
     },
     {
-      "title": "Complete Guide to CSS Grid Layout in 2025 | Nahush Patel",
-      "description": "Learn how to create responsive, flexible layouts using CSS Grid. Master modern web design techniques for better user experiences.",
-      "excerpt": "Welcome to this comprehensive guide on Complete Guide to CSS Grid Layout in 2025 by Nahush Patel. In today's rapidly evolving web development landscape, staying updated with the latest techniques and ...",
-      "image": "../blog-img/blog11-image.png",
-      "published_date": "06/28/2025",
-      "published_time": "05:31 PM",
-      "filename": "blog11",
-      "link": "blog11.html"
-    },
-    {
-      "title": "Web Development Insights: Learn HTML, CSS, JavaScript & SEO Tips",
-      "description": "Gain practical web development insights covering HTML, CSS, JavaScript, SEO techniques, and performance best practices to build responsive and fast websites.",
-      "excerpt": "Welcome to Blog Post 1 by Nahush Patel, where we delve into the world of web development. In this post, we explore essential tips and techniques for creating responsive, user-friendly websites.",
-      "image": "../blog-img/blog1-image.png",
-      "published_date": "06/28/2025",
-      "published_time": "05:16 PM",
-      "filename": "blog10",
-      "link": "blog10.html"
-    },
-    {
-      "title": "Web Development Insights: Learn HTML, CSS, JavaScript & SEO Tips",
-      "description": "Gain practical web development insights covering HTML, CSS, JavaScript, SEO techniques, and performance best practices to build responsive and fast websites.",
-      "excerpt": "Welcome to Blog Post 1 by Nahush Patel, where we delve into the world of web development. In this post, we explore essential tips and techniques for creating responsive, user-friendly websites.",
-      "image": "../blog-img/blog1-image.png",
-      "published_date": "06/28/2025",
-      "published_time": "05:05 PM",
-      "filename": "blog6",
-      "link": "blog6.html"
-    },
-    {
       "title": "Mastering JavaScript Frameworks: React, Vue, and Angular",
       "description": "Learn how to master popular JavaScript frameworks like React, Vue, and Angular to build modern, dynamic web applications.",
       "excerpt": "ks. In this post, we'll explore React, Vue, and Angular to help you choose the right tool for your next web development project.",
-      "image": "../../blog-img/Mastering JavaScript Frameworks.png",
+      "image": "../blog-img/Mastering JavaScript Frameworks.png",
       "published_date": "06/28/2025",
       "published_time": "04:39 PM",
       "filename": "5-free-ai-tools",
@@ -86,51 +36,11 @@
       "title": "Web Development Insights: Learn HTML, CSS, JavaScript & SEO Tips",
       "description": "Gain practical web development insights covering HTML, CSS, JavaScript, SEO techniques, and performance best practices to build responsive and fast websites.",
       "excerpt": "Welcome to Blog Post 1 by Nahush Patel, where we delve into the world of web development. In this post, we explore essential tips and techniques for creating responsive, user-friendly websites.",
-      "image": "../blog-img/blog1-image.png",
+      "image": "../blog-img/top-javascript-frameworks-to-learn-2025.png",
       "published_date": "06/28/2025",
       "published_time": "04:39 PM",
       "filename": "blog1",
       "link": "blog1.html"
-    },
-    {
-      "title": "How AI is Revolutionizing Web Development | Nahush Patel",
-      "description": "Discover how AI tools like GitHub Copilot, ChatGPT, and AI-powered testing are transforming modern web development workflows.",
-      "excerpt": "The integration of Artificial Intelligence in web development is no longer futuristic—it's here. As a developer, understanding these tools can give you a competitive edge. Here's how AI is changing ou...",
-      "image": "../blog-img/copilot-demo.gif",
-      "published_date": "05/14/2025",
-      "published_time": "07:12 PM",
-      "filename": "blog5",
-      "link": "blog5.html"
-    },
-    {
-      "title": "SEO Fundamentals Every Developer Should Know | Nahush Patel",
-      "description": "Essential SEO techniques for web developers to improve site visibility and ranking. Learn technical SEO, on-page optimization, and performance best practices.",
-      "excerpt": "As developers, we often focus on functionality while overlooking how easily our sites can be discovered. In this guide, I'll share essential SEO techniques that should be part of every developer's too...",
-      "image": "../img/moon-icon.png",
-      "published_date": "05/08/2025",
-      "published_time": "08:31 AM",
-      "filename": "blog4",
-      "link": "blog4.html"
-    },
-    {
-      "title": "Mastering JavaScript Frameworks: Choosing the Right Tool for Your Web Projects",
-      "description": "Mastering JavaScript Frameworks: Choosing the Right Tool for Your Web Projects. Explore the strengths of React, Vue, and Angular to make informed decisions for your web development projects.",
-      "excerpt": "Welcome to this comprehensive guide on JavaScript frameworks by Nahush Patel. JavaScript has become the backbone of modern web applications, and frameworks like React, Vue, and Angular have revolution...",
-      "image": "../blog-img/Mastering JavaScript Frameworks.png",
-      "published_date": "05/03/2025",
-      "published_time": "07:05 PM",
-      "filename": "blog3",
-      "link": "blog3.html"
-    },
-    {
-      "title": "Web Development Best Practices: Build Scalable, High-Performing Websites",
-      "description": "Learn essential web development best practices for writing clean, responsive, and secure code. Improve performance, accessibility, SEO, and maintainability in your projects.",
-      "excerpt": "Welcome to this in-depth guide on web development best practices by Nahush Patel. In this blog, we explore essential strategies and techniques for creating fast, responsive, and user-centric websites ...",
-      "image": "../blog-img/Web Development Best Practices.png",
-      "published_date": "05/03/2025",
-      "published_time": "07:05 PM",
-      "filename": "blog2",
-      "link": "blog2.html"
     }
   ]
 }

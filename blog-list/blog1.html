@@ -24,7 +24,7 @@
   <div class="main-container">
     <div class="content-container" id="blogContent">
       <h1>Blog Post 1: Web Development Insights</h1>
-      <img src="blog-img/blog1-image.png" alt="Web Development Insights" style="width: 100%; border-radius: 10px; margin-bottom: 1.5em;">
+      <img src="blog-img/top-javascript-frameworks-to-learn-2025.png" alt="Web Development Insights" style="width: 100%; border-radius: 10px; margin-bottom: 1.5em;">
       <p>Welcome to Blog Post 1 by Nahush Patel, where we delve into the world of web development. In this post, we explore essential tips and techniques for creating responsive, user-friendly websites.</p>
       <p>Web development is a dynamic field that requires continuous learning. From mastering HTML, CSS, and JavaScript to understanding frameworks like React and Angular, staying updated is crucial for success.</p>
       <p>Additionally, we discuss the importance of SEO (Search Engine Optimization) in driving traffic to your website. Implementing SEO-friendly practices, such as optimizing meta tags and using relevant keywords, can significantly improve your site's visibility.</p>
@@ -68,7 +68,7 @@
     // Dynamic blog content
     const blogData = {
   title: "Web Development Insights",
-  image: "../blog-img/blog1-image.png",
+  image: "../blog-img/top-javascript-frameworks-to-learn-2025.png",
   content: `
     <p>Welcome to this expert guide on <strong>web development insights</strong> by Nahush Patel. In this post, we uncover fundamental and advanced techniques for building <strong>responsive</strong>, <strong>user-friendly</strong>, and <strong>high-performance websites</strong> using modern tools and technologies.</p>
 
@@ -102,26 +102,34 @@
 
 
 
-    const suggestedBlogs = [
-      {
-        title: "Web Development Best Practices: A Guide for Modern Developers",
-        image: "../../blog-img/Web Development Best Practices.png",
-        link: "../blog-list/blog2.html", 
-        description: "Discover industry-standard web development best practices to write clean, scalable, and high-performing code for modern websites and web apps."
-      },
-      {
-        title: "Mastering JavaScript Frameworks",
-        image: "../../blog-img/Mastering JavaScript Frameworks.png",
-        link: "../blog-list/blog3.html",
-        description: "Dive into popular JavaScript frameworks, including React, Vue, and Angular, and discover their ideal use cases for building dynamic web applications."
-      },
-      {
-        title: "Blog Post 4",
-        image: "../blog-img/blog4-thumbnail.jpg",
-        link: "../blog-list/blog4.html",
-        description: "Understand the basics of SEO for better website visibility."
+    // Add dynamic loader for suggested blogs
+    const loadSuggestedBlogs = async () => {
+      try {
+        const response = await fetch('../blog-data.json');
+        const data = await response.json();
+        const currentBlogSlug = 'blog1';
+        const filteredBlogs = data.blogs.filter(blog => !blog.filename.includes(currentBlogSlug)).slice(0, 3);
+        const suggestedBlogsContainer = document.getElementById('suggestedBlogs');
+        // Clear existing suggested blogs
+        suggestedBlogsContainer.querySelectorAll('.blog-card').forEach(card => card.remove());
+        // Add new suggested blogs
+        filteredBlogs.forEach(blog => {
+          const blogCard = document.createElement('div');
+          blogCard.classList.add('blog-card');
+          blogCard.innerHTML = `
+            <img src="${blog.image}" alt="${blog.title}">
+            <div class="blog-card-content">
+              <h3>${blog.title}</h3>
+              <p>${blog.description}</p>
+              <a href="../blog-list/${blog.link}">Read More</a>
+            </div>
+          `;
+          suggestedBlogsContainer.appendChild(blogCard);
+        });
+      } catch (error) {
+        console.error('Error loading suggested blogs:', error);
       }
-    ];
+    };
 
     // Function to handle "Continue Reading" functionality
     const handleReadMore = () => {
@@ -166,22 +174,6 @@
       if (index >= 4) p.style.display = "none"; // Hide paragraphs beyond the first 4
     });
 
-    // Populate suggested blogs dynamically
-    const suggestedBlogsContainer = document.getElementById('suggestedBlogs');
-    suggestedBlogs.forEach(blog => {
-      const blogCard = document.createElement('div');
-      blogCard.classList.add('blog-card');
-      blogCard.innerHTML = `
-        <img src="${blog.image}" alt="${blog.title}">
-        <div class="blog-card-content">
-          <h3>${blog.title}</h3>
-          <p>${blog.description}</p>
-          <a href="${blog.link}">Read More</a>
-        </div>
-      `;
-      suggestedBlogsContainer.appendChild(blogCard);
-    });
-
     // Dark mode toggle (same as index.html)
     const toggleMode = document.getElementById('toggleMode');
     const body = document.body;
@@ -209,32 +201,35 @@
     window.addEventListener('scroll', handleScrollAnimation);
 
     // Trigger animation on page load
-    document.addEventListener('DOMContentLoaded', handleScrollAnimation);
+    document.addEventListener('DOMContentLoaded', () => {
+      loadSuggestedBlogs();
+      handleScrollAnimation();
+    });
 
     const blogsData = [
       {
         title: "Web Development Insights",
-        image: "../blog-img/blog1-image.png",
+        image: "../blog-img/top-javascript-frameworks-to-learn-2025.png",
         link: "../blog-list/blog1.html",
         description: "Explore essential web development insights including HTML, CSS, JavaScript, SEO strategies, and performance optimization."
       },
       {
-        title: "Web Development Best Practices: A Guide for Modern Developers",
-        image: "../../blog-img/Web Development Best Practices.png",
-        link: "../blog-list/blog2.html",
-        description: "Discover industry-standard web development best practices to write clean, scalable, and high-performing code for modern websites and web apps."
+        title: "Best AI Tools for Web Developers in 2025",
+        image: "../blog-img/best-ai-tools-for-web-developers-2025.png",
+        link: "../blog-list/top-javascript-frameworks-to-learn-2025.html",
+        description: "Discover the top AI tools that every web developer should use in 2025. From code generation to testing automation, these tools will revolutionize your workflow."
       },
       {
-        title: "Mastering JavaScript Frameworks",
-        image: "../../blog-img/Mastering JavaScript Frameworks.png",
-        link: "../blog-list/blog3.html",
-        description: "Dive into popular JavaScript frameworks, including React, Vue, and Angular, and discover their ideal use cases for building dynamic web applications."
+        title: "Mastering JavaScript Frameworks: React, Vue, and Angular",
+        image: "../blog-img/Mastering JavaScript Frameworks.png",
+        link: "../blog-list/5-free-ai-tools.html",
+        description: "Learn how to master popular JavaScript frameworks like React, Vue, and Angular to build modern, dynamic web applications."
       },
       {
-        title: "SEO Basics for Beginners",
-        image: "../blog-img/blog4-thumbnail.jpg",
-        link: "../blog-list/blog4.html",
-        description: "Understand the basics of SEO for better website visibility."
+        title: "Advanced CSS Techniques for Modern Web Design 2025",
+        image: "../blog-img/advanced-css-techniques-modern-web-design-2025.png",
+        link: "../blog-list/top-javascript-frameworks-to-learn-2025.html",
+        description: "Master advanced CSS techniques for modern web design in 2025. Learn about Grid, Flexbox, animations, and layout patterns for stunning, responsive websites."
       }
     ];
 
@@ -275,19 +270,7 @@
         searchResults.innerHTML = `
           <p class="not-found">No blogs found for your search. You may like:</p>
         `;
-        suggestedBlogs.forEach(blog => {
-          const blogCard = document.createElement("div");
-          blogCard.classList.add("blog-card");
-          blogCard.innerHTML = `
-            <img src="${blog.image}" alt="${blog.title}">
-            <div class="blog-card-content">
-              <h4>${blog.title}</h4>
-              <p>${blog.description}</p>
-              <a href="${blog.link}">Read More</a>
-            </div>
-          `;
-          searchResults.appendChild(blogCard);
-        });
+        loadSuggestedBlogs();
       }
 
       searchResults.style.display = "block"; // Show results

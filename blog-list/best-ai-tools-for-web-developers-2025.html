@@ -44,8 +44,8 @@
     "name": "Nahush Patel",
     "url": "https://nahushpatel.in"
   },
-  "datePublished": "2025-06-28T19:05:57",
-  "dateModified": "2025-06-28T19:05:57",
+  "datePublished": "2025-06-28T21:05:44",
+  "dateModified": "2025-06-28T21:05:44",
   "mainEntity": {
     "@type": "HowTo",
     "name": "Best AI Tools for Web Developers in 2025",
@@ -108,7 +108,7 @@
   <div class="main-container">
     <div class="content-container" id="blogContent">
       <h1>Blog Post: Best AI Tools for Web Developers in 2025</h1>
-      <img src="blog-img/best-ai-tools-for-web-developers-2025.png" alt="Best AI Tools for Web Developers in 2025" style="width: 100%; border-radius: 10px; margin-bottom: 1.5em;">
+      <img src="../blog-img/best-ai-tools-for-web-developers-2025.png" alt="Best AI Tools for Web Developers in 2025" style="width: 100%; border-radius: 10px; margin-bottom: 1.5em;">
       
                 <p>Welcome to this comprehensive guide on <strong>AI tools for web developers</strong> by Nahush Patel. In today's rapidly evolving web development landscape, artificial intelligence has become an indispensable part of the development workflow.</p>
 
@@ -170,7 +170,7 @@
     // Dynamic blog content
     const blogData = {
       title: "Best AI Tools for Web Developers in 2025",
-      image: "blog-img/best-ai-tools-for-web-developers-2025.png",
+      image: "../blog-img/best-ai-tools-for-web-developers-2025.png",
       content: `
                 <p>Welcome to this comprehensive guide on <strong>AI tools for web developers</strong> by Nahush Patel. In today's rapidly evolving web development landscape, artificial intelligence has become an indispensable part of the development workflow.</p>
 
@@ -202,8 +202,10 @@
         const response = await fetch('../blog-data.json');
         const data = await response.json();
         
+        // Get current blog slug dynamically
+        const currentBlogSlug = window.location.pathname.split('/').pop().replace('.html', '');
+        
         // Filter out the current blog and get the latest 3 blogs
-        const currentBlogSlug = 'best-ai-tools-for-web-developers-2025';
         const filteredBlogs = data.blogs
           .filter(blog => !blog.filename.includes(currentBlogSlug))
           .slice(0, 3);

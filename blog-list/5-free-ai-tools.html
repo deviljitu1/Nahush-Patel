@@ -24,7 +24,7 @@
   <div class="main-container">
     <div class="content-container" id="blogContent">
       <h1>Blog Post 2: Mastering JavaScript Frameworks</h1>
-      <img src="../../blog-img/Mastering JavaScript Frameworks.png" alt="Mastering JavaScript Frameworks" style="width: 100%; border-radius: 10px; margin-bottom: 1.5em;">
+      <img src="../blog-img/Mastering JavaScript Frameworks.png" alt="Mastering JavaScript Frameworks" style="width: 100%; border-radius: 10px; margin-bottom: 1.5em;">
       <p>ks. In this post, we'll explore React, Vue, and Angular to help you choose the right tool for your next web development project.</p>
       <p>JavaScript frameworks have revolutionized front-end development by providing structured approaches to building dynamic user interfaces. Understanding their core concepts, strengths, and use cases will empower you to create robust web applications.</p>
       <p>We'll compare React's component-based architecture with Vue's progressive framework approach and Angular's comprehensive full-stack capabilities. By the end of this guide, you'll have a clear perspective on which framework best suits your development needs.</p>
@@ -67,7 +67,7 @@
     // Dynamic blog content
     const blogData = {
   title: "Mastering JavaScript Frameworks: React, Vue, and Angular",
-  image: "../../blog-img/Mastering JavaScript Frameworks.png",
+  image: "../blog-img/Mastering JavaScript Frameworks.png",
   content: `
     <p>Welcome to this comprehensive guide on <strong>mastering JavaScript frameworks</strong> by Nahush Patel. Whether you're a beginner or an experienced developer, this guide will help you understand the key differences and benefits of <strong>React</strong>, <strong>Vue</strong>, and <strong>Angular</strong> to make informed decisions for your web development projects.</p>
 
@@ -205,8 +205,8 @@
     const suggestedBlogs = [
       {
         title: "Web Development Best Practices: A Guide for Modern Developers",
-        image: "../../blog-img/Web Development Best Practices.png",
-        link: "../blog-list/blog2.html",
+        image: "../blog-img/Web Development Best Practices.png",
+        link: "../blog-list/top-javascript-frameworks-to-learn-2025.html",
         description: "Discover industry-standard web development best practices to write clean, scalable, and high-performing code for modern websites and web apps.",
         date: "2024-06-10"
       },
@@ -226,14 +226,14 @@
       },
       {
         title: "5 Free AI Tools That Will Change Your Workflow",
-        image: "../../blog-img/ai-tools-thumbnail.png",
+        image: "../blog-img/ai-tools-thumbnail.png",
         link: "../blog-list/5-free-ai-tools.html",
         description: "Discover five powerful and free AI tools to boost your productivity and streamline your daily workflow.",
         date: "2024-06-12"
       },
       {
         title: "How to Build a Portfolio Website",
-        image: "../../blog-img/portfolio-website.png",
+        image: "../blog-img/portfolio-website.png",
         link: "../blog-list/portfolio-website.html",
         description: "Step-by-step guide to building a modern, responsive portfolio website to showcase your work.",
         date: "2024-06-03"
@@ -351,13 +351,13 @@
       },
       {
         title: "Web Development Best Practices: A Guide for Modern Developers",
-        image: "../../blog-img/Web Development Best Practices.png",
-        link: "../blog-list/blog2.html",
+        image: "../blog-img/Web Development Best Practices.png",
+        link: "../blog-list/top-javascript-frameworks-to-learn-2025.html",
         description: "Discover industry-standard web development best practices to write clean, scalable, and high-performing code for modern websites and web apps."
       },
       {
         title: "Mastering JavaScript Frameworks: React, Vue, and Angular",
-        image: "../../blog-img/Mastering JavaScript Frameworks.png",
+        image: "../blog-img/Mastering JavaScript Frameworks.png",
         link: "../blog-list/blog3.html",
         description: "Dive into popular JavaScript frameworks, including React, Vue, and Angular, and discover their ideal use cases for building dynamic web applications."
       },
@@ -432,6 +432,41 @@
       if (event.key === "Enter") {
         handleSearch();
       }
+    });
+
+    // Remove static suggestedBlogs array and rendering
+    // Add dynamic loader for suggested blogs
+    const loadSuggestedBlogs = async () => {
+      try {
+        const response = await fetch('../blog-data.json');
+        const data = await response.json();
+        const currentBlogSlug = '5-free-ai-tools';
+        const filteredBlogs = data.blogs.filter(blog => !blog.filename.includes(currentBlogSlug)).slice(0, 3);
+        const suggestedBlogsContainer = document.getElementById('suggestedBlogs');
+        // Clear existing suggested blogs
+        suggestedBlogsContainer.querySelectorAll('.blog-card').forEach(card => card.remove());
+        // Add new suggested blogs
+        filteredBlogs.forEach(blog => {
+          const blogCard = document.createElement('div');
+          blogCard.classList.add('blog-card');
+          blogCard.innerHTML = `
+            <img src="${blog.image}" alt="${blog.title}">
+            <div class="blog-card-content">
+              <h3>${blog.title}</h3>
+              <p>${blog.description}</p>
+              <a href="../blog-list/${blog.link}">Read More</a>
+            </div>
+          `;
+          suggestedBlogsContainer.appendChild(blogCard);
+        });
+      } catch (error) {
+        console.error('Error loading suggested blogs:', error);
+      }
+    };
+    // Load suggested blogs on DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', () => {
+      loadSuggestedBlogs();
+      handleScrollAnimation();
     });
   </script>
 </body>
