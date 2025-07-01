@@ -34,7 +34,7 @@ class AutomatedBlogSystem:
         # API keys for image generation
         self.api_keys = {
             "huggingface": os.getenv("HF_TOKEN", ""),
-            "together": os.getenv("TOGETHERAPI", "27d3a97f9acc0d1cce896337df956b79acf66d1dee56df4d37b4f7d3ec07b21d"),
+            "together": os.getenv("TOGETHERAPI", ""),
             "replicate": os.getenv("REPLICATE_API_TOKEN", "")
         }
     

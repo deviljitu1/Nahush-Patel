@@ -7,6 +7,8 @@ import io
 import os
 import sys
 import textwrap
+import json
+from datetime import datetime
 
 def crop_center_16_9(image):
     # Calculate the largest 16:9 crop from the center
@@ -146,4 +148,47 @@ filename = filename[:50]
 image_path = os.path.join("blog-img", f"{filename}-hf.png")
 image.save(image_path)
 print(f"[Pillow] Blog image with overlay saved as {image_path}")
-print(f"[DEBUG] Full image path: {os.path.abspath(image_path)}") 
+print(f"[DEBUG] Full image path: {os.path.abspath(image_path)}")
+
+def update_blog_data(title, image_path, filename, link, description="", excerpt=""):
+    json_path = "blog-data.json"
+    now = datetime.now()
+    published_date = now.strftime("%m/%d/%Y")
+    published_time = now.strftime("%I:%M %p")
+    # Load existing data
+    if os.path.exists(json_path):
+        with open(json_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    else:
+        data = {"last_updated": now.isoformat(), "total_blogs": 0, "blogs": []}
+    # Prepare new blog entry
+    new_blog = {
+        "title": title,
+        "description": description or title,
+        "excerpt": excerpt or title,
+        "image": image_path.replace("\\", "/"),
+        "published_date": published_date,
+        "published_time": published_time,
+        "filename": filename,
+        "link": link
+    }
+    # Avoid duplicates
+    if not any(blog["filename"] == filename for blog in data["blogs"]):
+        data["blogs"].insert(0, new_blog)
+        data["total_blogs"] = len(data["blogs"])
+        data["last_updated"] = now.isoformat()
+        with open(json_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2)
+        print(f"[JSON] blog-data.json updated with new blog: {title}")
+    else:
+        print(f"[JSON] Blog already exists in blog-data.json: {filename}")
+
+# Call update_blog_data
+update_blog_data(
+    title=title,
+    image_path=image_path,
+    filename=filename,
+    link=f"{filename}.html",
+    description=title,
+    excerpt=title
+) 
