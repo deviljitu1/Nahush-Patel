@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog - Nahush Patel</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Nahush Patel Blog",
+    "url": "https://jiitufolio.com/blog.html",
+    "description": "A blog about web development, technology, and programming by Nahush Patel.",
+    "blogPost": [] // Will be dynamically populated by JS
+  }
+  </script>
   <style>
     /* ...existing styles from index.html... */
     :root {
@@ -1272,6 +1282,28 @@
       color: rgba(255, 255, 255, 0.8);
       text-align: center;
     }
+
+    .blog-card {
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .blog-card:hover {
+      box-shadow: 0 8px 32px rgba(76,201,240,0.15), 0 1.5px 8px rgba(114,9,183,0.10);
+      transform: translateY(-4px) scale(1.02);
+    }
+    .blog-card p.excerpt {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-height: 3.6em;
+      max-height: 4.5em;
+    }
+    .blog-card img.blog-img-placeholder {
+      background: #222 url('../img/blog-placeholder.png') center center/cover no-repeat;
+      min-height: 180px;
+      object-fit: cover;
+    }
   </style>
 </head>
 <body>
@@ -1407,7 +1439,7 @@
         const blogCard = document.createElement('div');
         blogCard.classList.add('blog-card');
         blogCard.innerHTML = `
-          <img src="${blog.image}" alt="${blog.title}" onerror="this.src='img/profile.png'">
+          <img src="${blog.image}" alt="${blog.title || 'Blog image'}" loading="lazy" onerror="this.onerror=null;this.src='../img/blog-placeholder.png';this.classList.add('blog-img-placeholder');">
           <div class="blog-card-content">
             <h3>${blog.title}</h3>
             <p style="font-size:0.9em;color:#888;margin:0 0 0.5em 0;">
@@ -1415,7 +1447,7 @@
               Published on ${blog.published_date} at ${blog.published_time} by
               <a href="https://www.linkedin.com/in/nahush-patel/" target="_blank" style="color:#4cc9f0;text-decoration:underline;">Nahush Patel</a>
             </p>
-            <p>${blog.excerpt || blog.description}</p>
+            <p class="excerpt">${blog.excerpt || blog.description}</p>
             <a href="blog-list/${blog.link}" class="blog-btn">Read More</a>
           </div>
         `;
@@ -1454,7 +1486,7 @@
           const blogCard = document.createElement("div");
           blogCard.classList.add("blog-card");
           blogCard.innerHTML = `
-            <img src="${blog.image}" alt="${blog.title}" onerror="this.src='img/profile.png'">
+            <img src="${blog.image}" alt="${blog.title || 'Blog image'}" loading="lazy" onerror="this.onerror=null;this.src='../img/blog-placeholder.png';this.classList.add('blog-img-placeholder');">
             <div class="blog-card-content">
               <h3>${blog.title}</h3>
               <p style="font-size:0.9em;color:#888;margin:0 0 0.5em 0;">
@@ -1462,7 +1494,7 @@
                 Published on ${blog.published_date} at ${blog.published_time} by
                 <a href="https://www.linkedin.com/in/nahush-patel/" target="_blank" style="color:#4cc9f0;text-decoration:underline;">Nahush Patel</a>
               </p>
-              <p>${blog.excerpt || blog.description}</p>
+              <p class="excerpt">${blog.excerpt || blog.description}</p>
               <a href="blog-list/${blog.link}" class="blog-btn">Read More</a>
             </div>
           `;
@@ -1508,6 +1540,22 @@
 
     // Load blogs when page loads
     document.addEventListener('DOMContentLoaded', loadBlogs);
+
+    // After loading blogsData, dynamically populate the blogPost array in the JSON-LD script
+    const blogPostsSchema = blogsData.map(blog => ({
+      "@type": "BlogPosting",
+      "headline": blog.title,
+      "image": blog.image,
+      "url": `https://jiitufolio.com/blog-list/${blog.link}`,
+      "datePublished": blog.published_date,
+      "description": blog.description
+    }));
+    const schemaScript = document.querySelector('script[type="application/ld+json"]');
+    if (schemaScript) {
+      const schema = JSON.parse(schemaScript.textContent);
+      schema.blogPost = blogPostsSchema;
+      schemaScript.textContent = JSON.stringify(schema, null, 2);
+    }
   </script>
 </body>
 </html>
