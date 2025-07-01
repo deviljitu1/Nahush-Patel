@@ -1,12 +1,32 @@
 {
-  "last_updated": "2025-07-01T22:56:26.279639",
-  "total_blogs": 6,
+  "last_updated": "2025-07-02T01:49:21.170030",
+  "total_blogs": 8,
   "blogs": [
+    {
+      "title": "Advanced SEO Strategies for 2025: Boost Your Website's Ranking",
+      "description": "Unlock the most effective advanced SEO strategies for 2025. Learn how to boost your website's ranking with AI, Core Web Vitals, structured data, and more.",
+      "excerpt": "by Nahush Patel — July 1, 2025",
+      "image": "../blog-img/advanced-seo-strategies-for-2025-boost-your-websit-hf.png",
+      "published_date": "07/02/2025",
+      "published_time": "01:09 AM",
+      "filename": "advanced-seo-strategies-for-2025-boost-your-website-s-ranking",
+      "link": "advanced-seo-strategies-for-2025-boost-your-website-s-ranking.html"
+    },
+    {
+      "title": "Exploring the Depths: The Science of Underwater Exploration",
+      "description": "Dive into the science and technology behind underwater exploration. Discover the challenges, innovations, and future of exploring the ocean's depths.",
+      "excerpt": "by Nahush Patel — July 1, 2025",
+      "image": "../blog-img/exploring-the-depths-the-science-of-underwater-explorat-hf.png",
+      "published_date": "07/02/2025",
+      "published_time": "12:41 AM",
+      "filename": "exploring-the-depths-the-science-of-underwater-exploration",
+      "link": "exploring-the-depths-the-science-of-underwater-exploration.html"
+    },
     {
       "title": "Mastering React Hooks: A Complete Guide for 2025",
       "description": "Learn React Hooks from basics to advanced patterns. Master useState, useEffect, useContext, and custom hooks for modern React development.",
       "excerpt": "Welcome to this comprehensive guide on React Hooks by Nahush Patel. React Hooks have revolutionized how we write functional components, making state management and side effects more intuitive and powe...",
-      "image": "../blog-img/mastering-react-hooks-a-complete-guide-for-2025.png",
+      "image": "../blog-img/mastering-react-hooks-complete-guide-2025.png",
       "published_date": "07/01/2025",
       "published_time": "10:38 PM",
       "filename": "mastering-react-hooks-complete-guide-2025",
@@ -16,7 +36,7 @@
       "title": "Advanced CSS Techniques for Modern Web Design 2025",
       "description": "Master advanced CSS techniques including Grid, Flexbox, animations, and modern layout patterns for creating stunning web designs.",
       "excerpt": "Welcome to this comprehensive guide on Advanced CSS Techniques by Nahush Patel. Modern web design requires mastery of advanced CSS features to create stunning, responsive, and performant websites.",
-      "image": "../blog-img/advanced-css-techniques-modern-web-design-2025.png",
+      "image": "../blog-img/Advanced CSS Techniques for Modern Web Design 2025.png",
       "published_date": "07/01/2025",
       "published_time": "09:56 PM",
       "filename": "advanced-css-techniques-modern-web-design-2025",
