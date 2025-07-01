@@ -1,7 +1,17 @@
 {
-  "last_updated": "2025-06-28T21:05:45.737511",
-  "total_blogs": 4,
+  "last_updated": "2025-07-01T21:56:33.554648",
+  "total_blogs": 5,
   "blogs": [
+    {
+      "title": "Advanced CSS Techniques for Modern Web Design 2025",
+      "description": "Master advanced CSS techniques including Grid, Flexbox, animations, and modern layout patterns for creating stunning web designs.",
+      "excerpt": "Welcome to this comprehensive guide on Advanced CSS Techniques by Nahush Patel. Modern web design requires mastery of advanced CSS features to create stunning, responsive, and performant websites.",
+      "image": "../blog-img/advanced-css-techniques-modern-web-design-2025.png",
+      "published_date": "07/01/2025",
+      "published_time": "09:56 PM",
+      "filename": "advanced-css-techniques-modern-web-design-2025",
+      "link": "advanced-css-techniques-modern-web-design-2025.html"
+    },
     {
       "title": "Best AI Tools for Web Developers in 2025",
       "description": "Discover the top AI tools that every web developer should use in 2025. From code generation to testing automation, these tools will revolutionize your workflow.",
