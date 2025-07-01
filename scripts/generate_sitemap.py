@@ -1,7 +1,7 @@
 import os
 from urllib.parse import quote
 
-SITE_URL = "https://jiitufolio.com"
+SITE_URL = "https://nahushpatel.in"
 OUTPUT_FILE = "sitemap.xml"
 INCLUDE_DIRS = [".", "blog-list"]
 

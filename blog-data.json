@@ -1,7 +1,17 @@
 {
-  "last_updated": "2025-07-01T21:56:33.554648",
-  "total_blogs": 5,
+  "last_updated": "2025-07-01T22:56:26.279639",
+  "total_blogs": 6,
   "blogs": [
+    {
+      "title": "Mastering React Hooks: A Complete Guide for 2025",
+      "description": "Learn React Hooks from basics to advanced patterns. Master useState, useEffect, useContext, and custom hooks for modern React development.",
+      "excerpt": "Welcome to this comprehensive guide on React Hooks by Nahush Patel. React Hooks have revolutionized how we write functional components, making state management and side effects more intuitive and powe...",
+      "image": "../blog-img/mastering-react-hooks-a-complete-guide-for-2025.png",
+      "published_date": "07/01/2025",
+      "published_time": "10:38 PM",
+      "filename": "mastering-react-hooks-complete-guide-2025",
+      "link": "mastering-react-hooks-complete-guide-2025.html"
+    },
     {
       "title": "Advanced CSS Techniques for Modern Web Design 2025",
       "description": "Master advanced CSS techniques including Grid, Flexbox, animations, and modern layout patterns for creating stunning web designs.",
