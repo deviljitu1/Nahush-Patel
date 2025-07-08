@@ -228,6 +228,27 @@ class BlogGenerator:
         except Exception as e:
             print(f"❌ Error updating blog data: {e}")
 
+def create_custom_blog():
+    """Create a blog with a custom topic from the command line."""
+    import sys
+    if len(sys.argv) < 3:
+        print("Usage: python blog_generator.py custom 'Title' 'Description' 'Keywords' 'Section1;Section2;Section3'")
+        return
+    title = sys.argv[2]
+    description = sys.argv[3] if len(sys.argv) > 3 else "A unique blog post."
+    keywords = sys.argv[4] if len(sys.argv) > 4 else "web development, technology"
+    sections = sys.argv[5].split(';') if len(sys.argv) > 5 else ["Introduction", "Main Content", "Conclusion"]
+    topic = {
+        "title": title,
+        "description": description,
+        "keywords": keywords,
+        "content_sections": sections
+    }
+    generator = BlogGenerator()
+    filename = generator.create_blog_file(topic)
+    print(f"✅ Custom blog created: {filename}")
+    generator.update_blog_data()
+
 def main():
     """Main function to generate a daily blog."""
     generator = BlogGenerator()
@@ -254,4 +275,8 @@ def main():
     print("=" * 60)
 
 if __name__ == "__main__":
-    main() 
+    import sys
+    if len(sys.argv) > 1 and sys.argv[1] == "custom":
+        create_custom_blog()
+    else:
+        main() 

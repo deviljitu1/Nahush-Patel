@@ -1388,47 +1388,16 @@
         }
         const data = await response.json();
         blogsData = data.blogs;
-        displayBlogs(blogsData);
-        console.log(`Loaded ${blogsData.length} blogs from blog-data.json`);
+        if (!blogsData || blogsData.length === 0) {
+          blogGrid.innerHTML = '<p class="not-found">No blogs found. Please check back later!</p>';
+        } else {
+          displayBlogs(blogsData);
+          console.log(`Loaded ${blogsData.length} blogs from blog-data.json`);
+        }
       } catch (error) {
         console.error('Error loading blogs:', error);
-        // Fallback to static data if JSON loading fails
-        loadFallbackBlogs();
+        blogGrid.innerHTML = '<p class="not-found">Unable to load blogs. Please try again later.</p>';
       }
-    }
-
-    // Fallback function with static blog data
-    function loadFallbackBlogs() {
-      blogsData = [
-        {
-          title: "Web Development Insights",
-          image: "blog-img/blog1-thumbnail.png",
-          link: "blog-list/blog1.html",
-          description: "Explore essential web development insights including HTML, CSS, JavaScript, SEO strategies, and performance optimization.",
-          published_date: "06/28/2025",
-          published_time: "10:00 AM",
-          excerpt: "Explore essential web development insights including HTML, CSS, JavaScript, SEO strategies, and performance optimization to build modern websites."
-        },
-        {
-          title: "Best AI Tools for Web Developers in 2025",
-          image: "blog-img/best-ai-tools-for-web-developers-2025.png",
-          link: "blog-list/best-ai-tools-for-web-developers-2025.html",
-          description: "Discover the top AI tools that every web developer should use in 2025. From code generation to testing automation, these tools will revolutionize your workflow.",
-          published_date: "06/28/2025",
-          published_time: "07:00 PM",
-          excerpt: "Welcome to this comprehensive guide on AI tools for web developers by Nahush Patel. In today's rapidly evolving web development landscape, artificial intelligence has become an indispensable part of the toolkit."
-        },
-        {
-          title: "Mastering JavaScript Frameworks: React, Vue, and Angular",
-          image: "blog-img/Mastering JavaScript Frameworks.png",
-          link: "blog-list/5-free-ai-tools.html",
-          description: "Learn how to master popular JavaScript frameworks like React, Vue, and Angular to build modern, dynamic web applications.",
-          published_date: "06/28/2025",
-          published_time: "04:39 PM",
-          excerpt: "In this post, we'll explore React, Vue, and Angular to help you choose the right tool for your next web development project."
-        }
-      ];
-      displayBlogs(blogsData);
     }
 
     // Function to display blogs

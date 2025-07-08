@@ -1,5 +1,5 @@
-  // Dynamic blog content
-    const blogData = {
+// Dynamic blog content
+const blogData = {
   title: "Web Development Best Practices: A Guide for Modern Developers",
   image: "../../blog-img/Web Development Best Practices.png",
   link: "../blog-list/blog2.html",
@@ -46,73 +46,42 @@
   `
 };
 
-    const suggestedBlogs = [
-    
-      {
-        title: "Mastering JavaScript Frameworks",
-        image: "../../blog-img/Mastering JavaScript Frameworks.png",
-        link: "../blog-list/blog3.html",
-        description: "Dive into popular JavaScript frameworks, including React, Vue, and Angular, and discover their ideal use cases for building dynamic web applications."
-      },
-      {
-        title: "Blog Post 4",
-        image: "../blog-img/blog4-thumbnail.jpg",
-        link: "../blog-list/blog4.html",
-        description: "Understand the basics of SEO for better website visibility."
-      },
-      {
-        title: "Blog Post 5",
-        image: "../blog-img/blog5-thumbnail.jpg",
-        link: "../blog-list/blog5.html",
-        description: "Learn about responsive design and its importance."
-      }
-    ];
+// Utility to get current blog slug from URL
+function getCurrentBlogSlug() {
+  const path = window.location.pathname.split('/').pop();
+  return path.replace('.html', '');
+}
 
-    // Function to handle "Continue Reading" functionality
-    const handleReadMore = () => {
-      const paragraphs = document.querySelectorAll('.content-container p');
-      const readMoreBtn = document.getElementById('readMoreBtn');
-
-      if (readMoreBtn.dataset.expanded === "false") {
-        paragraphs.forEach((p, index) => {
-          if (index >= 4) p.style.display = "block"; // Show remaining paragraphs
-        });
-        readMoreBtn.textContent = "Show Less";
-        readMoreBtn.dataset.expanded = "true";
-      } else {
-        paragraphs.forEach((p, index) => {
-          if (index >= 4) p.style.display = "none"; // Hide remaining paragraphs
-        });
-        readMoreBtn.textContent = "Continue Reading";
-        readMoreBtn.dataset.expanded = "false";
-      }
-    };
-
-    // Populate the blog content dynamically
-    const blogContent = document.getElementById('blogContent');
-    blogContent.innerHTML = `
-      <h1>${blogData.title}</h1>
-      <img src="${blogData.image}" alt="${blogData.title}" style="width: 100%; border-radius: 10px; margin-bottom: 1.5em;">
-      ${blogData.content}
-    `;
-
-    // Add "Continue Reading" button dynamically
-    const readMoreBtn = document.createElement('button');
-    readMoreBtn.id = 'readMoreBtn';
-    readMoreBtn.className = 'read-more-btn';
-    readMoreBtn.textContent = "Continue Reading";
-    readMoreBtn.dataset.expanded = "false";
-    readMoreBtn.addEventListener('click', handleReadMore);
-    blogContent.appendChild(readMoreBtn);
-
-    // Ensure only the first 4 paragraphs are visible initially
-    const paragraphs = document.querySelectorAll('.content-container p');
-    paragraphs.forEach((p, index) => {
-      if (index >= 4) p.style.display = "none"; // Hide paragraphs beyond the first 4
+// Fetch and render blog content and suggestions dynamically
+async function loadBlogPage() {
+  try {
+    const response = await fetch('../blog-data.json');
+    if (!response.ok) throw new Error('Failed to load blog data');
+    const data = await response.json();
+    let blogs = data.blogs;
+    // Sort blogs by published_date and published_time descending
+    blogs = blogs.sort((a, b) => {
+      const dateA = new Date(`${a.published_date} ${a.published_time}`);
+      const dateB = new Date(`${b.published_date} ${b.published_time}`);
+      return dateB - dateA;
     });
-
-    // Populate suggested blogs dynamically
+    const currentSlug = getCurrentBlogSlug();
+    const currentBlog = blogs.find(blog => blog.filename === currentSlug);
+    if (!currentBlog) {
+      document.getElementById('blogContent').innerHTML = '<h2>Blog not found</h2>';
+      return;
+    }
+    // Render main blog content
+    document.getElementById('blogContent').innerHTML = `
+      <h1>${currentBlog.title}</h1>
+      <img src="${currentBlog.image}" alt="${currentBlog.title}" style="width: 100%; border-radius: 10px; margin-bottom: 1.5em;">
+      <p class="blog-meta">by Nahush Patel &mdash; <time datetime="${currentBlog.published_date}">${currentBlog.published_date}</time></p>
+      <p>${currentBlog.excerpt || currentBlog.description}</p>
+    `;
+    // Render suggested blogs (latest 3, excluding current)
+    const suggestedBlogs = blogs.filter(blog => blog.filename !== currentSlug).slice(0, 3);
     const suggestedBlogsContainer = document.getElementById('suggestedBlogs');
+    suggestedBlogsContainer.innerHTML = '<h2>Suggested Blogs</h2>';
     suggestedBlogs.forEach(blog => {
       const blogCard = document.createElement('div');
       blogCard.classList.add('blog-card');
@@ -126,32 +95,83 @@
       `;
       suggestedBlogsContainer.appendChild(blogCard);
     });
+  } catch (error) {
+    document.getElementById('blogContent').innerHTML = '<h2>Error loading blog. Please try again later.</h2>';
+    document.getElementById('suggestedBlogs').innerHTML = '';
+  }
+}
 
-    // Dark mode toggle (same as index.html)
-    const toggleMode = document.getElementById('toggleMode');
-    const body = document.body;
-    const darkIcon = document.getElementById('darkIcon');
-    const lightIcon = document.getElementById('lightIcon');
+// Run on page load
+window.addEventListener('DOMContentLoaded', loadBlogPage);
 
-    toggleMode.addEventListener('click', () => {
-      body.classList.toggle('light');
-      darkIcon.style.display = body.classList.contains('light') ? 'none' : 'inline';
-      lightIcon.style.display = body.classList.contains('light') ? 'inline' : 'none';
+// Function to handle "Continue Reading" functionality
+const handleReadMore = () => {
+  const paragraphs = document.querySelectorAll('.content-container p');
+  const readMoreBtn = document.getElementById('readMoreBtn');
+
+  if (readMoreBtn.dataset.expanded === "false") {
+    paragraphs.forEach((p, index) => {
+      if (index >= 4) p.style.display = "block"; // Show remaining paragraphs
     });
+    readMoreBtn.textContent = "Show Less";
+    readMoreBtn.dataset.expanded = "true";
+  } else {
+    paragraphs.forEach((p, index) => {
+      if (index >= 4) p.style.display = "none"; // Hide remaining paragraphs
+    });
+    readMoreBtn.textContent = "Continue Reading";
+    readMoreBtn.dataset.expanded = "false";
+  }
+};
 
-    // Function to handle scroll animation
-    const handleScrollAnimation = () => {
-      const blogCards = document.querySelectorAll('.suggested-blogs .blog-card');
-      blogCards.forEach((card) => {
-        const rect = card.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 50) {
-          card.classList.add('visible'); // Add the 'visible' class when in view
-        }
-      });
-    };
+// Populate the blog content dynamically
+const blogContent = document.getElementById('blogContent');
+blogContent.innerHTML = `
+  <h1>${blogData.title}</h1>
+  <img src="${blogData.image}" alt="${blogData.title}" style="width: 100%; border-radius: 10px; margin-bottom: 1.5em;">
+  ${blogData.content}
+`;
 
-    // Attach scroll event listener
-    window.addEventListener('scroll', handleScrollAnimation);
+// Add "Continue Reading" button dynamically
+const readMoreBtn = document.createElement('button');
+readMoreBtn.id = 'readMoreBtn';
+readMoreBtn.className = 'read-more-btn';
+readMoreBtn.textContent = "Continue Reading";
+readMoreBtn.dataset.expanded = "false";
+readMoreBtn.addEventListener('click', handleReadMore);
+blogContent.appendChild(readMoreBtn);
 
-    // Trigger animation on page load
-    document.addEventListener('DOMContentLoaded', handleScrollAnimation);
+// Ensure only the first 4 paragraphs are visible initially
+const paragraphs = document.querySelectorAll('.content-container p');
+paragraphs.forEach((p, index) => {
+  if (index >= 4) p.style.display = "none"; // Hide paragraphs beyond the first 4
+});
+
+// Dark mode toggle (same as index.html)
+const toggleMode = document.getElementById('toggleMode');
+const body = document.body;
+const darkIcon = document.getElementById('darkIcon');
+const lightIcon = document.getElementById('lightIcon');
+
+toggleMode.addEventListener('click', () => {
+  body.classList.toggle('light');
+  darkIcon.style.display = body.classList.contains('light') ? 'none' : 'inline';
+  lightIcon.style.display = body.classList.contains('light') ? 'inline' : 'none';
+});
+
+// Function to handle scroll animation
+const handleScrollAnimation = () => {
+  const blogCards = document.querySelectorAll('.suggested-blogs .blog-card');
+  blogCards.forEach((card) => {
+    const rect = card.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 50) {
+      card.classList.add('visible'); // Add the 'visible' class when in view
+    }
+  });
+};
+
+// Attach scroll event listener
+window.addEventListener('scroll', handleScrollAnimation);
+
+// Trigger animation on page load
+document.addEventListener('DOMContentLoaded', handleScrollAnimation);

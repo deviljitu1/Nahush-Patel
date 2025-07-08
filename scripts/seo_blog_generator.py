@@ -12,6 +12,7 @@ import re
 from datetime import datetime
 from pathlib import Path
 import random
+import sys
 
 class SEOBlogGenerator:
     def __init__(self):
@@ -530,4 +531,24 @@ def main():
     print("=" * 70)
 
 if __name__ == "__main__":
-    main() 
+    if len(sys.argv) > 1 and sys.argv[1] == "custom_topic":
+        # Usage: python seo_blog_generator.py custom_topic "Title" "Slug" "Description" "Keywords" "SchemaType" "Content"
+        title = sys.argv[2]
+        slug = sys.argv[3]
+        description = sys.argv[4]
+        keywords = sys.argv[5]
+        schema_type = sys.argv[6]
+        content = sys.argv[7]
+        topic = {
+            "title": title,
+            "slug": slug,
+            "description": description,
+            "keywords": keywords,
+            "schema_type": schema_type,
+            "content": content
+        }
+        generator = SEOBlogGenerator()
+        generator.create_blog_file(topic)
+        print(f"Custom blog generated: blog-list/{slug}.html")
+    else:
+        main() 

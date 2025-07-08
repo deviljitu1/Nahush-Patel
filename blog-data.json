@@ -1,7 +1,37 @@
 {
-  "last_updated": "2025-07-08T12:55:13.435115",
-  "total_blogs": 8,
+  "last_updated": "2025-07-08T13:38:03.636381",
+  "total_blogs": 11,
   "blogs": [
+    {
+      "title": "Why Content Creation is Important",
+      "description": "Learn why content creation is the backbone of digital marketing and how it drives engagement, SEO, and business growth.",
+      "excerpt": "Content creation is at the heart of every successful digital marketing strategy. In today’s digital landscape, businesses that consistently produce high-quality, relevant content are able to attract, ...",
+      "image": "../blog-img/why-content-creation-is-important.png",
+      "published_date": "07/08/2025",
+      "published_time": "01:37 PM",
+      "filename": "why-content-creation-is-important",
+      "link": "why-content-creation-is-important.html"
+    },
+    {
+      "title": "The Future of Quantum Computing: Opportunities and Challenges Ahead",
+      "description": "Explore the next era of computing with quantum technology, its potential, and the hurdles we must overcome.",
+      "excerpt": "by Nahush Patel — July 8, 2025",
+      "image": "../blog-img/the-future-of-quantum-computing-opportunities-and-challenges-ahead.png",
+      "published_date": "07/08/2025",
+      "published_time": "01:16 PM",
+      "filename": "the-future-of-quantum-computing-opportunities-and-challenges-ahead",
+      "link": "the-future-of-quantum-computing-opportunities-and-challenges-ahead.html"
+    },
+    {
+      "title": "The Future of Quantum Computing: Opportunities and Challenges Ahead | Nahush Patel",
+      "description": "Explore the next era of computing with quantum technology, its potential, and the hurdles we must overcome.",
+      "excerpt": "Welcome to this comprehensive guide on The Future of Quantum Computing by Nahush Patel. In today's rapidly evolving web development landscape, staying updated with the latest techniques and best pract...",
+      "image": "../blog-img/blog2-image.png",
+      "published_date": "07/08/2025",
+      "published_time": "01:13 PM",
+      "filename": "blog2",
+      "link": "blog2.html"
+    },
     {
       "title": "Advanced SEO Strategies for 2025: Boost Your Website's Ranking",
       "description": "Unlock the most effective advanced SEO strategies for 2025. Learn how to boost your website's ranking with AI, Core Web Vitals, structured data, and more.",
