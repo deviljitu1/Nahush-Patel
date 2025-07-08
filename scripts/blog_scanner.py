@@ -87,7 +87,11 @@ def extract_metadata_from_html(file_path):
         # If no good excerpt found, use description
         if not excerpt and description:
             excerpt = description[:200] + "..." if len(description) > 200 else description
-        
+
+        # Extract full blog content inside the main content container
+        content_match = re.search(r'<div[^>]+id=["\"]blogContent["\"][^>]*>([\s\S]*?)</div>', content, re.IGNORECASE)
+        full_content = content_match.group(1).strip() if content_match else ""
+
         return {
             "title": html.unescape(title),
             "description": html.unescape(description),
@@ -97,6 +101,7 @@ def extract_metadata_from_html(file_path):
             "published_time": published_time,
             "filename": Path(file_path).stem,
             "link": f"{Path(file_path).stem}.html",
+            "content": full_content,
             "creation_time": ctime,  # For sorting by creation date
             "modification_time": mtime  # For sorting by modification date
         }

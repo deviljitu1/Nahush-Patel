@@ -34,18 +34,44 @@ function renderCurrentBlog() {
   if (!currentBlog) return;
   const blogContent = document.getElementById('blogContent');
   if (!blogContent) return;
-  blogContent.innerHTML = `
-    <h1>${currentBlog.title}</h1>
-    <img src="${currentBlog.image}" alt="${currentBlog.title}">
-    <div class="blog-meta">
-      <span><i class="fas fa-calendar-alt"></i> ${currentBlog.published_date} ${currentBlog.published_time}</span>
-      <span><i class="fas fa-user"></i> Nahush Patel</span>
-    </div>
-    <p>${currentBlog.excerpt || currentBlog.description}</p>
-    <div class="read-more-section">
-      <button class="read-more-btn" id="showSuggestionsBtn">Show Related Articles</button>
-    </div>
-  `;
+  // Parse the HTML content into a DOM fragment
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = currentBlog.content || `<p>${currentBlog.excerpt || currentBlog.description}</p>`;
+  const paragraphs = tempDiv.querySelectorAll('p, h3, h2, ul, ol, pre, img');
+  // Responsive teaser count
+  let teaserCount = 4;
+  if (window.innerWidth <= 600) teaserCount = 2;
+  else if (window.innerWidth <= 1023) teaserCount = 3;
+  if (paragraphs.length > teaserCount) {
+    // Teaser: first N elements
+    const teaser = document.createElement('div');
+    teaser.className = 'teaser-content';
+    for (let i = 0; i < teaserCount; i++) {
+      if (paragraphs[i]) teaser.appendChild(paragraphs[i].cloneNode(true));
+    }
+    // Fade overlay
+    const fade = document.createElement('div');
+    fade.className = 'content-fade';
+    // Read more button
+    const readMoreBtn = document.createElement('button');
+    readMoreBtn.id = 'readMoreBtn';
+    readMoreBtn.className = 'read-more-btn';
+    readMoreBtn.textContent = 'Continue Reading';
+    fade.appendChild(readMoreBtn);
+    // Container for teaser + fade
+    const teaserContainer = document.createElement('div');
+    teaserContainer.className = 'teaser-container';
+    teaserContainer.appendChild(teaser);
+    teaserContainer.appendChild(fade);
+    blogContent.innerHTML = '';
+    blogContent.appendChild(teaserContainer);
+    readMoreBtn.addEventListener('click', () => {
+      // Show full content
+      blogContent.innerHTML = tempDiv.innerHTML;
+    });
+  } else {
+    blogContent.innerHTML = tempDiv.innerHTML;
+  }
 }
 
 function getRelatedBlogs() {
@@ -69,9 +95,6 @@ function renderSuggestedBlogs(blogs) {
         </div>
       </div>
     `).join('')}
-    <div class="view-all-blogs">
-      <button class="view-all-btn" id="viewAllBtn">View All Blogs</button>
-    </div>
   `;
 }
 
@@ -110,20 +133,62 @@ function setupScrollAnimation() {
   handleScroll();
 }
 
+// --- Search Bar Logic ---
+function setupSearchBar() {
+  const searchInput = document.getElementById('searchInput');
+  const searchButton = document.getElementById('searchButton');
+  const searchResults = document.getElementById('searchResults');
+  if (!searchInput || !searchButton || !searchResults) return;
+
+  const handleSearch = () => {
+    const query = searchInput.value.trim().toLowerCase();
+    searchResults.innerHTML = '';
+    if (!query) {
+      searchResults.style.display = 'none';
+      return;
+    }
+    const filteredBlogs = blogsData.filter(blog =>
+      blog.title.toLowerCase().includes(query) ||
+      blog.description.toLowerCase().includes(query)
+    );
+    if (filteredBlogs.length > 0) {
+      filteredBlogs.forEach(blog => {
+        const blogCard = document.createElement('div');
+        blogCard.classList.add('blog-card');
+        blogCard.innerHTML = `
+          <img src="${blog.image}" alt="${blog.title}">
+          <div class="blog-card-content">
+            <h4>${blog.title}</h4>
+            <p>${blog.description}</p>
+            <a href="${blog.link}">Read More</a>
+          </div>
+        `;
+        searchResults.appendChild(blogCard);
+      });
+    } else {
+      searchResults.innerHTML = `<p class="not-found">No blogs found for your search. You may like:</p>`;
+      renderSuggestedBlogs(getRelatedBlogs());
+    }
+    searchResults.style.display = 'block';
+  };
+  searchButton.addEventListener('click', handleSearch);
+  searchInput.addEventListener('keypress', event => {
+    if (event.key === 'Enter') handleSearch();
+  });
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
   loadAllBlogs();
   setupDarkModeToggle();
   setupScrollAnimation();
+  setupSearchBar();
   // Event Delegation for dynamic buttons
   document.addEventListener('click', (e) => {
     if (e.target?.id === 'showSuggestionsBtn') {
       renderSuggestedBlogs(getRelatedBlogs());
       e.target.textContent = "More Suggestions";
       document.getElementById('suggestedBlogs')?.scrollIntoView({ behavior: 'smooth' });
-    }
-    else if (e.target?.id === 'viewAllBtn') {
-      window.location.href = "../blog-list/all-blogs.html";
     }
   });
 });
