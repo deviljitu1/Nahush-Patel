@@ -130,6 +130,21 @@
       text-align: center;
       position: relative; 
     }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; 
+      padding-left: 20%; 
+      padding-right: 20%;
+      padding-top: 2em; 
+      padding-bottom: 2em; 
+      gap: 2em; 
+      text-align: center; 
+      background: url('background-image.jpg') no-repeat center center/cover; 
+      text-align: center;
+      position: relative; 
+    }
 
     @media (min-width: 768px) {
       .hero {
@@ -334,22 +349,6 @@
         left: 50%;
         transform: translate(-50%, -50%);
       }
-    }
-
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center; 
-      padding-left: 20%; 
-      padding-right: 20%;
-      padding-top: 2em; 
-      padding-bottom: 2em; 
-      gap: 2em; 
-      text-align: center; 
-      background: url('background-image.jpg') no-repeat center center/cover; 
-      text-align: center;
-      position: relative; 
     }
 
     @media (min-width: 768px) {
@@ -1460,7 +1459,7 @@
 
     @media (max-width: 480px) {
       .skills-grid {
-        grid-template-columns: 1fr; /* Display skills as a single column on very small screens */
+        grid-template-columns: repeat(2, 1fr) !important; /* 2 columns for mobile, forced */
       }
 
       .about-text h2 {
