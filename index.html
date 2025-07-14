@@ -1194,6 +1194,20 @@
       -webkit-text-fill-color: transparent;
     }
 
+    .footer-container a {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      text-decoration: underline;
+      transition: opacity 0.2s;
+    }
+    .footer-container a:hover {
+      opacity: 0.7;
+      text-decoration: underline;
+    }
+
     .skill-card, .contact-card, .portfolio-card {
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Add consistent shadow */
       transition: transform 0.3s, box-shadow 0.3s;
@@ -1734,8 +1748,20 @@ html {
     </div>
   </section>
 
-  <section id="footer" class="footer-container">
-    <p>&copy; 2025 <span class="name-gradient"><a href="#leftContent">Nahush Patel</a></span>. All rights reserved.</p>
+  <section id="footer" class="footer-container" itemscope itemtype="https://schema.org/WPFooter">
+    <p>&copy; 2025 <span class="name-gradient"><a href="#leftContent" itemprop="copyrightHolder">Nahush Patel</a></span>. All rights reserved.</p>
+    <p>
+      <strong>Try my free tool:</strong>
+      <a href="https://linkpostai.netlify.app/" target="_blank" rel="noopener" itemprop="relatedLink" aria-label="LinkedIn AI Post Generator - Create SEO-optimized LinkedIn posts with AI">LinkedIn AI Post Generator</a>
+      &mdash; Instantly generate engaging, SEO-optimized LinkedIn posts using AI. No signup required!
+    </p>
+    <nav aria-label="Footer Navigation">
+      <a href="https://nahushpatel.in/" itemprop="url">Home</a> |
+      <a href="https://nahushpatel.in/blog.html" itemprop="url">Blog</a> |
+      <a href="https://nahushpatel.in/#portfolio" itemprop="url">Portfolio</a> |
+      <a href="https://nahushpatel.in/#contact" itemprop="url">Contact</a>
+    </nav>
+    <meta itemprop="copyrightYear" content="2025" />
   </section>  
 
   <script>
