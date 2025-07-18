@@ -1780,35 +1780,299 @@ html {
   scrollbar-color: #4cc9f0 #181828;
 }
 
-    @media (max-width: 1200px) {
-      .footer-container {
-        padding-top: 1.5em !important;
-        padding-bottom: 0.7em !important;
-      }
+    /* Mobile-first responsive footer */
+    .footer-main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2em;
+      width: 100%;
+    }
+    .footer-row-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 0.2em;
+    }
+    .footer-row-links {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      width: 100%;
+      gap: 0.5em;
+    }
+    .footer-col-info, .footer-col-links {
+      width: 50%;
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+      text-align: left;
+    }
+    .footer-col-subscribe, .footer-col-contact {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    .footer-list, .footer-list li {
+      margin: 0;
+      padding: 0;
+    }
+    .footer-col h4 {
+      margin: 0.2em 0 0.2em 0;
+      padding: 0;
+    }
+    .footer-newsletter form {
+      flex-direction: column;
+      gap: 0.3em;
+      align-items: stretch;
+    }
+    .footer-newsletter input[type="email"], .footer-newsletter button {
+      width: 100%;
+      max-width: 100%;
+      margin-right: 0;
+    }
+    .footer-bottom {
+      font-size: 0.9em;
+      gap: 0.3em;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 0.3em;
+      padding-top: 0.3em;
+    }
+    .footer-bottom-links {
+      gap: 0.3em;
+      justify-content: center;
+    }
+    /* Tablet: 601px–900px */
+    @media (min-width: 601px) and (max-width: 900px) {
       .footer-main {
-        gap: 0.7em !important;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 1em;
+        justify-content: center;
       }
-      .footer-col {
-        margin-bottom: 0.5em !important;
+      .footer-row-center, .footer-row-links {
+        flex-direction: column;
+        width: 25%;
+        min-width: 200px;
+        align-items: flex-start;
+        margin-bottom: 0;
+      }
+      .footer-col-info, .footer-col-links {
+        width: 100%;
+        text-align: left;
+      }
+      .footer-col-subscribe, .footer-col-contact {
+        width: 100%;
+        text-align: left;
       }
     }
-    /* Ultra-compact footer for mobile */
+    /* Laptop/Desktop: >900px */
+    @media (min-width: 901px) {
+      .footer-main {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        gap: 2em;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto 1.5em auto;
+      }
+      .footer-row-center, .footer-row-links {
+        flex-direction: column;
+        width: auto;
+        min-width: 200px;
+        align-items: flex-start;
+        margin-bottom: 0;
+      }
+      .footer-col-info, .footer-col-links {
+        width: 100%;
+        text-align: left;
+      }
+      .footer-col-subscribe, .footer-col-contact {
+        width: 100%;
+        text-align: left;
+      }
+    }
+
+    /* Modern Responsive Footer */
+    <footer class="modern-footer">
+      <div class="footer-inner">
+        <div class="footer-section footer-brand">
+          <span class="footer-logo">Nahush Patel</span>
+        </div>
+        <div class="footer-section footer-nav">
+          <nav>
+            <a href="/">Home</a>
+            <a href="/blog.html">Blog</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <div class="footer-copyright">&copy; 2025 Nahush Patel. All rights reserved.</div>
+        </div>
+        <div class="footer-section footer-social-contact">
+          <div class="footer-social-icons">
+            <a href="https://www.linkedin.com/in/nahush-patel/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://x.com/JITUP99288196" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:nahushpatel880@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/deviljitu1" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+          <div class="footer-support">Support: <a href="mailto:nahushpatel880@gmail.com">nahushpatel880@gmail.com</a></div>
+        </div>
+      </div>
+    </footer>
+    <style>
+    .modern-footer {
+      background: #181828;
+      color: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      padding: 0;
+      margin-top: 3em;
+      font-size: 1rem;
+      width: 100%;
+    }
+    .footer-inner {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.2em 2em;
+      gap: 1.5em;
+    }
+    .footer-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .footer-brand {
+      flex: 1 1 180px;
+      font-weight: bold;
+      font-size: 1.2em;
+      letter-spacing: 1px;
+    }
+    .footer-logo {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      font-size: 1.3em;
+      font-weight: bold;
+    }
+    .footer-nav nav {
+      display: flex;
+      flex-direction: row;
+      gap: 1.2em;
+      margin-bottom: 0.3em;
+    }
+    .footer-nav nav a {
+      color: #b3b3b3;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .footer-nav nav a:hover {
+      color: #4cc9f0;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+    .footer-copyright {
+      color: #b3b3b3;
+      font-size: 0.97em;
+    }
+    .footer-social-contact {
+      align-items: flex-end;
+      text-align: right;
+      gap: 0.3em;
+    }
+    .footer-social-icons {
+      display: flex;
+      flex-direction: row;
+      gap: 0.7em;
+      margin-bottom: 0.2em;
+      justify-content: flex-end;
+    }
+    .footer-social-icons a {
+      color: #fff;
+      font-size: 1.2em;
+      background: #23233a;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+    .footer-social-icons a:hover {
+      background: var(--gradient);
+      color: #fff;
+    }
+    .footer-support {
+      color: #b3b3b3;
+      font-size: 0.97em;
+      margin-top: 0.1em;
+    }
+    .footer-support a {
+      color: #4cc9f0;
+      text-decoration: underline;
+    }
+    /* Responsive Styles */
+    @media (max-width: 900px) {
+      .footer-inner {
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+        padding: 1.2em 1em;
+      }
+      .footer-section {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+      }
+      .footer-social-contact {
+        align-items: center;
+        text-align: center;
+      }
+      .footer-nav nav {
+        justify-content: center;
+      }
+      .footer-social-icons {
+        justify-content: center;
+      }
+    }
     @media (max-width: 500px) {
-      .footer-main, .footer-col, .footer-list, .footer-list li, .footer-col h4, .footer-logo, .footer-tagline, .footer-contact, .footer-social, .footer-bottom, .footer-bottom-links, .footer-container {
-        margin: 0 !important;
-        padding: 0 !important;
-        min-height: 0 !important;
-        height: auto !important;
-        line-height: 1.1 !important;
+      .footer-inner {
+        padding: 0.7em 0.2em;
+        gap: 0.5em;
       }
-      .footer-main > *, .footer-col > *, .footer-list > *, .footer-container > * {
-        margin: 0 !important;
-        padding: 0 !important;
-        min-height: 0 !important;
-        height: auto !important;
-        line-height: 1.1 !important;
+      .footer-logo {
+        font-size: 1.1em;
+      }
+      .footer-nav nav {
+        gap: 0.7em;
+        font-size: 0.98em;
+      }
+      .footer-copyright, .footer-support {
+        font-size: 0.93em;
+      }
+      .footer-social-icons a {
+        width: 28px;
+        height: 28px;
+        font-size: 1em;
       }
     }
+    </style>
   </style>
 </head>
 <body>
@@ -1967,69 +2231,32 @@ html {
     </div>
   </section>
 
-  <section id="footer" class="footer-container" itemscope itemtype="https://schema.org/WPFooter" aria-label="Footer">
-    <div class="footer-main">
-      <div class="footer-row-center">
-        <div class="footer-col footer-col-subscribe">
-          <div class="footer-logo">Nahush Patel</div>
-          <div class="footer-tagline">Web Developer & WordPress Expert</div>
-          <div class="footer-newsletter">
-            <form action="#" method="post" onsubmit="return false;">
-              <input type="email" placeholder="Enter your Email" aria-label="Email for newsletter" required />
-              <button type="submit">Subscribe</button>
-            </form>
-          </div>
-        </div>
-        <div class="footer-col footer-col-contact">
-          <h4>Contact</h4>
-          <div class="footer-contact">
-            <div>
-              <i class="fas fa-phone"></i>
-              <a href="tel:+917875783498">+91 7875783498</a>
-            </div>
-            <div>
-              <i class="fas fa-envelope"></i>
-              <a href="mailto:nahushpatel880@gmail.com">nahushpatel880@gmail.com</a>
-            </div>
-          </div>
-          <div class="footer-social">
-            <a href="https://www.linkedin.com/in/nahush-patel/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://x.com/JITUP99288196" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="mailto:jitupatel9928@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://github.com/deviljitu1" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          </div>
-        </div>
+  <!-- Responsive Footer Layout -->
+  <footer class="modern-footer">
+    <div class="footer-inner">
+      <div class="footer-section footer-brand">
+        <span class="footer-logo">Nahush Patel</span>
       </div>
-      <div class="footer-row-links">
-        <div class="footer-col footer-col-info">
-          <h4>Information</h4>
-          <ul class="footer-list">
-            <li><a href="https://nahushpatel.in/#about">About Me</a></li>
-            <li><a href="https://nahushpatel.in/blog.html">Blog</a></li>
-            <li><a href="https://nahushpatel.in/#portfolio">Portfolio</a></li>
-            <li><a href="https://nahushpatel.in/#skills">Skills</a></li>
-          </ul>
+      <div class="footer-section footer-nav">
+        <nav>
+          <a href="/">Home</a>
+          <a href="/blog.html">Blog</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="footer-copyright">&copy; 2025 Nahush Patel. All rights reserved.</div>
+      </div>
+      <div class="footer-section footer-social-contact">
+        <div class="footer-social-icons">
+          <a href="https://www.linkedin.com/in/nahush-patel/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://x.com/JITUP99288196" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="mailto:nahushpatel880@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://github.com/deviljitu1" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
         </div>
-        <div class="footer-col footer-col-links">
-          <h4>Helpful Links</h4>
-          <ul class="footer-list">
-            <li><a href="https://nahushpatel.in/#contact">Contact</a></li>
-            <li><a href="https://linkpostai.netlify.app/">LinkedIn AI Post Generator</a></li>
-          </ul>
-        </div>
+        <div class="footer-support">Support: <a href="mailto:nahushpatel880@gmail.com">nahushpatel880@gmail.com</a></div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div>&copy; 2025 Nahush Patel. All rights reserved.</div>
-      <div class="footer-bottom-links">
-        <a href="/">Home</a>
-        <a href="/blog.html">Blog</a>
-        <a href="/privacy.html">Privacy</a>
-        <a href="/terms.html">Terms & Condition</a>
-      </div>
-    </div>
-    <meta itemprop="copyrightYear" content="2025" />
-  </section>  
+  </footer>
 
   <script>
     const toggle = document.getElementById('toggleMode');
