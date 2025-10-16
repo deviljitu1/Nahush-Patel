@@ -9,10 +9,11 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
-  <!-- ✅ Load main stylesheet with high priority -->
-  <link rel="stylesheet" href="css/styles.css">
+  <!-- ✅ Preload & load main stylesheet asynchronously -->
+  <link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
 
-  <!-- ✅ Font Awesome (load with low priority) -->
+  <!-- ✅ Font Awesome (load asynchronously to prevent render-blocking) -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
 
@@ -43,6 +44,14 @@
   <meta property="og:image" content="https://nahushpatel.in/img/dark-image.webp" />
   <meta property="og:site_name" content="Nahush Patel Portfolio" />
 
+  <!-- ✅ Additional OG profile info -->
+  <meta property="og:title" content="Nahush Web Developer & Digital Marketer">
+  <meta property="og:site_name" content="Nahush Patel">
+  <meta property="og:url" content="https://nahushpatel.in/">
+  <meta property="og:description" content="I’m Nahush Patel, a passionate Digital Marketer with a strong focus on SEO and website optimization. I specialize in creating responsive, user-friendly websites using WordPress, HTML, CSS, and JavaScript, while implementing on-page and off-page SEO strategies to boost search rankings and online visibility.">
+  <meta property="og:type" content="profile">
+  <meta property="og:image" content="https://nahushpatel.in/img/dark-image.webp">
+
   <!-- ✅ Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Nahush Patel - Web Developer Portfolio" />
@@ -70,6 +79,47 @@
     "description": "Front-end Developer & WordPress Expert specializing in responsive web design using HTML, CSS, and JavaScript. Tech blogger sharing insights on modern web development."
   }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Nahush Patel - Web Developer",
+    "url": "https://nahushpatel.in/"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Nahush Patel Web Development",
+    "url": "https://nahushpatel.in/",
+    "logo": "https://nahushpatel.in/img/dark-image.webp",
+    "sameAs": [
+      "https://www.linkedin.com/in/nahush-patel/",
+      "https://x.com/JITUP99288196"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "mailto:jitupatel9928@gmail.com",
+      "contactType": "customer support"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://nahushpatel.in/"},
+      {"@type": "ListItem", "position": 2, "name": "Portfolio", "item": "https://nahushpatel.in/#portfolio"},
+      {"@type": "ListItem", "position": 3, "name": "Blog", "item": "https://nahushpatel.in/blog.html"},
+      {"@type": "ListItem", "position": 4, "name": "Contact", "item": "https://nahushpatel.in/#contact"}
+    ]
+  }
+  </script>
 </head>
 <body>
   <nav class="navbar" aria-label="Main Navigation">
@@ -82,14 +132,14 @@
       <li><a href="#contact">Contact</a></li>
       <li><a href="blog.html">Blog</a></li>
     </ul>
-    <div class="hamburger" id="hamburgerMenu" aria-label="Toggle menu">
+    <div class="hamburger" id="hamburgerMenu">
       <span></span>
       <span></span>
       <span></span>
     </div>
-    <div id="toggleMode" style="cursor: pointer;" aria-label="Toggle dark mode">
-      <img src="img/moon-icon.webp" id="darkIcon" alt="Dark Mode" width="20" height="20">
-      <img src="img/sun-icon.webp" id="lightIcon" alt="Light Mode" width="20" height="20" style="display: none;">
+    <div id="toggleMode" style="cursor: pointer;">
+      <img src="img/moon-icon.webp" id="darkIcon" alt="Dark Mode" style="width: 20px; height: 20px;">
+      <img src="img/sun-icon.webp" id="lightIcon" alt="Light Mode" style="width: 20px; height: 20px; display: none;">
     </div>
   </nav>
 
@@ -97,33 +147,33 @@
     <div class="left-content">
       <div class="social-icons">
         <a href="https://www.linkedin.com/in/nahush-patel/" class="icon" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://x.com/JITUP99288196" class="icon" title="Twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a class="icon" title="WhatsApp" href="https://wa.me/7875783498?text=Hey%20there%20I%20need%20a%20website%21" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://x.com/JITUP99288196" class="icon" title="Instagram" aria-label="Instagram"><i class="fab fa-twitter"></i></a>
+        <a class="icon" title="WhatsApp" href="https://wa.me/7875783498?text=Hey%20there%20I%20need%20a%20website%21"><i class="fab fa-whatsapp"></i></a>
       </div>
       <h1>Hi, I'm <br><span class="name-gradient">Nahush Patel</span></h1>
       <h2><span class="typing">Web Developer</span></h2>
-      <button class="glow-btn" aria-label="Download CV" style="min-height: 44px; min-width: 44px; padding: 12px 24px;">
-        <a href="img/Nahush Patel.pdf" style="text-decoration: none; color: inherit; display: block; min-height: 44px; line-height: 44px;">Download CV</a>
-      </button>
+      <button class="glow-btn" aria-label="Download CV"><a href="img/Nahush Patel.pdf" style="text-decoration: none; color: inherit;">Download CV</a></button>
     </div>
     <div class="right-content">
       <span class="profile-frame">
         <img
-          id="profileImg"
-          src="img/dark-image.webp"
-          alt="Nahush Patel - Web Developer Profile Picture"
-          width="160"
-          height="160"
-          fetchpriority="high"
-          decoding="async"
-          loading="eager"
-        >
+  id="profileImg"
+  src="img/dark-image.webp"
+  alt="Nahush Patel - Web Developer Profile Picture"
+  width="600"
+  height="400"
+  fetchpriority="high"
+  decoding="async"
+  importance="high"
+  loading="eager"
+  style="content-visibility:auto;"
+>
       </span>
     </div>
   </section>
   
   <section id="about" class="about-container">
-    <img class="about-img" src="img/about-image.webp" alt="About Nahush Patel - Web Developer" width="400" height="400" loading="lazy">
+    <img class="about-img" src="img/about-image.webp" alt="About Nahush Patel - Web Developer" />
     <div class="about-text">
       <h2><span class="name-gradient blinking-underline">About Me</span></h2>
       <p>Nahush Patel – Front-end Developer & WordPress Expert specializing in responsive web design using HTML, CSS, and JavaScript. Tech blogger sharing insights on modern web development. Passionate photographer and continuous learner in emerging technologies. </p>
@@ -133,97 +183,99 @@
   <section id="skills" class="skills-container">
     <h2><span class="name-gradient blinking-underline">My Skills</span></h2>
     <div class="skills-grid">
-      <!-- Optimized skill cards with proper image dimensions -->
       <div class="skill-card">
-        <img src="img/html-icon.webp" alt="HTML" width="35" height="35" loading="lazy">
+        <img src="img/html-icon.webp" alt="HTML">
         <span>HTML</span>
       </div>
       <div class="skill-card">
-        <img src="img/css-icon.webp" alt="CSS" width="35" height="35" loading="lazy">
+        <img src="img/css-icon.webp" alt="CSS">
         <span>CSS</span>
       </div>
       <div class="skill-card">
-        <img src="img/js-icon.webp" alt="JavaScript" width="35" height="35" loading="lazy">
+        <img src="img/js-icon.webp" alt="JavaScript">
         <span>JavaScript</span>
       </div>
       <div class="skill-card">
-        <img src="img/Wordpress.webp" alt="WordPress" width="35" height="35" loading="lazy">
+        <img src="img/Wordpress.webp" alt="WordPress">
         <span>WordPress</span>
       </div>
       <div class="skill-card">
-        <img src="img/Github.webp" alt="GitHub" width="35" height="35" loading="lazy">
+        <img src="img/Github.webp" alt="GitHub">
         <span>GitHub</span>
       </div>
       <div class="skill-card">
-        <img src="img/git.webp" alt="Git" width="35" height="35" loading="lazy">
+        <img src="img/git.webp" alt="Git">
         <span>Git</span>
       </div>
       <div class="skill-card">
-        <img src="img/canva.webp" alt="Canva" width="35" height="35" loading="lazy">
+        <img src="img/canva.webp" alt="Canva">
         <span>Canva</span>
       </div>
       <div class="skill-card">
-        <img src="img/SEO.webp" alt="SEO" width="35" height="35" loading="lazy">
+        <img src="img/SEO.webp" alt="SEO">
         <span>SEO</span>
       </div>
+      <!--
+      <div class="skill-card">
+        <img src="img/node-icon.webp" alt="Node.js">
+        <span>Node.js</span>
+      </div> -->
     </div>
   </section>
-
   <section id="portfolio" class="portfolio-container">
-    <h2><span class="name-gradient blinking-underline">My Portfolio</span></h2>
-    <div class="portfolio-grid">
-      <!-- Optimized portfolio images with proper dimensions -->
-      <div class="portfolio-card">
-        <img src="img/Peoject-Kisan.webp" alt="Project Kisan - AI Farming Assistant" width="330" height="150" loading="lazy">
-        <div class="portfolio-card-content">
-          <h3>Project Kisan <span style="font-size: 0.8rem; color: orange;">(In Progress)</span></h3>
-          <p>An AI-powered farming assistant under development for the Google Hackathon 2025. 
-            Designed to assist farmers with soil analysis, irrigation advice, crop planning, and organic solutions using modern AI technologies. </p>
-          <a href="https://project-kisan-ai-farming-assistant-fawn.vercel.app/" class="portfolio-btn">View Project</a>
-        </div>
-      </div>
-      <div class="portfolio-card">
-        <img src="img/linkdin-post-generator.webp" alt="LinkPost AI - LinkedIn Post Generator" width="332" height="150" loading="lazy">
-        <div class="portfolio-card-content">
-          <h3>LinkPost AI</h3>
-          <p>An AI-powered LinkedIn post generator built with React and OpenAI/Gemini API. Helps you craft engaging, SEO-optimized posts with just a click.</p>
-          <a href="https://linkpostai.netlify.app/" class="portfolio-btn">View Project</a>
-        </div>
-      </div>
-      <div class="portfolio-card">
-        <img src="img/project1-thumbnail.webp" alt="Tindog - Tinder for Dogs" width="330" height="151" loading="lazy">
-        <div class="portfolio-card-content">
-          <h3>Tindog</h3>
-          <p>A responsive Tinder-like landing page for dogs, built with Bootstrap 5. Features responsive navigation, pricing cards, and testimonial sections.</p>
-          <a href="https://deviljitu1.github.io/Tindog/" class="portfolio-btn">View Project</a>
-        </div>
-      </div>
-      <div class="portfolio-card">
-        <img src="img/project2-thumbnail.webp" alt="Personal Portfolio Website" width="334" height="150" loading="lazy">
-        <div class="portfolio-card-content">
-          <h3>Personal Portfolio</h3>
-          <p>My responsive personal portfolio website showcasing my projects, skills and experience. Built with modern web technologies.</p>
-          <a href="https://nahushpatel.in/" class="portfolio-btn">View Project</a>
-        </div>
-      </div>
-      <div class="portfolio-card">
-        <img src="img/project3-thumbnail.webp" alt="Poetree - Poetry Blog" width="330" height="150" loading="lazy">
-        <div class="portfolio-card-content">
-          <h3>Poetree</h3>
-          <p>A minimalist poetry blog with elegant typography and smooth animations, built with HTML, CSS and JavaScript.</p>
-          <a href="https://poetreebird.netlify.app/" class="portfolio-btn">View Project</a>
-        </div>
-      </div>
-      <div class="portfolio-card">
-        <img src="img/calmmindai.webp" alt="Calm Mind AI - Mental Health App" width="330" height="150" loading="lazy">
-        <div class="portfolio-card-content">
-          <h3>Calm Mind Ai</h3>
-          <p>This is the Ai Web App Which help mentally ill persion to.</p>
-          <a href="https://calmmindai.netlify.app/" class="portfolio-btn">View Project</a>
-        </div>
+  <h2><span class="name-gradient blinking-underline">My Portfolio</span></h2>
+  <div class="portfolio-grid">
+    <div class="portfolio-card">
+      <img src="img/Peoject-Kisan.webp" alt="Project 1">
+      <div class="portfolio-card-content">
+        <h3>Project Kisan <span style="font-size: 0.8rem; color: orange;">(In Progress)</span></h3>
+        <p>An AI-powered farming assistant under development for the Google Hackathon 2025. 
+          Designed to assist farmers with soil analysis, irrigation advice, crop planning, and organic solutions using modern AI technologies. </p>
+        <a href="https://project-kisan-ai-farming-assistant-fawn.vercel.app/" class="portfolio-btn">View Project</a>
       </div>
     </div>
-  </section>
+    <div class="portfolio-card">
+      <img src="img/linkdin-post-generator.webp" alt="Project 1">
+      <div class="portfolio-card-content">
+        <h3>LinkPost AI</h3>
+        <p>An AI-powered LinkedIn post generator built with React and OpenAI/Gemini API. Helps you craft engaging, SEO-optimized posts with just a click.</p>
+        <a href="https://linkpostai.netlify.app/" class="portfolio-btn">View Project</a>
+      </div>
+    </div>
+    <div class="portfolio-card">
+      <img src="img/project1-thumbnail.webp" alt="Project 1">
+      <div class="portfolio-card-content">
+        <h3>Tindog</h3>
+        <p>A responsive Tinder-like landing page for dogs, built with Bootstrap 5. Features responsive navigation, pricing cards, and testimonial sections.</p>
+        <a href="https://deviljitu1.github.io/Tindog/" class="portfolio-btn">View Project</a>
+      </div>
+    </div>
+    <div class="portfolio-card">
+      <img src="img/project2-thumbnail.webp" alt="Project 2">
+      <div class="portfolio-card-content">
+        <h3>Personal Portfolio</h3>
+        <p>My responsive personal portfolio website showcasing my projects, skills and experience. Built with modern web technologies.</p>
+        <a href="https://nahushpatel.in/" class="portfolio-btn">View Project</a>
+      </div>
+    </div>
+    <div class="portfolio-card">
+      <img src="img/project3-thumbnail.webp" alt="Project 3">
+      <div class="portfolio-card-content">
+        <h3>Poetree</h3>
+        <p>A minimalist poetry blog with elegant typography and smooth animations, built with HTML, CSS and JavaScript.</p>
+        <a href="https://poetreebird.netlify.app/" class="portfolio-btn">View Project</a>
+      </div>
+    </div>
+    <div class="portfolio-card">
+      <img src="img/calmmindai.webp" alt="Project 3">
+      <div class="portfolio-card-content">
+        <h3>Calm Mind Ai</h3>
+        <p>This is the Ai Web App Which help  mentally ill persion to.</p>
+        <a href="https://calmmindai.netlify.app/" class="portfolio-btn">View Project</a>
+      </div>
+    </div>
+  </div>
+</section>
 
   <section id="contact" class="contact-container">
     <h2><span class="name-gradient blinking-underline">Contact Me</span></h2>
@@ -231,10 +283,10 @@
     <div class="contact-grid">
       <div class="contact-card">
         <form class="contact-form" id="contactForm">
-          <input type="text" id="name" name="from_name" placeholder="Your Name" required aria-label="Your Name">
-          <input type="email" id="email" name="from_email" placeholder="Your Email" required aria-label="Your Email">
-          <textarea id="message" name="message" placeholder="Your Message" required aria-label="Your Message"></textarea>
-          <button type="submit" class="contact-btn" style="min-height: 44px; min-width: 44px;">Send Message</button>
+          <input type="text" id="name" name="from_name" placeholder="Your Name" required />
+          <input type="email" id="email" name="from_email" placeholder="Your Email" required />
+          <textarea id="message" name="from_email" placeholder="Your Message" required></textarea>
+          <button type="submit"  class="contact-btn">Send Message</button>
         </form>
         <div id="thankYouMessage" class="thank-you-message" style="display: none;">
           <h3>Thank you for contacting!</h3>
@@ -252,19 +304,19 @@
       </div>
       <div class="footer-section footer-nav">
         <nav>
-          <a href="/" style="min-height: 44px; min-width: 44px; display: inline-flex; align-items: center;">Home</a>
-          <a href="/blog.html" style="min-height: 44px; min-width: 44px; display: inline-flex; align-items: center;">Blog</a>
-          <a href="#portfolio" style="min-height: 44px; min-width: 44px; display: inline-flex; align-items: center;">Portfolio</a>
-          <a href="#contact" style="min-height: 44px; min-width: 44px; display: inline-flex; align-items: center;">Contact</a>
+          <a href="/">Home</a>
+          <a href="/blog.html">Blog</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#contact">Contact</a>
         </nav>
         <div class="footer-copyright">&copy; 2025 Nahush Patel. All rights reserved.</div>
       </div>
       <div class="footer-section footer-social-contact">
         <div class="footer-social-icons">
-          <a href="https://www.linkedin.com/in/nahush-patel/" target="_blank" aria-label="LinkedIn" style="min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center;"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://x.com/JITUP99288196" target="_blank" aria-label="Twitter" style="min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center;"><i class="fab fa-twitter"></i></a>
-          <a href="mailto:nahushpatel880@gmail.com" aria-label="Email" style="min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center;"><i class="fas fa-envelope"></i></a>
-          <a href="https://github.com/deviljitu1" target="_blank" aria-label="GitHub" style="min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center;"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/nahush-patel/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://x.com/JITUP99288196" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="mailto:nahushpatel880@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://github.com/deviljitu1" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
         </div>
         <div class="footer-support">Support: <a href="mailto:nahushpatel880@gmail.com">nahushpatel880@gmail.com</a></div>
       </div>
@@ -272,104 +324,123 @@
   </footer>
 
   <script>
-    // Initialize EmailJS immediately
-    (function() {
-      emailjs.init('Y5Zzx5gdrO2rOGSkv');
-    })();
+    const toggle = document.getElementById('toggleMode');
+    const body = document.body;
+    const profileImg = document.getElementById('profileImg');
+    const darkIcon = document.getElementById('darkIcon');
+    const lightIcon = document.getElementById('lightIcon');
 
-    // DOM ready function
-    document.addEventListener('DOMContentLoaded', function() {
-      // Dark/Light mode toggle
-      const toggle = document.getElementById('toggleMode');
-      const body = document.body;
-      const profileImg = document.getElementById('profileImg');
-      const darkIcon = document.getElementById('darkIcon');
-      const lightIcon = document.getElementById('lightIcon');
-
-      if (toggle) {
-        toggle.addEventListener('click', () => {
-          body.classList.toggle('light');
-          profileImg.src = body.classList.contains('light') ? 'img/light-image.webp' : 'img/dark-image.webp';
-          darkIcon.style.display = body.classList.contains('light') ? 'none' : 'inline';
-          lightIcon.style.display = body.classList.contains('light') ? 'inline' : 'none';
-        });
-      }
-
-      // Mobile menu toggle
-      const hamburgerMenu = document.getElementById('hamburgerMenu');
-      const navLinks = document.getElementById('navLinks');
-      const navLinksItems = document.querySelectorAll('.nav-links li a');
-
-      if (hamburgerMenu && navLinks) {
-        hamburgerMenu.addEventListener('click', () => {
-          navLinks.classList.toggle('active');
-        });
-
-        navLinksItems.forEach(link => {
-          link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-          });
-        });
-      }
-
-      // Active navigation highlighting
-      const navLinksItemsA = document.querySelectorAll('.nav-links li a');
-
-      function setActiveNav() {
-        const sections = document.querySelectorAll('section');
-        const scrollPosition = window.scrollY + 100;
-
-        sections.forEach(section => {
-          const id = section.getAttribute('id');
-          const offsetTop = section.offsetTop;
-          const offsetHeight = section.offsetHeight;
-
-          const link = document.querySelector(`.nav-links li a[href="#${id}"]`);
-          if (link) {
-            link.classList.toggle('active', scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight);
-          }
-        });
-      }
-
-      window.addEventListener('scroll', setActiveNav);
-      setActiveNav(); // Initial call
-
-      // Contact form handling
-      const contactForm = document.getElementById('contactForm');
-      const thankYouMessage = document.getElementById('thankYouMessage');
-
-      if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-
-          const name = document.getElementById('name').value.trim();
-          const email = document.getElementById('email').value.trim();
-          const message = document.getElementById('message').value.trim();
-
-          if (!name || !email || !message) {
-            alert('Please fill in all fields.');
-            return;
-          }
-
-          emailjs.send('service_npwwilk', 'template_e62g2gf', {
-            from_name: name,
-            from_email: email,
-            message: message,
-            reply_to: email,
-          }).then(() => {
-            contactForm.reset();
-            contactForm.style.display = 'none';
-            if (thankYouMessage) {
-              thankYouMessage.style.display = 'block';
-              thankYouMessage.classList.add('fade-in');
-            }
-          }).catch((error) => {
-            console.error('EmailJS Error:', error);
-            alert('Failed to send the message. Please try again later.');
-          });
-        });
-      }
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('light');
+      profileImg.src = body.classList.contains('light') ? 'img/light-image.webp' : 'img/dark-image.webp';
+      darkIcon.style.display = body.classList.contains('light') ? 'none' : 'inline';
+      lightIcon.style.display = body.classList.contains('light') ? 'inline' : 'none';
     });
+
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const navLinks = document.getElementById('navLinks');
+    const navLinksItems = document.querySelectorAll('.nav-links li a'); // Select all navigation links
+
+    hamburgerMenu.addEventListener('click', () => {
+      navLinks.classList.toggle('active'); // Toggle the 'active' class
+    });
+
+    navLinksItems.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active'); // Close the navigation menu
+      });
+    });
+    
+
+    const contactForm = document.getElementById('contactForm');
+    const thankYouMessage = document.getElementById('thankYouMessage');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault(); // Prevent form submission
+      contactForm.style.display = 'none'; // Hide the form
+      thankYouMessage.style.display = 'block'; // Show thank you message
+      thankYouMessage.classList.add('fade-in'); // Add animation class
+    });
+    // active navigation link
+    const navLinksItemsA = document.querySelectorAll('.nav-links li a');
+
+    navLinksItemsA.forEach(link => {
+      link.addEventListener('click', () => {
+        // Remove 'active' class from all links
+        navLinksItemsA.forEach(nav => nav.classList.remove('active'));
+        // Add 'active' class to the clicked link
+        link.classList.add('active');
+      });
+    });
+
+    // Automatically set the active link based on the current section
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section');
+      const scrollPosition = window.scrollY + 100; // Offset for better accuracy
+
+      sections.forEach(section => {
+        const id = section.getAttribute('id');
+        const offsetTop = section.offsetTop;
+        const offsetHeight = section.offsetHeight;
+
+        const link = document.querySelector(`.nav-links li a[href="#${id}"]`);
+        if (link) {
+          link.classList.toggle('active', scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight);
+        }
+      });
+    });
+
+  // Initialize EmailJS with your Public Key
+(function() {
+  emailjs.init('Y5Zzx5gdrO2rOGSkv'); // Replace with your actual public key
+})();
+
+// Wait for the DOM to load
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contactForm');
+  const thankYouMessage = document.getElementById('thankYouMessage');
+
+  if (!contactForm) {
+    console.error('Contact form not found on the page.');
+    return;
+  }
+
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !email || !message) {
+      alert('Please fill in all fields.');
+      return;
+    }
+
+    console.log('Sending email...');
+    emailjs.send('service_npwwilk', 'template_e62g2gf', {
+      from_name: name,
+      from_email: email,
+      message: message,
+      reply_to: email, // Add this field for auto-reply
+    }).then(() => {
+      console.log('Email sent successfully!');
+      // Show success message and hide form
+      contactForm.reset(); // Clear the form fields
+      contactForm.style.display = 'none'; // Hide the form
+      if (thankYouMessage) {
+        thankYouMessage.style.display = 'block';
+        thankYouMessage.classList.add('fade-in');
+      } else {
+        alert('Thank you! Your message has been sent.');
+      }
+    }).catch((error) => {
+      console.error('EmailJS Error:', error);
+      alert('Failed to send the message. Please try again later.');
+    });
+  });
+});
+
   </script>
 </body>
 </html>
