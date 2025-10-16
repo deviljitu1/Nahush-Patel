@@ -706,7 +706,7 @@
       padding-right: 20%;
       padding-top: 2em; 
       padding-bottom: 2em; 
-      background: url('about-background.jpg') no-repeat center center/cover; 
+      background: url('/img/bg-header.webp') no-repeat center center/cover; 
       text-align: center;
       position: relative; 
     }
@@ -721,7 +721,7 @@
         transform: translateY(0px);
         padding-left: 10%;
         padding-right: 20%;
-        background: url('about-background.jpg') no-repeat center center/cover; 
+        background: url('/img/bg-header.webp') no-repeat center center/cover; 
         text-align: center;
         
       }
