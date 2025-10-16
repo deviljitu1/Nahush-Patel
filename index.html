@@ -2,48 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="css/styles.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nahush Patel - Web Developer</title>
-  <!-- Google Console Verification -->
-  <meta name="google-site-verification" content="0vbPE6dGdRqjhN2RaSoA3fQ5cOKyBviR0Qg15hDQ7w0" />
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <!-- ✅ Preconnect for faster CDN connections -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <!-- ✅ Preload & load main stylesheet asynchronously -->
+  <link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
+
+  <!-- ✅ Font Awesome (load asynchronously to prevent render-blocking) -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+
+  <!-- ✅ Defer EmailJS (non-critical JS should load after render) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <!-- ✅ Favicon & App Icons -->
   <link rel="icon" href="img/dark-image.webp" type="image/webp" sizes="16x16">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="apple-touch-icon" href="img/dark-image.webp" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#4cc9f0" />
+
+  <!-- ✅ SEO Meta Tags -->
   <meta name="description" content="Portfolio of Nahush Patel, a web developer showcasing skills, projects, and contact information.">
   <meta name="keywords" content="Nahush Patel, Web Developer, Portfolio, Projects, Contact">
   <meta name="author" content="Nahush Patel">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://nahushpatel.in/" />
+
+  <!-- ✅ Google Search Console -->
+  <meta name="google-site-verification" content="0vbPE6dGdRqjhN2RaSoA3fQ5cOKyBviR0Qg15hDQ7w0" />
+
+  <!-- ✅ Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Nahush Patel - Web Developer Portfolio" />
   <meta property="og:description" content="Portfolio of Nahush Patel, a web developer specializing in responsive web design, WordPress, and modern web technologies. Explore projects, skills, and free AI tools." />
   <meta property="og:url" content="https://nahushpatel.in/" />
   <meta property="og:image" content="https://nahushpatel.in/img/dark-image.webp" />
   <meta property="og:site_name" content="Nahush Patel Portfolio" />
+
+  <!-- ✅ Additional OG profile info -->
+  <meta property="og:title" content="Nahush Web Developer & Digital Marketer">
+  <meta property="og:site_name" content="Nahush Patel">
+  <meta property="og:url" content="https://nahushpatel.in/">
+  <meta property="og:description" content="I’m Nahush Patel, a passionate Digital Marketer with a strong focus on SEO and website optimization. I specialize in creating responsive, user-friendly websites using WordPress, HTML, CSS, and JavaScript, while implementing on-page and off-page SEO strategies to boost search rankings and online visibility.">
+  <meta property="og:type" content="profile">
+  <meta property="og:image" content="https://nahushpatel.in/img/dark-image.webp">
+
+  <!-- ✅ Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Nahush Patel - Web Developer Portfolio" />
   <meta name="twitter:description" content="Portfolio of Nahush Patel, a web developer specializing in responsive web design, WordPress, and modern web technologies. Explore projects, skills, and free AI tools." />
   <meta name="twitter:image" content="https://nahushpatel.in/img/dark-image.webp" />
   <meta name="twitter:site" content="@JITUP99288196" />
-  <meta name="theme-color" content="#4cc9f0" />
-  <link rel="apple-touch-icon" href="img/dark-image.webp" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <!--Open Graph Protocol-->
-  <meta property="og:title" content=Nahush Web Developer & Digital Marketer >
-<meta property="og:site_name" content=Nahush Patel>
-<meta property="og:url" content=https://nahushpatel.in/>
-<meta property="og:description" content=I’m Nahush Patel, a passionate Digital
-Marketer with a strong focus on SEO and
-website optimization. I specialize in
-creating responsive, user-friendly
-websites using WordPress, HTML, CSS, and
-JavaScript, while implementing on-page
-and off-page SEO strategies to boost
-search rankings and online visibility.>
-<meta property="og:type" content=profile>
-<meta property="og:image" content="">
-<meta property="og:image" content=https://nahushpatel.in/img/dark-image.webp>
+
+  <!-- ✅ Structured Data (Schema.org) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -63,6 +79,7 @@ search rankings and online visibility.>
     "description": "Front-end Developer & WordPress Expert specializing in responsive web design using HTML, CSS, and JavaScript. Tech blogger sharing insights on modern web development."
   }
   </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -71,6 +88,7 @@ search rankings and online visibility.>
     "url": "https://nahushpatel.in/"
   }
   </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -89,6 +107,7 @@ search rankings and online visibility.>
     }
   }
   </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -101,8 +120,6 @@ search rankings and online visibility.>
     ]
   }
   </script>
-  <style>
-    </style>
 </head>
 <body>
   <nav class="navbar" aria-label="Main Navigation">
