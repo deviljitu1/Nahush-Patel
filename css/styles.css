@@ -111,7 +111,6 @@
       padding-bottom: 2em; 
       gap: 2em; 
       text-align: center; 
-      background: url('background-image.jpg') no-repeat center center/cover; 
       text-align: center;
       position: relative; 
     }
@@ -332,7 +331,6 @@
       padding-bottom: 2em; 
       gap: 2em; 
       text-align: center; 
-      background: url('background-image.jpg') no-repeat center center/cover; 
       text-align: center;
       position: relative; 
     }
@@ -706,7 +704,6 @@
       padding-right: 20%;
       padding-top: 2em; 
       padding-bottom: 2em; 
-      background: url('/img/bg-header.webp') no-repeat center center/cover; 
       text-align: center;
       position: relative; 
     }
@@ -721,7 +718,6 @@
         transform: translateY(0px);
         padding-left: 10%;
         padding-right: 20%;
-        background: url('/img/bg-header.webp') no-repeat center center/cover; 
         text-align: center;
         
       }
