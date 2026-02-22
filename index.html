@@ -3,17 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nahush Patel - Web Developer & Digital Marketer</title>
+  <title>Nahush Patel - Web Developer &amp; Digital Marketer</title>
+
+  <!-- ✅ Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- ✅ Preconnect for faster CDN connections -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
-  <!-- ✅ Preload & load main stylesheet asynchronously -->
-  <link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
+  <!-- ✅ Main stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
 
-  <!-- ✅ Defer EmailJS (non-critical JS should load after render) -->
+  <!-- ✅ Defer EmailJS -->
   <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <!-- ✅ Favicon & App Icons -->
@@ -23,8 +27,8 @@
   <meta name="theme-color" content="#4cc9f0" />
 
   <!-- ✅ SEO Meta Tags -->
-  <meta name="description" content="Portfolio of Nahush Patel, a Web Developer & Digital Marketer showcasing skills, projects, and contact information.">
-  <meta name="keywords" content="Nahush Patel, Web Developer & Digital Marketer, Portfolio, Projects, Contact">
+  <meta name="description" content="Portfolio of Nahush Patel, a Web Developer &amp; Digital Marketer showcasing skills, projects, and contact information.">
+  <meta name="keywords" content="Nahush Patel, Web Developer &amp; Digital Marketer, Portfolio, Projects, Contact">
   <meta name="author" content="Nahush Patel">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://nahushpatel.in/" />
@@ -34,24 +38,16 @@
 
   <!-- ✅ Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Nahush Patel - Web Developer & Digital Marketer Portfolio" />
-  <meta property="og:description" content="Portfolio of Nahush Patel, a Web Developer & Digital Marketer specializing in responsive web design, WordPress, and modern web technologies. Explore projects, skills, and free AI tools." />
+  <meta property="og:title" content="Nahush Patel - Web Developer &amp; Digital Marketer Portfolio" />
+  <meta property="og:description" content="Portfolio of Nahush Patel, a Web Developer &amp; Digital Marketer specializing in responsive web design, WordPress, and modern web technologies." />
   <meta property="og:url" content="https://nahushpatel.in/" />
   <meta property="og:image" content="https://nahushpatel.in/img/dark-image.webp" />
   <meta property="og:site_name" content="Nahush Patel Portfolio" />
 
-  <!-- ✅ Additional OG profile info -->
-  <meta property="og:title" content="Nahush Web Developer & Digital Marketer">
-  <meta property="og:site_name" content="Nahush Patel">
-  <meta property="og:url" content="https://nahushpatel.in/">
-  <meta property="og:description" content="I'm Nahush Patel, a passionate Digital Marketer with a strong focus on SEO and website optimization. I specialize in creating responsive, user-friendly websites using WordPress, HTML, CSS, and JavaScript, while implementing on-page and off-page SEO strategies to boost search rankings and online visibility.">
-  <meta property="og:type" content="profile">
-  <meta property="og:image" content="https://nahushpatel.in/img/dark-image.webp">
-
   <!-- ✅ Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Nahush Patel - Web Developer & Digital Marketer Portfolio" />
-  <meta name="twitter:description" content="Portfolio of Nahush Patel, a Web Developer & Digital Marketer specializing in responsive web design, WordPress, and modern web technologies. Explore projects, skills, and free AI tools." />
+  <meta name="twitter:title" content="Nahush Patel - Web Developer &amp; Digital Marketer Portfolio" />
+  <meta name="twitter:description" content="Portfolio of Nahush Patel, a Web Developer &amp; Digital Marketer specializing in responsive web design." />
   <meta name="twitter:image" content="https://nahushpatel.in/img/dark-image.webp" />
   <meta name="twitter:site" content="@JITUP99288196" />
 
@@ -76,252 +72,325 @@
   }
   </script>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Nahush Patel - Web Developer & Digital Marketer",
-    "url": "https://nahushpatel.in/"
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Nahush Patel Web Development",
-    "url": "https://nahushpatel.in/",
-    "logo": "https://nahushpatel.in/img/dark-image.webp",
-    "sameAs": [
-      "https://www.linkedin.com/in/nahush-patel/",
-      "https://x.com/JITUP99288196"
-    ],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "email": "mailto:jitupatel9928@gmail.com",
-      "contactType": "customer support"
-    }
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://nahushpatel.in/"},
-      {"@type": "ListItem", "position": 2, "name": "Portfolio", "item": "https://nahushpatel.in/#portfolio"},
-      {"@type": "ListItem", "position": 3, "name": "Blog", "item": "https://nahushpatel.in/blog.html"},
-      {"@type": "ListItem", "position": 4, "name": "Contact", "item": "https://nahushpatel.in/#contact"}
-    ]
-  }
-  </script>
-  
   <style>
-    /* SVG Icon Styles */
     .svg-icon {
-      width: 1em;
-      height: 1em;
+      width: 1em; height: 1em;
       vertical-align: -0.125em;
       fill: currentColor;
     }
   </style>
 </head>
 <body>
+
+  <!-- ============================================================
+       TOP NAVIGATION
+  ============================================================ -->
   <nav class="navbar" aria-label="Main Navigation">
-    <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">Nahush</a></div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="blog.html">Blog</a></li>
+    <a class="logo" href="index.html" aria-label="Nahush Patel Home">Nahush</a>
+
+    <ul class="nav-links" id="navLinks" role="list">
+      <li><a href="#home" id="nav-home">Home</a></li>
+      <li><a href="#about" id="nav-about">About</a></li>
+      <li><a href="#skills" id="nav-skills">Skills</a></li>
+      <li><a href="#portfolio" id="nav-portfolio">Portfolio</a></li>
+      <li><a href="#contact" id="nav-contact">Contact</a></li>
+      <li><a href="blog.html" id="nav-blog">Blog</a></li>
     </ul>
-    <div class="hamburger" id="hamburgerMenu">
-      <span></span>
-      <span></span>       
-      <span></span>
+
+    <div id="toggleMode" aria-label="Toggle dark/light mode" role="button" tabindex="0">
+      <img src="img/moon-icon.webp" id="darkIcon" alt="Switch to Dark Mode" style="width:18px;height:18px;">
+      <img src="img/sun-icon.webp" id="lightIcon" alt="Switch to Light Mode" style="width:18px;height:18px;display:none;">
     </div>
-    <div id="toggleMode" style="cursor: pointer;">
-      <img src="img/moon-icon.webp" id="darkIcon" alt="Dark Mode" style="width: 20px; height: 20px;">
-      <img src="img/sun-icon.webp" id="lightIcon" alt="Light Mode" style="width: 20px; height: 20px; display: none;">
+
+    <button class="hamburger" id="hamburgerMenu" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Sidebar overlay -->
+  <div class="nav-overlay" id="navOverlay" role="presentation"></div>
+
+  <!-- ============================================================
+       MOBILE BOTTOM NAVIGATION (App-style)
+  ============================================================ -->
+  <nav class="bottom-nav" aria-label="Mobile Bottom Navigation" id="bottomNav">
+    <div class="bottom-nav-inner">
+
+      <!-- Home -->
+      <a href="#home" class="bottom-nav-item active" id="bnav-home" aria-label="Home">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        <span>Home</span>
+      </a>
+
+      <!-- About -->
+      <a href="#about" class="bottom-nav-item" id="bnav-about" aria-label="About">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+        <span>About</span>
+      </a>
+
+      <!-- Skills (Center hero button) -->
+      <a href="#skills" class="bottom-nav-item center-item" id="bnav-skills" aria-label="Skills">
+        <div class="nav-icon-wrap">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
+        <span>Skills</span>
+      </a>
+
+      <!-- Portfolio -->
+      <a href="#portfolio" class="bottom-nav-item" id="bnav-portfolio" aria-label="Portfolio">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+          <line x1="8" y1="21" x2="16" y2="21"/>
+          <line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+        <span>Work</span>
+      </a>
+
+      <!-- Contact -->
+      <a href="#contact" class="bottom-nav-item" id="bnav-contact" aria-label="Contact">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        <span>Contact</span>
+      </a>
+
     </div>
   </nav>
 
+  <!-- ============================================================
+       HERO SECTION
+  ============================================================ -->
   <section id="home" class="hero">
+
     <div class="left-content">
+      <span class="hero-eyebrow">👋 Hello, World!</span>
+
       <div class="social-icons">
-        <a href="https://www.linkedin.com/in/nahush-patel/" class="icon" title="LinkedIn" aria-label="LinkedIn">
-          <svg class="svg-icon" viewBox="0 0 24 24" width="24" height="24">
+        <a href="https://www.linkedin.com/in/nahush-patel/" class="icon" title="LinkedIn" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg class="svg-icon" viewBox="0 0 24 24" width="18" height="18">
             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
           </svg>
         </a>
-        <a href="https://x.com/JITUP99288196" class="icon" title="Twitter" aria-label="Twitter">
-          <svg class="svg-icon" viewBox="0 0 24 24" width="24" height="24">
+        <a href="https://x.com/JITUP99288196" class="icon" title="Twitter / X" aria-label="Twitter" target="_blank" rel="noopener">
+          <svg class="svg-icon" viewBox="0 0 24 24" width="18" height="18">
             <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
           </svg>
         </a>
-        <a class="icon" title="WhatsApp" href="https://wa.me/7875783498?text=Hey%20there%20I%20need%20a%20website%21" aria-label="WhatsApp">
-          <svg class="svg-icon" viewBox="0 0 24 24" width="24" height="24">
+        <a class="icon" title="WhatsApp" href="https://wa.me/7875783498?text=Hey%20there%20I%20need%20a%20website%21" aria-label="WhatsApp" target="_blank" rel="noopener">
+          <svg class="svg-icon" viewBox="0 0 24 24" width="18" height="18">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893-.001-3.189-1.262-6.189-3.553-8.449"/>
           </svg>
         </a>
+        <a href="https://github.com/deviljitu1" class="icon" title="GitHub" aria-label="GitHub" target="_blank" rel="noopener">
+          <svg class="svg-icon" viewBox="0 0 24 24" width="18" height="18">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+        </a>
       </div>
+
       <h1>Hi, I'm <br><span class="name-gradient">Nahush Patel</span></h1>
-      <h2><span class="typing">Web Developer & Digital Marketer</span></h2>
-      <button class="glow-btn" aria-label="Download CV"><a href="img/Nahush Patel.pdf" style="text-decoration: none; color: inherit;">Download CV</a></button>
+      <h2><span class="typing">Web Developer &amp; Digital Marketer</span></h2>
+
+      <div class="cta-group">
+        <button class="glow-btn" aria-label="Download CV">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <a href="img/Nahush Patel.pdf" download>Download CV</a>
+        </button>
+        <a href="#contact" class="glow-btn" style="background: transparent; border: 1px solid rgba(255,255,255,0.15); color: var(--text-primary);">
+          Let's Talk
+        </a>
+      </div>
     </div>
+
     <div class="right-content">
       <span class="profile-frame">
         <img
-  id="profileImg"
-  src="img/dark-image.webp"
-  alt="Nahush Patel - Web Developer & Digital Marketer Profile Picture"
-  width="600"
-  height="400"
-  fetchpriority="high"
-  decoding="async"
-  importance="high"
-  loading="eager"
-  style="content-visibility:auto;"
->
+          id="profileImg"
+          src="img/dark-image.webp"
+          alt="Nahush Patel - Web Developer &amp; Digital Marketer Profile Picture"
+          width="300"
+          height="300"
+          fetchpriority="high"
+          decoding="async"
+          loading="eager"
+        >
       </span>
     </div>
+
   </section>
-  
+
+  <!-- ============================================================
+       ABOUT SECTION
+  ============================================================ -->
   <section id="about" class="about-container">
-    <img class="about-img" src="img/about-image.webp" alt="About Nahush Patel - Web Developer & Digital Marketer" />
+    <img class="about-img" src="img/about-image.webp" alt="About Nahush Patel - Web Developer &amp; Digital Marketer" loading="lazy" />
     <div class="about-text">
       <h2><span class="name-gradient blinking-underline">About Me</span></h2>
-      <p>Nahush Patel – Web Developer & Digital Marketer passionate about building responsive, high-performing websites and driving online growth through data-driven digital marketing strategies. Skilled in HTML, CSS, JavaScript, and WordPress, with expertise in SEO, content strategy, and website optimization. A continuous learner and creative thinker dedicated to blending technology and marketing to deliver impactful digital experiences. </p>
+      <p>Nahush Patel – Web Developer &amp; Digital Marketer passionate about building responsive, high-performing websites and driving online growth through data-driven digital marketing strategies. Skilled in HTML, CSS, JavaScript, and WordPress, with expertise in SEO, content strategy, and website optimization. A continuous learner and creative thinker dedicated to blending technology and marketing to deliver impactful digital experiences.</p>
     </div>
   </section>
-  
+
+  <!-- ============================================================
+       SKILLS SECTION
+  ============================================================ -->
   <section id="skills" class="skills-container">
     <h2><span class="name-gradient blinking-underline">My Skills</span></h2>
     <div class="skills-grid">
       <div class="skill-card">
-        <img src="img/html-icon.webp" alt="HTML">
+        <img src="img/html-icon.webp" alt="HTML" loading="lazy">
         <span>HTML</span>
       </div>
       <div class="skill-card">
-        <img src="img/css-icon.webp" alt="CSS">
+        <img src="img/css-icon.webp" alt="CSS" loading="lazy">
         <span>CSS</span>
       </div>
       <div class="skill-card">
-        <img src="img/js-icon.webp" alt="JavaScript">
+        <img src="img/js-icon.webp" alt="JavaScript" loading="lazy">
         <span>JavaScript</span>
       </div>
       <div class="skill-card">
-        <img src="img/Wordpress.webp" alt="WordPress">
+        <img src="img/Wordpress.webp" alt="WordPress" loading="lazy">
         <span>WordPress</span>
       </div>
       <div class="skill-card">
-        <img src="img/Github.webp" alt="GitHub">
+        <img src="img/Github.webp" alt="GitHub" loading="lazy">
         <span>GitHub</span>
       </div>
       <div class="skill-card">
-        <img src="img/git.webp" alt="Git">
+        <img src="img/git.webp" alt="Git" loading="lazy">
         <span>Git</span>
       </div>
       <div class="skill-card">
-        <img src="img/canva.webp" alt="Canva">
+        <img src="img/canva.webp" alt="Canva" loading="lazy">
         <span>Canva</span>
       </div>
       <div class="skill-card">
-        <img src="img/SEO.webp" alt="SEO">
+        <img src="img/SEO.webp" alt="SEO" loading="lazy">
         <span>SEO</span>
       </div>
-      <!--
-      <div class="skill-card">
-        <img src="img/node-icon.webp" alt="Node.js">
-        <span>Node.js</span>
-      </div> -->
     </div>
   </section>
-  <section id="portfolio" class="portfolio-container">
-  <h2><span class="name-gradient blinking-underline">My Portfolio</span></h2>
-  <div class="portfolio-grid">
-    <div class="portfolio-card">
-      <img src="img/Peoject-Kisan.webp" alt="Project 1">
-      <div class="portfolio-card-content">
-        <h3>Project Kisan <span style="font-size: 0.8rem; color: orange;">(In Progress)</span></h3>
-        <p>An AI-powered farming assistant under development for the Google Hackathon 2025. 
-          Designed to assist farmers with soil analysis, irrigation advice, crop planning, and organic solutions using modern AI technologies. </p>
-        <a href="https://project-kisan-ai-farming-assistant-fawn.vercel.app/" class="portfolio-btn">View Project</a>
-      </div>
-    </div>
-    <div class="portfolio-card">
-      <img src="img/linkdin-post-generator.webp" alt="Project 1">
-      <div class="portfolio-card-content">
-        <h3>LinkPost AI</h3>
-        <p>An AI-powered LinkedIn post generator built with React and OpenAI/Gemini API. Helps you craft engaging, SEO-optimized posts with just a click.</p>
-        <a href="https://linkpostai.netlify.app/" class="portfolio-btn">View Project</a>
-      </div>
-    </div>
-    <div class="portfolio-card">
-      <img src="img/project1-thumbnail.webp" alt="Project 1">
-      <div class="portfolio-card-content">
-        <h3>Tindog</h3>
-        <p>A responsive Tinder-like landing page for dogs, built with Bootstrap 5. Features responsive navigation, pricing cards, and testimonial sections.</p>
-        <a href="https://deviljitu1.github.io/Tindog/" class="portfolio-btn">View Project</a>
-      </div>
-    </div>
-    <div class="portfolio-card">
-      <img src="img/project2-thumbnail.webp" alt="Project 2">
-      <div class="portfolio-card-content">
-        <h3>Personal Portfolio</h3>
-        <p>My responsive personal portfolio website showcasing my projects, skills and experience. Built with modern web technologies.</p>
-        <a href="https://nahushpatel.in/" class="portfolio-btn">View Project</a>
-      </div>
-    </div>
-    <div class="portfolio-card">
-      <img src="img/project3-thumbnail.webp" alt="Project 3">
-      <div class="portfolio-card-content">
-        <h3>Poetree</h3>
-        <p>A minimalist poetry blog with elegant typography and smooth animations, built with HTML, CSS and JavaScript.</p>
-        <a href="https://poetreebird.netlify.app/" class="portfolio-btn">View Project</a>
-      </div>
-    </div>
-    <div class="portfolio-card">
-      <img src="img/calmmindai.webp" alt="Project 3">
-      <div class="portfolio-card-content">
-        <h3>Calm Mind Ai</h3>
-        <p>This is the Ai Web App Which help  mentally ill persion to.</p>
-        <a href="https://calmmindai.netlify.app/" class="portfolio-btn">View Project</a>
-      </div>
-    </div>
-  </div>
-</section>
 
+  <!-- ============================================================
+       PORTFOLIO SECTION
+  ============================================================ -->
+  <section id="portfolio" class="portfolio-container">
+    <h2><span class="name-gradient blinking-underline">My Portfolio</span></h2>
+    <div class="portfolio-grid">
+
+      <div class="portfolio-card">
+        <img src="img/Peoject-Kisan.webp" alt="Project Kisan" loading="lazy">
+        <div class="portfolio-card-content">
+          <h3>Project Kisan <span style="font-size:0.75rem;color:#f72585;">(In Progress)</span></h3>
+          <p>An AI-powered farming assistant under development for the Google Hackathon 2025. Designed to assist farmers with soil analysis, irrigation advice, crop planning, and organic solutions.</p>
+          <a href="https://project-kisan-ai-farming-assistant-fawn.vercel.app/" class="portfolio-btn" target="_blank" rel="noopener">
+            View Project →
+          </a>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <img src="img/linkdin-post-generator.webp" alt="LinkPost AI" loading="lazy">
+        <div class="portfolio-card-content">
+          <h3>LinkPost AI</h3>
+          <p>An AI-powered LinkedIn post generator built with React and OpenAI/Gemini API. Helps you craft engaging, SEO-optimized posts with just a click.</p>
+          <a href="https://linkpostai.netlify.app/" class="portfolio-btn" target="_blank" rel="noopener">
+            View Project →
+          </a>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <img src="img/project1-thumbnail.webp" alt="Tindog Project" loading="lazy">
+        <div class="portfolio-card-content">
+          <h3>Tindog</h3>
+          <p>A responsive Tinder-like landing page for dogs, built with Bootstrap 5. Features responsive navigation, pricing cards, and testimonial sections.</p>
+          <a href="https://deviljitu1.github.io/Tindog/" class="portfolio-btn" target="_blank" rel="noopener">
+            View Project →
+          </a>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <img src="img/project2-thumbnail.webp" alt="Personal Portfolio" loading="lazy">
+        <div class="portfolio-card-content">
+          <h3>Personal Portfolio</h3>
+          <p>My responsive personal portfolio website showcasing my projects, skills and experience. Built with modern web technologies.</p>
+          <a href="https://nahushpatel.in/" class="portfolio-btn" target="_blank" rel="noopener">
+            View Project →
+          </a>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <img src="img/project3-thumbnail.webp" alt="Poetree Project" loading="lazy">
+        <div class="portfolio-card-content">
+          <h3>Poetree</h3>
+          <p>A minimalist poetry blog with elegant typography and smooth animations, built with HTML, CSS and JavaScript.</p>
+          <a href="https://poetreebird.netlify.app/" class="portfolio-btn" target="_blank" rel="noopener">
+            View Project →
+          </a>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <img src="img/calmmindai.webp" alt="Calm Mind AI" loading="lazy">
+        <div class="portfolio-card-content">
+          <h3>Calm Mind AI</h3>
+          <p>An AI-powered mental wellness web app designed to help emotionally vulnerable individuals with guided support and resources.</p>
+          <a href="https://calmmindai.netlify.app/" class="portfolio-btn" target="_blank" rel="noopener">
+            View Project →
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT SECTION
+  ============================================================ -->
   <section id="contact" class="contact-container">
     <h2><span class="name-gradient blinking-underline">Contact Me</span></h2>
     <p class="contact-description">Feel free to reach out for collaborations or just a friendly hello!</p>
     <div class="contact-grid">
       <div class="contact-card">
-        <form class="contact-form" id="contactForm">
-          <input type="text" id="name" name="from_name" placeholder="Your Name" required />
-          <input type="email" id="email" name="from_email" placeholder="Your Email" required />
-          <textarea id="message" name="from_email" placeholder="Your Message" required></textarea>
-          <button type="submit"  class="contact-btn">Send Message</button>
+        <form class="contact-form" id="contactForm" novalidate>
+          <input type="text" id="name" name="from_name" placeholder="Your Name" required autocomplete="name" />
+          <input type="email" id="email" name="from_email" placeholder="Your Email" required autocomplete="email" />
+          <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+          <button type="submit" class="contact-btn">Send Message ✉️</button>
         </form>
-        <div id="thankYouMessage" class="thank-you-message" style="display: none;">
-          <h3>Thank you for contacting!</h3>
-          <p>We will get back to you shortly.</p>
+        <div id="thankYouMessage" class="thank-you-message" style="display:none;">
+          <h3>Thank you! 🎉</h3>
+          <p>Your message has been sent. I'll get back to you shortly.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Responsive Footer Layout -->
-  <footer class="modern-footer">
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="modern-footer" role="contentinfo">
     <div class="footer-inner">
       <div class="footer-section footer-brand">
         <span class="footer-logo">Nahush Patel</span>
       </div>
       <div class="footer-section footer-nav">
-        <nav>
+        <nav aria-label="Footer Navigation">
           <a href="/">Home</a>
           <a href="/blog.html">Blog</a>
           <a href="#portfolio">Portfolio</a>
@@ -331,25 +400,17 @@
       </div>
       <div class="footer-section footer-social-contact">
         <div class="footer-social-icons">
-          <a href="https://www.linkedin.com/in/nahush-patel/" target="_blank" aria-label="LinkedIn">
-            <svg class="svg-icon" viewBox="0 0 24 24" width="16" height="16">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
+          <a href="https://www.linkedin.com/in/nahush-patel/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg class="svg-icon" viewBox="0 0 24 24" width="15" height="15"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
-          <a href="https://x.com/JITUP99288196" target="_blank" aria-label="Twitter">
-            <svg class="svg-icon" viewBox="0 0 24 24" width="16" height="16">
-              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-            </svg>
+          <a href="https://x.com/JITUP99288196" target="_blank" rel="noopener" aria-label="Twitter">
+            <svg class="svg-icon" viewBox="0 0 24 24" width="15" height="15"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
           </a>
           <a href="mailto:nahushpatel880@gmail.com" aria-label="Email">
-            <svg class="svg-icon" viewBox="0 0 24 24" width="16" height="16">
-              <path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.725v15.438h24v-15.438l-12 9.725z"/>
-            </svg>
+            <svg class="svg-icon" viewBox="0 0 24 24" width="15" height="15"><path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.725v15.438h24v-15.438l-12 9.725z"/></svg>
           </a>
-          <a href="https://github.com/deviljitu1" target="_blank" aria-label="GitHub">
-            <svg class="svg-icon" viewBox="0 0 24 24" width="16" height="16">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-            </svg>
+          <a href="https://github.com/deviljitu1" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg class="svg-icon" viewBox="0 0 24 24" width="15" height="15"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
           </a>
         </div>
         <div class="footer-support">Support: <a href="mailto:nahushpatel880@gmail.com">nahushpatel880@gmail.com</a></div>
@@ -357,123 +418,176 @@
     </div>
   </footer>
 
+  <!-- ============================================================
+       SCRIPTS
+  ============================================================ -->
   <script>
+    // ─── Dark / Light Mode Toggle ───
     const toggle = document.getElementById('toggleMode');
     const body = document.body;
     const profileImg = document.getElementById('profileImg');
     const darkIcon = document.getElementById('darkIcon');
     const lightIcon = document.getElementById('lightIcon');
 
-    toggle.addEventListener('click', () => {
-      body.classList.toggle('light');
-      profileImg.src = body.classList.contains('light') ? 'img/light-image.webp' : 'img/dark-image.webp';
-      darkIcon.style.display = body.classList.contains('light') ? 'none' : 'inline';
-      lightIcon.style.display = body.classList.contains('light') ? 'inline' : 'none';
-    });
+    function setMode(isLight) {
+      body.classList.toggle('light', isLight);
+      profileImg.src = isLight ? 'img/light-image.webp' : 'img/dark-image.webp';
+      darkIcon.style.display = isLight ? 'none' : 'inline';
+      lightIcon.style.display = isLight ? 'inline' : 'none';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    }
 
+    // Load saved preference
+    if (localStorage.getItem('theme') === 'light') setMode(true);
+
+    toggle.addEventListener('click', () => setMode(!body.classList.contains('light')));
+    toggle.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setMode(!body.classList.contains('light')); } });
+
+    // ─── Hamburger (Mobile Sidebar) ───
     const hamburgerMenu = document.getElementById('hamburgerMenu');
     const navLinks = document.getElementById('navLinks');
-    const navLinksItems = document.querySelectorAll('.nav-links li a'); // Select all navigation links
+    const navOverlay = document.getElementById('navOverlay');
+
+    function openMenu() {
+      navLinks.classList.add('active');
+      navOverlay.classList.add('active');
+      hamburgerMenu.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      navLinks.classList.remove('active');
+      navOverlay.classList.remove('active');
+      hamburgerMenu.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
 
     hamburgerMenu.addEventListener('click', () => {
-      navLinks.classList.toggle('active'); // Toggle the 'active' class
+      navLinks.classList.contains('active') ? closeMenu() : openMenu();
     });
 
-    navLinksItems.forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active'); // Close the navigation menu
-      });
-    });
-    
+    navOverlay.addEventListener('click', closeMenu);
 
-    const contactForm = document.getElementById('contactForm');
-    const thankYouMessage = document.getElementById('thankYouMessage');
-
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault(); // Prevent form submission
-      contactForm.style.display = 'none'; // Hide the form
-      thankYouMessage.style.display = 'block'; // Show thank you message
-      thankYouMessage.classList.add('fade-in'); // Add animation class
-    });
-    // active navigation link
-    const navLinksItemsA = document.querySelectorAll('.nav-links li a');
-
-    navLinksItemsA.forEach(link => {
-      link.addEventListener('click', () => {
-        // Remove 'active' class from all links
-        navLinksItemsA.forEach(nav => nav.classList.remove('active'));
-        // Add 'active' class to the clicked link
-        link.classList.add('active');
-      });
+    document.querySelectorAll('.nav-links li a').forEach(link => {
+      link.addEventListener('click', closeMenu);
     });
 
-    // Automatically set the active link based on the current section
-    window.addEventListener('scroll', () => {
-      const sections = document.querySelectorAll('section');
-      const scrollPosition = window.scrollY + 100; // Offset for better accuracy
+    // ─── Active Nav Link (scroll-based) ───
+    const sections = document.querySelectorAll('section[id]');
+    const allNavLinks = document.querySelectorAll('.nav-links li a');
+
+    // Bottom nav items map
+    const bnavMap = {
+      home: document.getElementById('bnav-home'),
+      about: document.getElementById('bnav-about'),
+      skills: document.getElementById('bnav-skills'),
+      portfolio: document.getElementById('bnav-portfolio'),
+      contact: document.getElementById('bnav-contact'),
+    };
+
+    function updateActiveNav() {
+      const scrollPos = window.scrollY + 120;
+      let currentSection = 'home';
 
       sections.forEach(section => {
         const id = section.getAttribute('id');
         const offsetTop = section.offsetTop;
-        const offsetHeight = section.offsetHeight;
+        if (scrollPos >= offsetTop) currentSection = id;
+      });
 
-        const link = document.querySelector(`.nav-links li a[href="#${id}"]`);
-        if (link) {
-          link.classList.toggle('active', scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight);
+      // Update top nav
+      allNavLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        link.classList.toggle('active', href === '#' + currentSection);
+      });
+
+      // Update bottom nav
+      Object.entries(bnavMap).forEach(([key, el]) => {
+        if (el) el.classList.toggle('active', key === currentSection);
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    updateActiveNav();
+
+    // ─── Bottom Nav smooth scroll ───
+    document.querySelectorAll('.bottom-nav-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        const href = item.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
         }
       });
     });
 
-  // Initialize EmailJS with your Public Key
-(function() {
-  emailjs.init('Y5Zzx5gdrO2rOGSkv'); // Replace with your actual public key
-})();
+    // ─── Scroll-reveal for cards ───
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('in-view');
+          }, i * 80);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
 
-// Wait for the DOM to load
-document.addEventListener('DOMContentLoaded', function() {
-  const contactForm = document.getElementById('contactForm');
-  const thankYouMessage = document.getElementById('thankYouMessage');
-
-  if (!contactForm) {
-    console.error('Contact form not found on the page.');
-    return;
-  }
-
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-
-    if (!name || !email || !message) {
-      alert('Please fill in all fields.');
-      return;
-    }
-
-    console.log('Sending email...');
-    emailjs.send('service_npwwilk', 'template_e62g2gf', {
-      from_name: name,
-      from_email: email,
-      message: message,
-      reply_to: email, // Add this field for auto-reply
-    }).then(() => {
-      console.log('Email sent successfully!');
-      // Show success message and hide form
-      contactForm.reset(); // Clear the form fields
-      contactForm.style.display = 'none'; // Hide the form
-      if (thankYouMessage) {
-        thankYouMessage.style.display = 'block';
-        thankYouMessage.classList.add('fade-in');
-      } else {
-        alert('Thank you! Your message has been sent.');
-      }
-    }).catch((error) => {
-      console.error('EmailJS Error:', error);
-      alert('Failed to send the message. Please try again later.');
+    document.querySelectorAll('.skill-card, .portfolio-card, .contact-card').forEach(el => {
+      revealObserver.observe(el);
     });
-  });
-});
+
+    // ─── EmailJS ───
+    (function() {
+      if (typeof emailjs !== 'undefined') {
+        emailjs.init('Y5Zzx5gdrO2rOGSkv');
+      }
+    })();
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const contactForm = document.getElementById('contactForm');
+      const thankYouMessage = document.getElementById('thankYouMessage');
+
+      if (!contactForm) return;
+
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        if (!name || !email || !message) {
+          alert('Please fill in all fields.');
+          return;
+        }
+
+        const btn = contactForm.querySelector('.contact-btn');
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+
+        emailjs.send('service_npwwilk', 'template_e62g2gf', {
+          from_name: name,
+          from_email: email,
+          message: message,
+          reply_to: email,
+        }).then(() => {
+          contactForm.reset();
+          contactForm.style.display = 'none';
+          if (thankYouMessage) {
+            thankYouMessage.style.display = 'block';
+          }
+        }).catch((error) => {
+          console.error('EmailJS Error:', error);
+          alert('Failed to send the message. Please try again later.');
+          btn.textContent = 'Send Message ✉️';
+          btn.disabled = false;
+        });
+      });
+    });
 
   </script>
 </body>
