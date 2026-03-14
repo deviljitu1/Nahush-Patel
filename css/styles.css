@@ -802,6 +802,82 @@ body.light #profileImg { border-color: #fff; }
 }
 
 /* ============================================================
+   TRUSTED BY SECTION
+   ============================================================ */
+.trusted-by {
+  padding: 4em 10%;
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+body.light .trusted-by {
+  background: #fdfdfd;
+}
+
+.trusted-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.trusted-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 4px;
+  color: var(--text-muted);
+  margin-bottom: 3em;
+  font-weight: 600;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.brands-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4em;
+  flex-wrap: wrap;
+}
+
+.brand-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 80px;
+  opacity: 0.6;
+  filter: grayscale(100%) brightness(1.5);
+  transition: opacity 0.4s, filter 0.4s, transform 0.4s;
+}
+
+body.light .brand-item {
+  filter: grayscale(100%) contrast(0.5);
+}
+
+.brand-item:hover {
+  opacity: 1;
+  filter: grayscale(0%) brightness(1);
+  transform: scale(1.1);
+}
+
+.brand-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .brands-grid {
+    gap: 2.5em;
+  }
+  .brand-item {
+    width: 120px;
+    height: 60px;
+  }
+}
+
+/* ============================================================
    SKILLS SECTION
    ============================================================ */
 .skills-container {
