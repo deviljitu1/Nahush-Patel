@@ -254,19 +254,50 @@
   <section class="trusted-by">
     <div class="trusted-inner">
       <h2 class="trusted-title">Worked for the Brands</h2>
-      <div class="brands-grid">
-        <a href="https://www.facebook.com/eyesraipur/" class="brand-item" target="_blank" rel="noopener">
-          <img src="brands/Eyes_logo.png" alt="Eyes Events & Advertising" loading="lazy">
-        </a>
-        <a href="https://www.instagram.com/orgalifefood" class="brand-item" target="_blank" rel="noopener">
-          <img src="brands/Orgalife_Logo_2.avif" alt="Orgalife" loading="lazy">
-        </a>
-        <a href="https://www.instagram.com/rajimkumbhkalp2026" class="brand-item" target="_blank" rel="noopener">
-          <img src="brands/Rajim_Kumbh.png" alt="Rajim Kumbh Kalp" loading="lazy">
-        </a>
-        <a href="https://www.instagram.com/chaisignal_cafe/" class="brand-item" target="_blank" rel="noopener">
-          <img src="brands/Chai_Signal.png" alt="Chai Signal Cafe" loading="lazy">
-        </a>
+      <div class="brands-slider">
+        <div class="brands-track">
+          <!-- First Set -->
+          <a href="https://www.facebook.com/eyesraipur/" class="brand-item" target="_blank" rel="noopener">
+            <img src="brands/Eyes_logo.png" alt="Eyes Events & Advertising" loading="lazy">
+          </a>
+          <a href="https://www.instagram.com/orgalifefood" class="brand-item" target="_blank" rel="noopener">
+            <img src="brands/Orgalife_Logo_2.avif" alt="Orgalife" loading="lazy">
+          </a>
+          <a href="https://www.instagram.com/rajimkumbhkalp2026" class="brand-item" target="_blank" rel="noopener">
+            <img src="brands/Rajim_Kumbh.png" alt="Rajim Kumbh Kalp" loading="lazy">
+          </a>
+          <a href="https://www.instagram.com/chaisignal_cafe/" class="brand-item" target="_blank" rel="noopener">
+            <img src="brands/Chai_Signal.png" alt="Chai Signal Cafe" loading="lazy">
+          </a>
+          
+          <!-- Second Set (Duplicate for seamless loop) -->
+          <a href="https://www.facebook.com/eyesraipur/" class="brand-item" target="_blank" rel="noopener">
+            <img src="brands/Eyes_logo.png" alt="Eyes Events & Advertising" loading="lazy">
+          </a>
+          <a href="https://www.instagram.com/orgalifefood" class="brand-item" target="_blank" rel="noopener">
+            <img src="brands/Orgalife_Logo_2.avif" alt="Orgalife" loading="lazy">
+          </a>
+          <a href="https://www.instagram.com/rajimkumbhkalp2026" class="brand-item" target="_blank" rel="noopener">
+            <img src="brands/Rajim_Kumbh.png" alt="Rajim Kumbh Kalp" loading="lazy">
+          </a>
+          <a href="https://www.instagram.com/chaisignal_cafe/" class="brand-item" target="_blank" rel="noopener">
+            <img src="brands/Chai_Signal.png" alt="Chai Signal Cafe" loading="lazy">
+          </a>
+
+          <!-- Third Set (Optional for extra safety on wide screens) -->
+          <a href="https://www.facebook.com/eyesraipur/" class="brand-item" target="_blank" rel="noopener">
+            <img src="brands/Eyes_logo.png" alt="Eyes Events & Advertising" loading="lazy">
+          </a>
+          <a href="https://www.instagram.com/orgalifefood" class="brand-item" target="_blank" rel="noopener">
+            <img src="brands/Orgalife_Logo_2.avif" alt="Orgalife" loading="lazy">
+          </a>
+          <a href="https://www.instagram.com/rajimkumbhkalp2026" class="brand-item" target="_blank" rel="noopener">
+            <img src="brands/Rajim_Kumbh.png" alt="Rajim Kumbh Kalp" loading="lazy">
+          </a>
+          <a href="https://www.instagram.com/chaisignal_cafe/" class="brand-item" target="_blank" rel="noopener">
+            <img src="brands/Chai_Signal.png" alt="Chai Signal Cafe" loading="lazy">
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -552,34 +583,8 @@
     toggle.addEventListener('click', () => setMode(!body.classList.contains('light')));
     toggle.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setMode(!body.classList.contains('light')); } });
 
-    // ─── Hamburger (Mobile Sidebar) ───
-    const hamburgerMenu = document.getElementById('hamburgerMenu');
-    const navLinks = document.getElementById('navLinks');
-    const navOverlay = document.getElementById('navOverlay');
-
-    function openMenu() {
-      navLinks.classList.add('active');
-      navOverlay.classList.add('active');
-      hamburgerMenu.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeMenu() {
-      navLinks.classList.remove('active');
-      navOverlay.classList.remove('active');
-      hamburgerMenu.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-
-    hamburgerMenu.addEventListener('click', () => {
-      navLinks.classList.contains('active') ? closeMenu() : openMenu();
-    });
-
-    navOverlay.addEventListener('click', closeMenu);
-
-    document.querySelectorAll('.nav-links li a').forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
+    // ─── Top Nav (Desktop only) ───
+    // Note: Top nav is hidden on mobile via CSS
 
     // ─── Active Nav Link (scroll-based) ───
     const sections = document.querySelectorAll('section[id]');
