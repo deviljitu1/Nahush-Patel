@@ -14,6 +14,10 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
+  <!-- ✅ Preload Critical Assets -->
+  <link rel="preload" href="css/styles.css" as="style">
+  <link rel="preload" href="https://res.cloudinary.com/djm7sh0zd/video/upload/v1773344554/Nov_17__1228_15s_202511171254_32z0y_oqrmxq.mp4" as="video" type="video/mp4">
+
   <!-- ✅ Main stylesheet -->
   <link rel="stylesheet" href="css/styles.css">
 
@@ -92,6 +96,7 @@
       <li><a href="#home" id="nav-home">Home</a></li>
       <li><a href="#about" id="nav-about">About</a></li>
       <li><a href="#experience" id="nav-experience">Experience</a></li>
+      <li><a href="#education" id="nav-education">Education</a></li>
       <li><a href="#skills" id="nav-skills">Skills</a></li>
       <li><a href="#portfolio" id="nav-portfolio">Portfolio</a></li>
       <li><a href="#contact" id="nav-contact">Contact</a></li>
@@ -237,7 +242,7 @@
        ABOUT SECTION
   ============================================================ -->
   <section id="about" class="about-container">
-    <img class="about-img" src="img/about-image.webp" alt="About Nahush Patel - Professional Video Editor" loading="lazy" />
+    <img class="about-img" src="img/about-image.webp" alt="About Nahush Patel - Professional Video Editor" loading="lazy" decoding="async" />
     <div class="about-text">
       <h2 class="section-title"><span class="name-gradient blinking-underline">About Me</span></h2>
       <p>Nahush Patel – A Professional Video Editor &amp; AI Content Creator with a vision for storytelling and cinematic excellence. I specialize in high-impact video production using Adobe Premiere Pro and DaVinci Resolve, alongside cutting-edge AI video technologies including <strong>Veo3</strong> and <strong>Kling</strong>. With a mastery of <strong>Jason Prompt Engineering</strong>, I blend traditional editing craftsmanship with advanced AI automation (n8n) to create unique, state-of-the-art visual experiences. My mission is to transform raw concepts into viral reality through the synergy of human creativity and artificial intelligence.</p>
@@ -300,6 +305,42 @@
   </section>
 
   <!-- ============================================================
+       EDUCATION SECTION
+  ============================================================ -->
+  <section id="education" class="experience-container" style="padding-top: 2em; padding-bottom: 2em;">
+    <h2 class="section-title"><span class="name-gradient blinking-underline">Education</span></h2>
+    <div class="experience-timeline">
+      <div class="experience-card">
+        <div class="experience-header">
+          <div class="experience-title">
+            <h3>Digital Marketing Course (6 Months)</h3>
+            <h4>Webfame Digital Marketing Institute</h4>
+          </div>
+          <span class="experience-date">2025</span>
+        </div>
+      </div>
+      <div class="experience-card">
+        <div class="experience-header">
+          <div class="experience-title">
+            <h3>Diploma in Pharmacy</h3>
+            <h4>The Pharmaceutical College, Barpali</h4>
+          </div>
+          <span class="experience-date">2022</span>
+        </div>
+      </div>
+      <div class="experience-card">
+        <div class="experience-header">
+          <div class="experience-title">
+            <h3>ADCA</h3>
+            <h4>NICE Institute of Technology</h4>
+          </div>
+          <span class="experience-date">2019</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
        SKILLS SECTION
   ============================================================ -->
   <section id="skills" class="skills-container">
@@ -348,7 +389,7 @@
     <h2 class="section-title"><span class="name-gradient blinking-underline">My Portfolio</span></h2>
     <div class="portfolio-grid">
       <div class="portfolio-card">
-        <video controls preload="metadata">
+        <video controls preload="none">
           <source src="https://res.cloudinary.com/djm7sh0zd/video/upload/v1773344554/Nov_17__1228_15s_202511171254_32z0y_oqrmxq.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -362,7 +403,7 @@
       </div>
 
       <div class="portfolio-card">
-        <video controls preload="metadata">
+        <video controls preload="none">
           <source src="https://res.cloudinary.com/djm7sh0zd/video/upload/v1773344504/1_npwj0g.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -376,7 +417,7 @@
       </div>
 
       <div class="portfolio-card">
-        <video controls preload="metadata">
+        <video controls preload="none">
           <source src="https://res.cloudinary.com/djm7sh0zd/video/upload/v1773344468/_duration_8s_202511170013_dbx1h_n7ypbj.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -390,7 +431,7 @@
       </div>
 
       <div class="portfolio-card">
-        <video controls preload="metadata">
+        <video controls preload="none">
           <source src="https://res.cloudinary.com/djm7sh0zd/video/upload/v1773344582/_scene_1_202511111742_sh8fv_srx10l.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -404,7 +445,7 @@
       </div>
 
       <div class="portfolio-card">
-        <video controls preload="metadata">
+        <video controls preload="none">
           <source src="https://res.cloudinary.com/djm7sh0zd/video/upload/v1773344516/Hindi_sdkg1s.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -418,7 +459,7 @@
       </div>
 
       <div class="portfolio-card">
-        <video controls preload="metadata">
+        <video controls preload="none">
           <source src="https://res.cloudinary.com/djm7sh0zd/video/upload/v1773344608/Whisk_qty2idzlzmzkvgzz0iy3itytmznlrtl2ugn30iy_zhzkzd.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>

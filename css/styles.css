@@ -590,10 +590,25 @@ h2 {
 .profile-frame {
   position: relative;
   display: inline-block;
-  width: 320px;
-  height: 320px;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1 / 1;
   border-radius: var(--radius-lg);
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .profile-frame {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-frame {
+    width: 240px;
+    height: 240px;
+  }
 }
 
 .profile-frame::before {
@@ -1422,14 +1437,39 @@ body.light .modern-footer {
   }
 
   .hero {
-    padding: 2.5em 6%;
+    padding: 3.5em 6% 4em;
     min-height: auto;
+    gap: 3em;
   }
 
-  .about-container { padding: 3em 6%; }
+  .about-container { 
+    padding: 3em 6%; 
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-img {
+    margin-bottom: 2em;
+    width: 100%;
+    max-width: 300px;
+  }
+
   .skills-container { padding: 3em 6%; }
   .portfolio-container { padding: 3em 6%; }
   .contact-container { padding: 3em 6%; }
+  
+  .experience-container {
+    padding: 3em 6%;
+  }
+  
+  .experience-card {
+    padding: 1.5em;
+  }
+  
+  .experience-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 /* Overlay behind sidebar */
@@ -1497,16 +1537,30 @@ section::before {
   h2 { font-size: 1.1rem; }
   .typing { 
     font-size: 0.95rem; 
-    white-space: normal; /* Allow wrap if needed */
-    border-right: none;  /* Remove cursor on mobile */
-    animation: none;      /* Disable typing animation to prevent horizontal scroll */
+    white-space: normal;
+    border-right: none;
+    animation: none;
     width: auto !important;
   }
   .hero-eyebrow { font-size: 0.75rem; letter-spacing: 1px; }
-  .portfolio-grid { grid-template-columns: 1fr; }
+  .portfolio-grid { 
+    grid-template-columns: 1fr; 
+    gap: 1.5em;
+  }
   .contact-grid { grid-template-columns: 1fr; }
-  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .skills-grid { 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 0.8em;
+  }
+  .skill-card {
+    padding: 1em 0.5em;
+  }
   .contact-card { padding: 1.5em; }
+  
+  .section-title {
+    font-size: 1.7rem;
+    margin-bottom: 1.2em;
+  }
 }
 
 @media (max-width: 360px) {

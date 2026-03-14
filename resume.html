@@ -56,6 +56,14 @@
             gap: 10px;
         }
         .skill-tag { background: #f0f0f0; padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; }
+        @media (max-width: 600px) {
+            .resume-container { padding: 20px; }
+            header { flex-direction: column; align-items: flex-start; }
+            .contact-info { text-align: left; margin-top: 10px; }
+            h1 { font-size: 2rem; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .item-header { flex-direction: column; }
+        }
         @media print {
             .resume-container { border: none; margin: 0; padding: 0; }
             body { background: #fff; }
