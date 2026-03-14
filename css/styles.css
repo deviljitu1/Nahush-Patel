@@ -508,7 +508,7 @@ h2 {
 
 @keyframes typing {
   0% { width: 0; }
-  50%, 90% { width: 30ch; }
+  50%, 90% { width: 45ch; }
   95%, 100% { width: 0; }
 }
 
