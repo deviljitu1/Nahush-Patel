@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nahush Patel - Resume</title>
+    <style>
+        :root {
+            --primary: #4cc9f0;
+            --secondary: #7209b7;
+            --text-dark: #1a1a1a;
+            --text-light: #444;
+            --bg-light: #f8f9fa;
+        }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            background: #fff;
+        }
+        .resume-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 40px;
+            border: 1px solid #eee;
+        }
+        header {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        h1 { margin: 0; font-size: 2.5rem; letter-spacing: -1px; }
+        .contact-info { text-align: right; font-size: 0.9rem; color: var(--text-light); }
+        .section-title {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--secondary);
+            border-bottom: 1px solid #eee;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        .experience-item, .project-item { margin-bottom: 20px; }
+        .item-header { display: flex; justify-content: space-between; font-weight: bold; }
+        .item-sub { font-style: italic; color: var(--text-light); margin-bottom: 5px; }
+        ul { padding-left: 20px; margin-top: 5px; }
+        li { margin-bottom: 5px; color: var(--text-light); }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .skill-tag { background: #f0f0f0; padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; }
+        @media print {
+            .resume-container { border: none; margin: 0; padding: 0; }
+            body { background: #fff; }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <header>
+            <div>
+                <h1>NAHUSH PATEL</h1>
+                <p style="color: var(--primary); font-weight: bold; margin: 0;">Professional Video Editor & AI Content Creator</p>
+            </div>
+            <div class="contact-info">
+                +91 7875783498<br>
+                nahushpatel880@gmail.com<br>
+                Jagdalpur, Odisha, India<br>
+                linkedin.com/in/nahush-patel
+            </div>
+        </header>
+
+        <section>
+            <div class="section-title">Profile</div>
+            <p>Experienced Video Editor and AI Specialist blending traditional filmmaking craftsmanship with cutting-edge artificial intelligence. Expert in **Adobe Premiere Pro**, **DaVinci Resolve**, and viral content creation. Specialized in **AI Video workflows (Veo3, Kling)** and **n8n automation** to deliver high-impact, cinematic visual stories with maximum efficiency.</p>
+        </section>
+
+        <section>
+            <div class="section-title">Experience</div>
+            <div class="experience-item">
+                <div class="item-header">
+                    <span>Orgalife.in</span>
+                    <span>2024 - Present</span>
+                </div>
+                <div class="item-sub">Professional Video Editor & AI Content Strategist</div>
+                <ul>
+                    <li>Spearheading video production for brand marketing, leading to a significant boost in cross-platform social media engagement.</li>
+                    <li>Developed an AI-integrated production pipeline using **Veo3** and **Kling** for hyper-realistic visual effects.</li>
+                    <li>Automated repetitive editing and distribution tasks using **n8n**, increasing content output by 50%.</li>
+                    <li>Applied **Jason Prompt Engineering** to generate high-fidelity B-roll assets, reducing stock footage costs.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Key Projects</div>
+            <div class="project-item">
+                <div class="item-header">Veo3: AI Cinematic Exploration</div>
+                <ul>
+                    <li>A conceptual short film showcasing advanced text-to-video capabilities and temporal consistency.</li>
+                </ul>
+            </div>
+            <div class="project-item">
+                <div class="item-header">Viral Content Engine</div>
+                <ul>
+                    <li>Created an automated system using n8n that edits and captions short-form reels for rapid brand scaling.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Technical Skills</div>
+            <div class="skills-grid">
+                <div><strong>Editing:</strong> Adobe Premiere Pro, DaVinci Resolve, CapCut, Canva</div>
+                <div><strong>AI Video:</strong> Veo3, Kling, Prompt Engineering (Jason)</div>
+                <div><strong>Automation:</strong> n8n, Vibe Coding, Workflow Design</div>
+                <div><strong>Web:</strong> HTML/CSS, JavaScript, Portfolio Management</div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Education</div>
+            <p><strong>D.Pharm</strong> | TPC, Barpali, Odisha (2021-22)</p>
+            <p><strong>ADCA</strong> | NICE Institute (2018-19)</p>
+        </section>
+    </div>
+</body>
+</html>
