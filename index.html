@@ -202,12 +202,12 @@
       <h2><span class="typing">Professional Video Editor &amp; Content Creator</span></h2>
 
       <div class="cta-group">
-        <button class="glow-btn" aria-label="Download CV">
+        <a href="img/Nahush Patel.pdf" class="glow-btn" aria-label="Download CV" download>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
           </svg>
-          <a href="img/Nahush Patel.pdf" download>Download CV</a>
-        </button>
+          Download CV
+        </a>
         <a href="#contact" class="glow-btn" style="background: transparent; border: 1px solid rgba(255,255,255,0.15); color: var(--text-primary);">
           Let's Talk
         </a>
@@ -215,7 +215,7 @@
     </div>
 
     <div class="right-content">
-      <div class="profile-frame" style="border-radius: 20px; overflow: hidden; box-shadow: 0 0 30px rgba(76,201,240,0.3);">
+      <div class="profile-frame">
         <video 
           id="heroVideo" 
           autoplay 
@@ -239,7 +239,7 @@
   <section id="about" class="about-container">
     <img class="about-img" src="img/about-image.webp" alt="About Nahush Patel - Professional Video Editor" loading="lazy" />
     <div class="about-text">
-      <h2><span class="name-gradient blinking-underline">About Me</span></h2>
+      <h2 class="section-title"><span class="name-gradient blinking-underline">About Me</span></h2>
       <p>Nahush Patel – A Professional Video Editor &amp; AI Content Creator with a vision for storytelling and cinematic excellence. I specialize in high-impact video production using Adobe Premiere Pro and DaVinci Resolve, alongside cutting-edge AI video technologies including <strong>Veo3</strong> and <strong>Kling</strong>. With a mastery of <strong>Jason Prompt Engineering</strong>, I blend traditional editing craftsmanship with advanced AI automation (n8n) to create unique, state-of-the-art visual experiences. My mission is to transform raw concepts into viral reality through the synergy of human creativity and artificial intelligence.</p>
     </div>
   </section>
@@ -247,22 +247,53 @@
   <!-- ============================================================
        EXPERIENCE SECTION
   ============================================================ -->
-  <section id="experience" class="experience-container" style="padding: 5em 10%; position: relative; z-index: 1;">
-    <h2 style="text-align: center; margin-bottom: 2em;"><span class="name-gradient blinking-underline">Experience</span></h2>
-    <div class="experience-timeline" style="max-width: 900px; margin: 0 auto;">
-      <div class="experience-card" style="background: var(--bg-card); border: 1px solid var(--border-glass); border-radius: var(--radius-md); padding: 2em; margin-bottom: 2em; transition: transform 0.3s; position: relative; overflow: hidden;">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px;">
-          <div>
-            <h3 style="font-size: 1.5rem; color: var(--accent-blue); margin-bottom: 0.2em;">Professional Video Editor & AI Content Strategist</h3>
-            <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.5em;">Orgalife.in</h4>
+  <section id="experience" class="experience-container">
+    <h2 class="section-title"><span class="name-gradient blinking-underline">Experience</span></h2>
+    <div class="experience-timeline">
+      <!-- Role 1: Orgalife -->
+      <div class="experience-card">
+        <div class="experience-header">
+          <div class="experience-title">
+            <h3>Social Media & Video Editing</h3>
+            <h4>Orgalife</h4>
           </div>
-          <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); background: var(--bg-glass); padding: 4px 12px; border-radius: 20px;">2024 - 2025</span>
+          <span class="experience-date">March 2025 - 2026</span>
         </div>
-        <ul style="color: var(--text-secondary); line-height: 1.6; margin-top: 1em; padding-left: 1.2em;">
-          <li>Leading end-to-end video production for brand storytelling, achieving significant growth in social media engagement.</li>
-          <li>Integrating advanced AI tools like **Veo3** and **Kling** into the corporate content pipeline.</li>
-          <li>Implemented **n8n automation** workflows to streamline video editing processes and content delivery.</li>
-          <li>Utilizing **Jason Prompt Engineering** to generate high-fidelity B-roll and vfx sequences for marketing campaigns.</li>
+        <ul>
+          <li>Specializing in Instagram video production and viral content generation using AI.</li>
+          <li>Mastering advanced tools: Veo 3, Kling AI, and n8n automation.</li>
+          <li>Leading social media strategy and platform management for brand growth.</li>
+        </ul>
+      </div>
+
+      <!-- Role 2: Omega Healthcare -->
+      <div class="experience-card">
+        <div class="experience-header">
+          <div class="experience-title">
+            <h3>Medical Billing & Operations</h3>
+            <h4>Omega Healthcare, Chennai</h4>
+          </div>
+          <span class="experience-date">April 2024 - March 2025</span>
+        </div>
+        <ul>
+          <li>Expertise in Billing operations and professional communication.</li>
+          <li>Demonstrated strong problem-solving and error-handling capabilities in a professional healthcare environment.</li>
+          <li>Maintained high accuracy and quality standards.</li>
+        </ul>
+      </div>
+
+      <!-- Role 3: Sutherland Global -->
+      <div class="experience-card">
+        <div class="experience-header">
+          <div class="experience-title">
+            <h3>Customer Care Executive (Amazon Chat & Call)</h3>
+            <h4>Sutherland Global</h4>
+          </div>
+          <span class="experience-date">Aug 2023 - April 2024</span>
+        </div>
+        <ul>
+          <li>Managed high-pressure service operations for Amazon Chat & Call channels.</li>
+          <li>Leveraged exceptional typing skills and communication to resolve complex customer issues efficiently.</li>
         </ul>
       </div>
     </div>
@@ -272,46 +303,40 @@
        SKILLS SECTION
   ============================================================ -->
   <section id="skills" class="skills-container">
-    <h2><span class="name-gradient blinking-underline">My Skills</span></h2>
+    <h2 class="section-title"><span class="name-gradient blinking-underline">My Skills</span></h2>
     <div class="skills-grid">
+      <!-- Existing Skills -->
       <div class="skill-card">
         <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" alt="Premiere Pro" loading="lazy">
         <span>Premiere Pro</span>
       </div>
-
       <div class="skill-card">
         <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/DaVinci_Resolve_Studio.png" alt="DaVinci Resolve" loading="lazy">
         <span>DaVinci Resolve</span>
-      </div>
-      <div class="skill-card">
-        <img src="img/canva.webp" alt="Canva" loading="lazy">
-        <span>Canva</span>
       </div>
       <div class="skill-card">
         <img src="https://static.cdnlogo.com/logos/c/9/capcut.svg" alt="CapCut" loading="lazy" style="height: 48px; width: auto;">
         <span>CapCut</span>
       </div>
       <div class="skill-card">
-        <svg viewBox="0 0 500 200" style="height: 40px; width: auto;" aria-label="n8n Automation">
-          <path fill="#EA4B71" d="m239,83c-11.183,0 -20.58,-7.649 -23.244,-18l-27.508,0c-5.866,0 -10.872,4.241 -11.836,10.027l-0.987,5.919c-0.936,5.619 -3.779,10.509 -7.799,14.054c4.02,3.545 6.863,8.435 7.799,14.054l0.987,5.919c0.964,5.786 5.97,10.027 11.836,10.027l3.508,0c2.664,-10.351 12.061,-18 23.244,-18c13.255,0 24,10.745 24,24c0,13.255 -10.745,24 -24,24c-11.183,0 -20.58,-7.649 -23.244,-18l-3.508,0c-11.732,0 -21.744,-8.482 -23.673,-20.054l-0.987,-5.919c-0.964,-5.786 -5.97,-10.027 -11.836,-10.027l-9.508,0c-2.664,10.351 -12.061,18 -23.244,18c-11.183,0 -20.58,-7.649 -23.244,-18l-13.512,0c-2.664,10.351 -12.061,18 -23.244,18c-13.2548,0 -24,-10.745 -24,-24c0,-13.255 10.7452,-24 24,-24c11.183,0 20.58,7.649 23.244,18l13.512,0c2.664,-10.351 12.061,-18 23.244,-18c11.183,0 20.58,7.649 23.244,18l9.508,0c5.866,0 10.872,-4.241 11.836,-10.027l0.987,-5.919c1.929,-11.572 11.941,-20.054 23.673,-20.054l27.508,0c2.664,-10.351 12.061,-18 23.244,-18c13.255,0 24,10.745 24,24c0,13.255 -10.745,24 -24,24zm0,-12c6.627,0 12,-5.373 12,-12c0,-6.627 -5.373,-12 -12,-12c-6.627,0 -12,5.373 -12,12c0,6.627 5.373,12 12,12zm-180,36c6.627,0 12,-5.373 12,-12c0,-6.627 -5.373,-12 -12,-12c-6.6274,0 -12,5.373 -12,12c0,6.627 5.3726,12 12,12zm72,-12c0,6.627 -5.373,12 -12,12c-6.627,0 -12,-5.373 -12,-12c0,-6.627 5.373,-12 12,-12c6.627,0 12,5.373 12,12zm96,36c0,6.627 -5.373,12 -12,12c-6.627,0 -12,-5.373 -12,-12c0,-6.627 5.373,-12 12,-12c6.627,0 12,5.373 12,12z" clip-rule="evenodd" fill-rule="evenodd"/>
-          <path fill="currentColor" d="m407.017,86.887l0,-0.571c4.187,-2.097 8.374,-5.719 8.374,-12.867c0,-10.294 -8.469,-16.489 -20.173,-16.489c-11.99,0 -20.554,6.576 -20.554,16.679c0,6.863 3.996,10.58 8.374,12.677l0,0.571c-4.853,1.716 -10.658,6.863 -10.658,15.441c0,10.388 8.564,17.632 22.743,17.632c14.178,0 22.457,-7.244 22.457,-17.632c0,-8.578 -5.71,-13.63 -10.563,-15.441zm-11.894,-21.158c4.758,0 8.278,3.049 8.278,8.196c0,5.147 -3.616,8.197 -8.278,8.197c-4.663,0 -8.565,-3.05 -8.565,-8.197c0,-5.242 3.712,-8.196 8.565,-8.196zm0,45.081c-5.52,0 -9.992,-3.526 -9.992,-9.531c0,-5.432 3.711,-9.531 9.896,-9.531c6.091,0 9.802,4.003 9.802,9.722c0,5.814 -4.282,9.34 -9.706,9.34z" clip-rule="evenodd" fill-rule="evenodd"/>
-          <path fill="currentColor" d="m432.26,119.007l12.18,0l0,-25.829c0,-8.483 5.139,-12.2 10.943,-12.2c5.71,0 10.182,3.813 10.182,11.628l0,26.401l12.18,0l0,-28.879c0,-12.486 -7.232,-19.729 -18.555,-19.729c-7.137,0 -11.134,2.859 -13.989,6.576l-0.761,0l-1.047,-5.623l-11.133,0l0,47.655z"/>
-          <path fill="currentColor" d="m324.44,119.007l-12.18,0l0,-47.655l11.133,0l1.047,5.623l0.761,0c2.855,-3.717 6.852,-6.576 13.989,-6.576c11.323,0 18.555,7.243 18.555,19.729l0,28.879l-12.18,0l0,-26.401c0,-7.815 -4.472,-11.628 -10.182,-11.628c-5.804,0 -10.943,3.717 -10.943,12.2l0,25.829z"/>
-        </svg>
+        <img src="img/canva.webp" alt="Canva" loading="lazy">
+        <span>Canva</span>
+      </div>
+      <div class="skill-card">
+        <img src="https://img.icons8.com/fluency/96/artificial-intelligence.png" alt="AI Video" loading="lazy" style="height: 48px; width: auto;">
+        <span>AI Video (Veo 3 & Kling)</span>
+      </div>
+      <div class="skill-card">
+        <img src="img/N8n-logo-new.svg" alt="Automation" loading="lazy" style="height: 48px; width: auto;">
         <span>n8n Automation</span>
       </div>
       <div class="skill-card">
         <img src="https://img.icons8.com/fluency/96/sparkling.png" alt="Prompt Engineering" loading="lazy" style="height: 48px; width: auto;">
-        <span>Prompt Engineering</span>
-      </div>
-
-      <div class="skill-card">
-        <img src="https://img.icons8.com/fluency/96/cursor--v1.png" alt="Vibe Coder" loading="lazy" style="height: 48px; width: auto;">
-        <span>Vibe Coder</span>
+        <span>Prompt Engineering (JSON)</span>
       </div>
       <div class="skill-card">
-        <img src="https://img.icons8.com/fluency/96/artificial-intelligence.png" alt="AI Video" loading="lazy" style="height: 48px; width: auto;">
-        <span>AI Video (Veo & Kling)</span>
+        <img src="https://img.icons8.com/fluency/96/keyboard.png" alt="Typing" loading="lazy" style="height: 48px; width: auto;">
+        <span>Speed Typing</span>
       </div>
     </div>
   </section>
@@ -320,7 +345,7 @@
        PORTFOLIO SECTION
   ============================================================ -->
   <section id="portfolio" class="portfolio-container">
-    <h2><span class="name-gradient blinking-underline">My Portfolio</span></h2>
+    <h2 class="section-title"><span class="name-gradient blinking-underline">My Portfolio</span></h2>
     <div class="portfolio-grid">
       <div class="portfolio-card">
         <video controls preload="metadata">
@@ -412,7 +437,7 @@
        CONTACT SECTION
   ============================================================ -->
   <section id="contact" class="contact-container">
-    <h2><span class="name-gradient blinking-underline">Contact Me</span></h2>
+    <h2 class="section-title"><span class="name-gradient blinking-underline">Contact Me</span></h2>
     <p class="contact-description">Feel free to reach out for collaborations or just a friendly hello!</p>
     <div class="contact-grid">
       <div class="contact-card">
@@ -455,14 +480,14 @@
           <a href="https://x.com/JITUP99288196" target="_blank" rel="noopener" aria-label="Twitter">
             <svg class="svg-icon" viewBox="0 0 24 24" width="15" height="15"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
           </a>
-          <a href="mailto:nahushpatel880@gmail.com" aria-label="Email">
+          <a href="mailto:nahushpatel2@gmail.com" aria-label="Email">
             <svg class="svg-icon" viewBox="0 0 24 24" width="15" height="15"><path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.725v15.438h24v-15.438l-12 9.725z"/></svg>
           </a>
           <a href="https://github.com/deviljitu1" target="_blank" rel="noopener" aria-label="GitHub">
             <svg class="svg-icon" viewBox="0 0 24 24" width="15" height="15"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
           </a>
         </div>
-        <div class="footer-support">Support: <a href="mailto:nahushpatel880@gmail.com">nahushpatel880@gmail.com</a></div>
+        <div class="footer-support">Support: <a href="mailto:nahushpatel2@gmail.com">nahushpatel2@gmail.com</a></div>
       </div>
     </div>
   </footer>
